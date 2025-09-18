@@ -214,7 +214,7 @@ func (r *countryRepository) getAliasData() map[string][]string {
 		"RO": {
 			"romania", "românia", "roumanie", "rumänien", "rumania",
 			"romaña", "romenia", "rominya", "roumania", "rominia",
-		},
+			"rumeenia", "rumanía"},
 
 		// Hungary - Enhanced
 		"HU": {
