@@ -137,8 +137,9 @@ linters-settings:
       - G404 # Use of weak random number generator
 
 File: Dockerfile
+# Dockerfile
 # ---- Builder Stage ----
-FROM golang:1.22-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
 WORKDIR /app
 
@@ -150,9 +151,9 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy the rest of the source code
-COPY ./src ./src
+COPY . .
 
-# Build the Go application
+# Build the Go application (note: using src/cmd/server path)
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /server ./src/cmd/server
 
 # ---- Final Stage ----
@@ -166,10 +167,6 @@ COPY --from=builder /server /server
 
 # Expose service port
 EXPOSE 3030
-
-# Add health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD ["/server", "-health-check"] || exit 1
 
 # Run app
 ENTRYPOINT ["/server"]
@@ -312,23 +309,59 @@ services:
       - READ_TIMEOUT=10
       - WRITE_TIMEOUT=10
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3030/health"]
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3030/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
 
 File: go.mod
-module github.com/baditaflorin/country-iso-matcher
+module country-iso-matcher
 
-go 1.22
+go 1.23.0
 
-require golang.org/x/text v0.16.0
+require golang.org/x/text v0.28.0
+
+require (
+	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
+	github.com/prometheus/client_golang v1.23.2 // indirect
+	github.com/prometheus/client_model v0.6.2 // indirect
+	github.com/prometheus/common v0.66.1 // indirect
+	github.com/prometheus/procfs v0.16.1 // indirect
+	go.yaml.in/yaml/v2 v2.4.2 // indirect
+	golang.org/x/sys v0.35.0 // indirect
+	google.golang.org/protobuf v1.36.8 // indirect
+)
 
 
 File: go.sum
+github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
+github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
+github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
+github.com/cespare/xxhash/v2 v2.3.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
+github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 h1:C3w9PqII01/Oq1c1nUAm88MOHcQC9l5mIlSMApZMrHA=
+github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822/go.mod h1:+n7T8mK8HuQTcFwEeznm/DIxMOiR9yIdICNftLE1DvQ=
+github.com/prometheus/client_golang v1.23.2 h1:Je96obch5RDVy3FDMndoUsjAhG5Edi49h0RJWRi/o0o=
+github.com/prometheus/client_golang v1.23.2/go.mod h1:Tb1a6LWHB3/SPIzCoaDXI4I8UHKeFTEQ1YCr+0Gyqmg=
+github.com/prometheus/client_model v0.6.2 h1:oBsgwpGs7iVziMvrGhE53c/GrLUsZdHnqNwqPLxwZyk=
+github.com/prometheus/client_model v0.6.2/go.mod h1:y3m2F6Gdpfy6Ut/GBsUqTWZqCUvMVzSfMLjcu6wAwpE=
+github.com/prometheus/common v0.66.1 h1:h5E0h5/Y8niHc5DlaLlWLArTQI7tMrsfQjHV+d9ZoGs=
+github.com/prometheus/common v0.66.1/go.mod h1:gcaUsgf3KfRSwHY4dIMXLPV0K/Wg1oZ8+SbZk/HH/dA=
+github.com/prometheus/procfs v0.16.1 h1:hZ15bTNuirocR6u0JZ6BAHHmwS1p8B4P6MRqxtzMyRg=
+github.com/prometheus/procfs v0.16.1/go.mod h1:teAbpZRB1iIAJYREa1LsoWUXykVXA1KlTmWl8x/U+Is=
+go.yaml.in/yaml/v2 v2.4.2 h1:DzmwEr2rDGHl7lsFgAHxmNz/1NlQ7xLIrlN2h5d1eGI=
+go.yaml.in/yaml/v2 v2.4.2/go.mod h1:081UH+NErpNdqlCXm3TtEran0rJZGxAYx9hb/ELlsPU=
+golang.org/x/sys v0.35.0 h1:vz1N37gP5bs89s7He8XuIYXpyY0+QlsKmzipCbUtyxI=
+golang.org/x/sys v0.35.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=
 golang.org/x/text v0.16.0 h1:a94ExnEXNtEwYLGJSIUxnWoxoRz/ZcCsV63ROupILh4=
 golang.org/x/text v0.16.0/go.mod h1:GhwF1Be+LQoKShO3cGOHzqOgRrGaYc9AvblQOmPVHnI=
+golang.org/x/text v0.28.0 h1:rhazDwis8INMIwQ4tpjLDzUhx6RlXqZNPEM0huQojng=
+golang.org/x/text v0.28.0/go.mod h1:U8nCwOR8jO/marOQ0QbDiOngZVEBB7MAiitBuMjXiNU=
+google.golang.org/protobuf v1.36.8 h1:xHScyCOEuuwZEc6UtSOvPbAT4zRh0xcNRYekJwfqyMc=
+google.golang.org/protobuf v1.36.8/go.mod h1:fuxRtAxBytpl4zzqUh6/eyUujkJdNiuEkXntxiD/uRU=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 
 
 File: k8s/deployment.yaml
@@ -402,8 +435,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/config"
-	"github.com/baditaflorin/country-iso-matcher/internal/factory"
+	"country-iso-matcher/src/internal/config"
+	"country-iso-matcher/src/internal/factory"
 )
 
 func main() {
@@ -558,12 +591,12 @@ package factory
 import (
 	"log/slog"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/config"
-	"github.com/baditaflorin/country-iso-matcher/internal/handler"
-	"github.com/baditaflorin/country-iso-matcher/internal/repository/memory"
-	"github.com/baditaflorin/country-iso-matcher/internal/server"
-	"github.com/baditaflorin/country-iso-matcher/internal/service"
-	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+	"country-iso-matcher/src/internal/config"
+	"country-iso-matcher/src/internal/handler"
+	"country-iso-matcher/src/internal/repository/memory"
+	"country-iso-matcher/src/internal/server"
+	"country-iso-matcher/src/internal/service"
+	"country-iso-matcher/src/pkg/normalizer"
 )
 
 type ApplicationFactory struct {
@@ -596,8 +629,8 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
-	"github.com/baditaflorin/country-iso-matcher/internal/service"
+	"country-iso-matcher/src/internal/domain"
+	"country-iso-matcher/src/internal/service"
 )
 
 type countryHandler struct {
@@ -733,6 +766,86 @@ func Logging(logger *slog.Logger) func(http.Handler) http.Handler {
 }
 
 
+File: src/internal/handler/middleware/prometheus.go
+package middleware
+
+import (
+	"net/http"
+	"strconv"
+	"time"
+
+	"country-iso-matcher/src/internal/metrics"
+)
+
+type prometheusResponseWriter struct {
+	http.ResponseWriter
+	statusCode int
+	written    int
+}
+
+func (prw *prometheusResponseWriter) WriteHeader(code int) {
+	prw.statusCode = code
+	prw.ResponseWriter.WriteHeader(code)
+}
+
+func (prw *prometheusResponseWriter) Write(b []byte) (int, error) {
+	n, err := prw.ResponseWriter.Write(b)
+	prw.written += n
+	return n, err
+}
+
+// PrometheusMetrics middleware collects HTTP metrics for Prometheus
+func PrometheusMetrics(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
+
+		prw := &prometheusResponseWriter{
+			ResponseWriter: w,
+			statusCode:     http.StatusOK,
+		}
+
+		// Increment active connections
+		metrics.ActiveConnections.Inc()
+		defer metrics.ActiveConnections.Dec()
+
+		next.ServeHTTP(prw, r)
+
+		duration := time.Since(start)
+		statusCode := strconv.Itoa(prw.statusCode)
+		endpoint := getEndpointLabel(r.URL.Path)
+
+		// Record metrics
+		metrics.HTTPRequestsTotal.WithLabelValues(
+			r.Method,
+			endpoint,
+			statusCode,
+		).Inc()
+
+		metrics.HTTPRequestDuration.WithLabelValues(
+			r.Method,
+			endpoint,
+			statusCode,
+		).Observe(duration.Seconds())
+	})
+}
+
+// getEndpointLabel normalizes endpoint names for metrics
+func getEndpointLabel(path string) string {
+	switch path {
+	case "/api/convert":
+		return "convert"
+	case "/health":
+		return "health"
+	case "/metrics":
+		return "metrics"
+	case "/":
+		return "root"
+	default:
+		return "other"
+	}
+}
+
+
 File: src/internal/handler/middleware/recovery.go
 package middleware
 
@@ -742,7 +855,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+	"country-iso-matcher/src/internal/domain"
 )
 
 func Recovery(logger *slog.Logger) func(http.Handler) http.Handler {
@@ -768,10 +881,151 @@ func Recovery(logger *slog.Logger) func(http.Handler) http.Handler {
 }
 
 
+File: src/internal/metrics/collector.go
+package metrics
+
+import (
+	"runtime"
+	"time"
+
+	"github.com/prometheus/client_golang/prometheus"
+)
+
+// SystemMetricsCollector collects system-level metrics
+type SystemMetricsCollector struct{}
+
+// NewSystemMetricsCollector creates a new system metrics collector
+func NewSystemMetricsCollector() *SystemMetricsCollector {
+	collector := &SystemMetricsCollector{}
+	prometheus.MustRegister(collector)
+	return collector
+}
+
+// Describe implements the prometheus.Collector interface
+func (c *SystemMetricsCollector) Describe(ch chan<- *prometheus.Desc) {
+	ch <- prometheus.NewDesc("go_goroutines", "Number of goroutines", nil, nil)
+	ch <- prometheus.NewDesc("go_memory_heap_bytes", "Heap memory usage in bytes", nil, nil)
+	ch <- prometheus.NewDesc("go_memory_stack_bytes", "Stack memory usage in bytes", nil, nil)
+}
+
+// Collect implements the prometheus.Collector interface
+func (c *SystemMetricsCollector) Collect(ch chan<- prometheus.Metric) {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+
+	ch <- prometheus.MustNewConstMetric(
+		prometheus.NewDesc("go_goroutines", "Number of goroutines", nil, nil),
+		prometheus.GaugeValue,
+		float64(runtime.NumGoroutine()),
+	)
+
+	ch <- prometheus.MustNewConstMetric(
+		prometheus.NewDesc("go_memory_heap_bytes", "Heap memory usage in bytes", nil, nil),
+		prometheus.GaugeValue,
+		float64(m.HeapInuse),
+	)
+
+	ch <- prometheus.MustNewConstMetric(
+		prometheus.NewDesc("go_memory_stack_bytes", "Stack memory usage in bytes", nil, nil),
+		prometheus.GaugeValue,
+		float64(m.StackInuse),
+	)
+}
+
+// StartSystemMetricsCollection starts collecting system metrics periodically
+func StartSystemMetricsCollection() {
+	go func() {
+		ticker := time.NewTicker(15 * time.Second)
+		defer ticker.Stop()
+
+		for range ticker.C {
+			var m runtime.MemStats
+			runtime.ReadMemStats(&m)
+			MemoryUsage.Set(float64(m.Alloc))
+		}
+	}()
+}
+
+
+File: src/internal/metrics/metrics.go
+package metrics
+
+import (
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
+)
+
+var (
+	// HTTP request metrics
+	HTTPRequestsTotal = promauto.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "http_requests_total",
+			Help: "Total number of HTTP requests",
+		},
+		[]string{"method", "endpoint", "status_code"},
+	)
+
+	HTTPRequestDuration = promauto.NewHistogramVec(
+		prometheus.HistogramOpts{
+			Name:    "http_request_duration_seconds",
+			Help:    "HTTP request duration in seconds",
+			Buckets: prometheus.DefBuckets,
+		},
+		[]string{"method", "endpoint", "status_code"},
+	)
+
+	// Business logic metrics
+	CountryLookupsTotal = promauto.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "country_lookups_total",
+			Help: "Total number of country lookups",
+		},
+		[]string{"result"}, // "success" or "not_found" or "error"
+	)
+
+	CountryLookupDuration = promauto.NewHistogram(
+		prometheus.HistogramOpts{
+			Name:    "country_lookup_duration_seconds",
+			Help:    "Country lookup duration in seconds",
+			Buckets: []float64{0.001, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0},
+		},
+	)
+
+	// System metrics
+	ActiveConnections = promauto.NewGauge(
+		prometheus.GaugeOpts{
+			Name: "active_connections",
+			Help: "Number of active connections",
+		},
+	)
+
+	MemoryUsage = promauto.NewGauge(
+		prometheus.GaugeOpts{
+			Name: "memory_usage_bytes",
+			Help: "Memory usage in bytes",
+		},
+	)
+
+	// Application info
+	BuildInfo = promauto.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Name: "build_info",
+			Help: "Build information",
+		},
+		[]string{"version", "goversion", "goos", "goarch"},
+	)
+)
+
+// SetBuildInfo sets the build information metrics
+func SetBuildInfo(version, goVersion, goos, goarch string) {
+	BuildInfo.WithLabelValues(version, goVersion, goos, goarch).Set(1)
+}
+
+
 File: src/internal/repository/interfaces.go
 package repository
 
-import "github.com/baditaflorin/country-iso-matcher/internal/domain"
+import "country-iso-matcher/src/internal/domain"
 
 type CountryRepository interface {
 	FindByName(name string) (*domain.Country, error)
@@ -783,8 +1037,8 @@ File: src/internal/repository/memory/country_repository.go
 package memory
 
 import (
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
-	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+	"country-iso-matcher/src/internal/domain"
+	"country-iso-matcher/src/pkg/normalizer"
 )
 
 type countryRepository struct {
@@ -944,11 +1198,15 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"runtime"
 	"time"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/config"
-	"github.com/baditaflorin/country-iso-matcher/internal/handler"
-	"github.com/baditaflorin/country-iso-matcher/internal/handler/middleware"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	"country-iso-matcher/src/internal/config"
+	"country-iso-matcher/src/internal/handler"
+	"country-iso-matcher/src/internal/handler/middleware"
+	"country-iso-matcher/src/internal/metrics"
 )
 
 type httpServer struct {
@@ -963,13 +1221,15 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 	// Routes
 	mux.HandleFunc("/api/convert", countryHandler.ConvertCountry)
 	mux.HandleFunc("/health", countryHandler.Health)
+	mux.Handle("/metrics", promhttp.Handler()) // Prometheus metrics endpoint
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Country ISO Matcher API. Use /api/convert?country=YourCountryName"))
 	})
 
-	// Apply middleware
+	// Apply middleware (order matters!)
 	var handler http.Handler = mux
 	handler = middleware.CORS(handler)
+	handler = middleware.PrometheusMetrics(handler) // Add Prometheus metrics
 	handler = middleware.Logging(logger)(handler)
 	handler = middleware.Recovery(logger)(handler)
 
@@ -979,6 +1239,13 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 		ReadTimeout:  time.Duration(cfg.ReadTimeout) * time.Second,
 		WriteTimeout: time.Duration(cfg.WriteTimeout) * time.Second,
 	}
+
+	// Set build info
+	metrics.SetBuildInfo("1.0.0", runtime.Version(), runtime.GOOS, runtime.GOARCH)
+
+	// Start system metrics collection
+	metrics.NewSystemMetricsCollector()
+	metrics.StartSystemMetricsCollection()
 
 	return &httpServer{
 		server:  server,
@@ -1017,9 +1284,11 @@ package service
 
 import (
 	"strings"
+	"time"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
-	"github.com/baditaflorin/country-iso-matcher/internal/repository"
+	"country-iso-matcher/src/internal/domain"
+	"country-iso-matcher/src/internal/metrics"
+	"country-iso-matcher/src/internal/repository"
 )
 
 type countryService struct {
@@ -1033,16 +1302,24 @@ func NewCountryService(repo repository.CountryRepository) CountryService {
 }
 
 func (s *countryService) LookupCountry(query string) (*domain.CountryResponse, error) {
+	start := time.Now()
+	defer func() {
+		metrics.CountryLookupDuration.Observe(time.Since(start).Seconds())
+	}()
+
 	query = strings.TrimSpace(query)
 	if query == "" {
+		metrics.CountryLookupsTotal.WithLabelValues("error").Inc()
 		return nil, domain.NewValidationError("Country query parameter is required", query)
 	}
 
 	country, err := s.repository.FindByName(query)
 	if err != nil {
+		metrics.CountryLookupsTotal.WithLabelValues("not_found").Inc()
 		return nil, err
 	}
 
+	metrics.CountryLookupsTotal.WithLabelValues("success").Inc()
 	return domain.NewCountryResponse(query, country.Name, country.Code), nil
 }
 
@@ -1051,11 +1328,10 @@ File: src/internal/service/country_service_test.go
 package service_test
 
 import (
-	"errors"
 	"testing"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
-	"github.com/baditaflorin/country-iso-matcher/internal/service"
+	"country-iso-matcher/src/internal/domain"
+	"country-iso-matcher/src/internal/service"
 )
 
 type mockRepository struct {
@@ -1151,171 +1427,10 @@ func TestCountryService_LookupCountry(t *testing.T) {
 File: src/internal/service/interfaces.go
 package service
 
-import "github.com/baditaflorin/country-iso-matcher/internal/domain"
+import "country-iso-matcher/src/internal/domain"
 
 type CountryService interface {
 	LookupCountry(query string) (*domain.CountryResponse, error)
-}
-
-
-File: src/pkg/countries/countries.go
-package countries
-
-// Country defines the structure for a country's code and official name.
-type Country struct {
-	Code string
-	Name string
-}
-
-// countries contains the official list of country names and codes.
-var List = []Country{
-	{"AF", "Afghanistan"}, {"AL", "Albania"}, {"DZ", "Algeria"}, {"AD", "Andorra"},
-	{"AO", "Angola"}, {"AG", "Antigua and Barbuda"}, {"AR", "Argentina"}, {"AM", "Armenia"},
-	{"AU", "Australia"}, {"AT", "Austria"}, {"AZ", "Azerbaijan"}, {"BS", "Bahamas"},
-	{"BH", "Bahrain"}, {"BD", "Bangladesh"}, {"BB", "Barbados"}, {"BY", "Belarus"},
-	{"BE", "Belgium"}, {"BZ", "Belize"}, {"BJ", "Benin"}, {"BT", "Bhutan"},
-	{"BO", "Bolivia (Plurinational State of)"}, {"BA", "Bosnia and Herzegovina"}, {"BW", "Botswana"},
-	{"BR", "Brazil"}, {"BN", "Brunei Darussalam"}, {"BG", "Bulgaria"}, {"BF", "Burkina Faso"},
-	{"BI", "Burundi"}, {"CV", "Cabo Verde"}, {"KH", "Cambodia"}, {"CM", "Cameroon"},
-	{"CA", "Canada"}, {"CF", "Central African Republic"}, {"TD", "Chad"}, {"CL", "Chile"},
-	{"CN", "China"}, {"CO", "Colombia"}, {"KM", "Comoros"}, {"CG", "Congo"},
-	{"CD", "Congo, Democratic Republic of the"}, {"CR", "Costa Rica"}, {"CI", "Côte d'Ivoire"},
-	{"HR", "Croatia"}, {"CU", "Cuba"}, {"CY", "Cyprus"}, {"CZ", "Czechia"},
-	{"DK", "Denmark"}, {"DJ", "Djibouti"}, {"DM", "Dominica"}, {"DO", "Dominican Republic"},
-	{"EC", "Ecuador"}, {"EG", "Egypt"}, {"SV", "El Salvador"}, {"GQ", "Equatorial Guinea"},
-	{"ER", "Eritrea"}, {"EE", "Estonia"}, {"SZ", "Eswatini"}, {"ET", "Ethiopia"},
-	{"FI", "Finland"}, {"FR", "France"}, {"GA", "Gabon"}, {"GM", "Gambia"},
-	{"GE", "Georgia"}, {"DE", "Germany"}, {"GH", "Ghana"}, {"GR", "Greece"},
-	{"GD", "Grenada"}, {"GT", "Guatemala"}, {"GN", "Guinea"}, {"GW", "Guinea-Bissau"},
-	{"GY", "Guyana"}, {"HT", "Haiti"}, {"HN", "Honduras"}, {"HU", "Hungary"},
-	{"IS", "Iceland"}, {"IN", "India"}, {"ID", "Indonesia"}, {"IR", "Iran (Islamic Republic of)"},
-	{"IQ", "Iraq"}, {"IE", "Ireland"}, {"IL", "Israel"}, {"IT", "Italy"},
-	{"JM", "Jamaica"}, {"JP", "Japan"}, {"JO", "Jordan"}, {"KZ", "Kazakhstan"},
-	{"KE", "Kenya"}, {"KW", "Kuwait"}, {"KG", "Kyrgyzstan"}, {"LA", "Lao People's Democratic Republic"},
-	{"LV", "Latvia"}, {"LB", "Lebanon"}, {"LS", "Lesotho"}, {"LR", "Liberia"},
-	{"LY", "Libya"}, {"LI", "Liechtenstein"}, {"LT", "Lithuania"}, {"LU", "Luxembourg"},
-	{"MG", "Madagascar"}, {"MW", "Malawi"}, {"MY", "Malaysia"}, {"MV", "Maldives"},
-	{"ML", "Mali"}, {"MT", "Malta"}, {"MR", "Mauritania"}, {"MU", "Mauritius"},
-	{"MX", "Mexico"}, {"MD", "Moldova, Republic of"}, {"MC", "Monaco"}, {"MN", "Mongolia"},
-	{"ME", "Montenegro"}, {"MA", "Morocco"}, {"MZ", "Mozambique"}, {"MM", "Myanmar"},
-	{"NA", "Namibia"}, {"NP", "Nepal"}, {"NL", "Netherlands"}, {"NZ", "New Zealand"},
-	{"NI", "Nicaragua"}, {"NE", "Niger"}, {"NG", "Nigeria"}, {"KP", "North Korea"},
-	{"MK", "North Macedonia"}, {"NO", "Norway"}, {"OM", "Oman"}, {"PK", "Pakistan"},
-	{"PS", "Palestine, State of"}, {"PA", "Panama"}, {"PY", "Paraguay"}, {"PE", "Peru"},
-	{"PH", "Philippines"}, {"PL", "Poland"}, {"PT", "Portugal"}, {"PR", "Puerto Rico"},
-	{"QA", "Qatar"}, {"RO", "Romania"}, {"RU", "Russian Federation"}, {"RW", "Rwanda"},
-	{"KN", "Saint Kitts and Nevis"}, {"LC", "Saint Lucia"}, {"VC", "Saint Vincent and the Grenadines"},
-	{"SM", "San Marino"}, {"ST", "Sao Tome and Principe"}, {"SA", "Saudi Arabia"},
-	{"SN", "Senegal"}, {"RS", "Serbia"}, {"SC", "Seychelles"}, {"SL", "Sierra Leone"},
-	{"SG", "Singapore"}, {"SK", "Slovakia"}, {"SI", "Slovenia"}, {"SO", "Somalia"},
-	{"ZA", "South Africa"}, {"KR", "South Korea"}, {"SS", "South Sudan"}, {"ES", "Spain"},
-	{"LK", "Sri Lanka"}, {"SD", "Sudan"}, {"SE", "Sweden"}, {"CH", "Switzerland"},
-	{"SY", "Syrian Arab Republic"}, {"TW", "Taiwan, Province of China"}, {"TJ", "Tajikistan"},
-	{"TZ", "Tanzania, United Republic of"}, {"TH", "Thailand"}, {"TG", "Togo"},
-	{"TT", "Trinidad and Tobago"}, {"TN", "Tunisia"}, {"TR", "Turkey"}, {"TM", "Turkmenistan"},
-	{"UG", "Uganda"}, {"UA", "Ukraine"}, {"AE", "United Arab Emirates"},
-	{"GB", "United Kingdom of Great Britain and Northern Ireland"}, {"US", "United States of America"},
-	{"UY", "Uruguay"}, {"UZ", "Uzbekistan"}, {"VE", "Venezuela (Bolivarian Republic of)"},
-	{"VN", "Viet Nam"}, {"EH", "Western Sahara"}, {"YE", "Yemen"}, {"ZM", "Zambia"},
-	{"ZW", "Zimbabwe"},
-	// List can be expanded as needed
-}
-
-// countryAliases provides common alternative names for countries.
-var Aliases = map[string][]string{
-	"KR": {"south korea", "republic of korea", "korea south", "corée du sud", "südkorea"},
-	"US": {"usa", "united states", "america", "états-unis", "vereinigte staaten"},
-	"GB": {"uk", "united kingdom", "britain", "england", "royaume-uni", "vereinigtes königreich"},
-	"RU": {"russia", "russie", "russland"},
-	"AT": {"austria", "österreich", "autriche"},
-	"BE": {"belgium", "belgique", "belgië", "belgien"},
-	"BG": {"bulgaria", "българия", "bulgarie", "bulgarien"},
-	"HR": {"croatia", "hrvatska", "croatie", "kroatien"},
-	"CY": {"cyprus", "κύπρος", "chypre", "zypern"},
-	"CZ": {"czech republic", "česká republika", "république tchèque", "tschechische republik"},
-	"DK": {"denmark", "danmark", "danemark", "dänemark"},
-	"EE": {"estonia", "eesti", "estonie", "estland"},
-	"FI": {"finland", "suomi", "finlande", "finnland"},
-	"FR": {"france", "frankreich"},
-	"DE": {"germany", "deutschland", "allemagne"},
-	"GR": {"greece", "ελλάδα", "grèce", "griechenland"},
-	"HU": {"hungary", "magyarország", "hongrie", "ungarn"},
-	"IE": {"ireland", "éire", "irlande", "irland"},
-	"IT": {"italy", "italia", "italie", "italien"},
-	"LV": {"latvia", "latvija", "lettonie", "lettland"},
-	"LT": {"lithuania", "lietuva", "lituanie", "litauen"},
-	"LU": {"luxembourg", "luxemburg"},
-	"MT": {"malta", "malte"},
-	"NL": {"netherlands", "nederland", "pays-bas", "niederlande"},
-	"PL": {"poland", "polska", "pologne", "polen"},
-	"PT": {"portugal"},
-	"RO": {"romania", "românia", "roumanie", "rumänien"},
-	"SK": {"slovakia", "slovensko", "slovaquie", "slowakei"},
-	"SI": {"slovenia", "slovenija", "slovénie", "slowenien"},
-	"ES": {"spain", "españa", "espagne", "spanien"},
-	"SE": {"sweden", "sverige", "suède", "schweden"},
-	"TR": {"turkey", "türkiye"},
-	"BA": {"bosnia", "bosnia and herzegovina"},
-	"CH": {"switzerland", "suisse", "schweiz"},
-	"MK": {"north macedonia", "macedonia"},
-	"MD": {"moldova", "republic of moldova"},
-}
-
-
-File: src/pkg/countries/lookup.go
-package countries
-
-import (
-	"strings"
-	"unicode"
-
-	"golang.org/x/text/runes"
-	"golang.org/x/text/transform"
-	"golang.org/x/text/unicode/norm"
-)
-
-var (
-	normalizedCountryNames map[string]string
-	isoToOfficialName      map[string]string
-	accentRemover          = transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
-)
-
-func init() {
-	normalizedCountryNames = make(map[string]string)
-	isoToOfficialName = make(map[string]string)
-
-	// Build lookups from official list
-	for _, country := range List {
-		isoToOfficialName[country.Code] = country.Name
-
-		normalized, _, _ := transform.String(accentRemover, country.Name)
-		normalizedCountryNames[strings.ToLower(normalized)] = country.Code
-		normalizedCountryNames[strings.ToLower(country.Name)] = country.Code
-	}
-
-	// Add aliases
-	for isoCode, aliases := range Aliases {
-		for _, alias := range aliases {
-			normalized, _, _ := transform.String(accentRemover, alias)
-			normalizedCountryNames[strings.ToLower(normalized)] = isoCode
-		}
-	}
-}
-
-// NormalizeString removes accents and lowercases
-func NormalizeString(s string) string {
-	normalized, _, _ := transform.String(accentRemover, s)
-	return strings.ToLower(normalized)
-}
-
-// LookupISO returns iso code + official name given a query
-func LookupISO(query string) (isoCode, officialName string, found bool) {
-	normalized := NormalizeString(query)
-	code, ok := normalizedCountryNames[normalized]
-	if !ok {
-		return "", "", false
-	}
-	return code, isoToOfficialName[code], true
 }
 
 
@@ -1357,11 +1472,11 @@ package normalizer_test
 import (
 	"testing"
 
-	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+	"country-iso-matcher/src/pkg/normalizer"
 )
 
 func TestTextNormalizer_Normalize(t *testing.T) {
-	normalizer := normalizer.NewTextNormalizer()
+	textNormalizer := normalizer.NewTextNormalizer()
 
 	tests := []struct {
 		name     string
@@ -1402,7 +1517,7 @@ func TestTextNormalizer_Normalize(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := normalizer.Normalize(tt.input)
+			result := textNormalizer.Normalize(tt.input)
 			if result != tt.expected {
 				t.Errorf("expected '%s', got '%s'", tt.expected, result)
 			}

@@ -3,11 +3,11 @@ package normalizer_test
 import (
 	"testing"
 
-	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+	"country-iso-matcher/src/pkg/normalizer"
 )
 
 func TestTextNormalizer_Normalize(t *testing.T) {
-	normalizer := normalizer.NewTextNormalizer()
+	textNormalizer := normalizer.NewTextNormalizer()
 
 	tests := []struct {
 		name     string
@@ -48,7 +48,7 @@ func TestTextNormalizer_Normalize(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := normalizer.Normalize(tt.input)
+			result := textNormalizer.Normalize(tt.input)
 			if result != tt.expected {
 				t.Errorf("expected '%s', got '%s'", tt.expected, result)
 			}

@@ -1,11 +1,10 @@
 package service_test
 
 import (
-	"errors"
 	"testing"
 
-	"github.com/baditaflorin/country-iso-matcher/internal/domain"
-	"github.com/baditaflorin/country-iso-matcher/internal/service"
+	"country-iso-matcher/src/internal/domain"
+	"country-iso-matcher/src/internal/service"
 )
 
 type mockRepository struct {
