@@ -1,30 +1,28 @@
 # ---- Builder Stage ----
-# Use the official Go image to build the application
 FROM golang:1.22-alpine AS builder
 
 WORKDIR /app
 
-# Copy go.mod and go.sum files to download dependencies
-COPY go.* ./
+# Copy go.mod and go.sum first (to leverage Docker layer caching)
+COPY go.mod go.sum ./
 RUN go mod download
 
-# Copy the rest of the application source code
-COPY . .
+# Copy the rest of the source code
+COPY ./src ./src
 
-# Build the Go application, creating a static binary
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /server .
+# Build the Go application (point at cmd package)
+RUN CGO_ENABLED=0 GOOS=linux go build -o /server ./src/cmd
 
 # ---- Final Stage ----
-# Use a minimal 'scratch' image which contains nothing but our binary
 FROM scratch
 
 WORKDIR /
 
-# Copy the static binary from the builder stage
+# Copy static binary from builder
 COPY --from=builder /server .
 
-# Expose the port the app runs on
+# Expose service port
 EXPOSE 3030
 
-# Command to run the application
+# Run app
 ENTRYPOINT ["/server"]

@@ -1,4 +1,40 @@
-node_modules
-build
+# Git & VCS
 .git
+.gitignore
+
+# Docker & Compose
+.dockerignore
+docker-compose.yml
+
+# Local env files
 .env
+
+# Documentation & misc
+README.md
+chatgpt.txt
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Dependency vendor folder (if not using vendoring)
+vendor/
+
+# Editor / IDE configs
+.idea/
+.vscode/
+
+# OS files
+.DS_Store

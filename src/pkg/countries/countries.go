@@ -1,4 +1,4 @@
-package main
+package countries
 
 // Country defines the structure for a country's code and official name.
 type Country struct {
@@ -7,7 +7,7 @@ type Country struct {
 }
 
 // countries contains the official list of country names and codes.
-var countries = []Country{
+var List = []Country{
 	{"AF", "Afghanistan"}, {"AL", "Albania"}, {"DZ", "Algeria"}, {"AD", "Andorra"},
 	{"AO", "Angola"}, {"AG", "Antigua and Barbuda"}, {"AR", "Argentina"}, {"AM", "Armenia"},
 	{"AU", "Australia"}, {"AT", "Austria"}, {"AZ", "Azerbaijan"}, {"BS", "Bahamas"},
@@ -61,7 +61,7 @@ var countries = []Country{
 }
 
 // countryAliases provides common alternative names for countries.
-var countryAliases = map[string][]string{
+var Aliases = map[string][]string{
 	"KR": {"south korea", "republic of korea", "korea south", "corée du sud", "südkorea"},
 	"US": {"usa", "united states", "america", "états-unis", "vereinigte staaten"},
 	"GB": {"uk", "united kingdom", "britain", "england", "royaume-uni", "vereinigtes königreich"},
