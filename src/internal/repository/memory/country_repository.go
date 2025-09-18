@@ -211,15 +211,74 @@ func (r *countryRepository) getAliasData() map[string][]string {
 		},
 
 		// Romania - Enhanced
+		// Romania - Enhanced
 		"RO": {
-			"romania", "românia", "roumanie", "rumänien", "rumania",
-			"romaña", "romenia", "rominya", "roumania", "rominia",
-			"rumeenia", "rumanía"},
+			"romania", "românia", "roumanie", "roumania", "roumanía",
+			"roumaniya", "rouminia",
+			"rumänien", "rumænien", "rumunia", "rumunija", "rumunija", "rumunija", // different slavic spellings
+			"rumunija", "rumunija", "rumunija",
+			"rumunija", "rumunija",
+			"rumänia", "rumānija", "rumānīyā",
+			"rumunska", "rumunsko", "rumunjska",
+			"rumyniya", "rumuniya", "rumuniia",
+			"rumenia", "rumenía", "rúmenía", "rumeniyaway",
+			"rumeenia", "rumeneti", "rumínia", "rumanio",
+			"rumania", "rumanía", "românia",
+			"romanya", "roménia", "romênia", "roménya",
+			"roménya", "roménya",
+			"roemenië", "roemeenje",
+			"roménie", "roménya",
+			"romenia", "roménia", "romênia",
+			"romàinia", "romaania", "yn romaan",
+			"ir-rumanija", "errumania", "an rómáin",
+			"ṙouminia", "rumăniya",
+			"rūmania", "ru-mani", "rumaniya",
+			"罗马尼亚", "羅馬尼亞", // chinese
+			"루마니아",                 // korean
+			"ルーマニア",                // japanese
+			"रोमानिया", "romāniyā", // hindi/sanskrit
+			"رومانيا", "رومانیہ", // arabic/urdu
+			"ருமேனியா", // tamil
+			"roménia", "roménia", "roménia",
+		},
 
 		// Hungary - Enhanced
 		"HU": {
-			"hungary", "magyarország", "hongrie", "ungarn", "hungria",
-			"hunggary", "hungry",
+			"hungary", "hunggary", "hungry",
+			"magyarország", "magyar-kok",
+			"hongrie", "hongaria", "hongarije", "hongarye", "hongria",
+			"hungaria", "hungario", "hungari", "hungariá", "hungarya",
+			"hungariya", "hungriya", "hungyria",
+			"hungaria", "hungario",
+			"hungria", "hungría",
+			"ungarn", "ungern", "ungern", "ungari", "ungaría", "ungaria", "ungārija",
+			"ungarija", "ungariya",
+			"ungheria", "ungreti", "unggriya", "ungverjaland", "unkari",
+			"węgry", "wengriya", "wenggŭriya",
+			"vengrija", "vengriya",
+			"uhorshchyna", "vuhorshchyna",
+			"mađarska", "mađarska", "madžarska", "maďarsko",
+			"macaristan", "macarıstan", "majarestan",
+			"al-maǧar", "المجر",
+			"majyarŭ",
+			"heonggari", "hŏnggari", "헝가리", "웽그리야", "마쟈르",
+			"hangāri", "haṅgarī", "hangarī", "hangarii", "hangeriyawa", "hangkari",
+			"hung-ga-ri",
+			"xiōngyálì", "匈牙利",
+			"ungern", "אונגערן",
+			"hungariya", "הונגריה",
+			"ungaria", "ungārija", "ουγγαρία",
+			"ungreti", "უნგრეთი",
+			"ongría",
+			"an ungáir", "an ungair",
+			"l-ungerija",
+			"yn ungaar",
+			"hwngari",
+			"hungari", "cornish",
+			"அங்கேரி",   // tamil
+			"հունգարիա", // armenian
+			"hungária", "hungría",
+			"ungaria", "romansh",
 		},
 
 		// Czech Republic - Enhanced
