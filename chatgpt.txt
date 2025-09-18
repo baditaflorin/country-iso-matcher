@@ -1,0 +1,1414 @@
+File: .dockerignore
+# Git & VCS
+.git
+.gitignore
+
+# Docker & Compose
+.dockerignore
+docker-compose.yml
+
+# Local env files
+.env
+
+# Documentation & misc
+README.md
+chatgpt.txt
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Dependency vendor folder (if not using vendoring)
+vendor/
+
+# Editor / IDE configs
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+
+
+File: .env.example
+# Server Configuration
+PORT=3030
+ENV=development
+
+# Timeout Settings (seconds)
+READ_TIMEOUT=10
+WRITE_TIMEOUT=10
+
+# Logging
+LOG_LEVEL=info
+LOG_FORMAT=json
+
+File: .env.production
+PORT=3030
+ENV=production
+READ_TIMEOUT=15
+WRITE_TIMEOUT=15
+LOG_LEVEL=info
+LOG_FORMAT=json
+
+File: .gitignore
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Editor/IDE
+# .idea/
+# .vscode/
+
+
+File: .golangci.yml
+run:
+  timeout: 5m
+  issues-exit-code: 1
+  tests: true
+
+linters:
+  enable:
+    - gofmt
+    - goimports
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - typecheck
+    - deadcode
+    - varcheck
+    - structcheck
+    - misspell
+    - unconvert
+    - gocyclo
+    - revive
+    - gosec
+    - exportloopref
+    - nolintlint
+
+linters-settings:
+  gocyclo:
+    min-complexity: 15
+  revive:
+    rules:
+      - name: exported
+        arguments: [true]
+  gosec:
+    excludes:
+      - G404 # Use of weak random number generator
+
+File: Dockerfile
+# ---- Builder Stage ----
+FROM golang:1.22-alpine AS builder
+
+WORKDIR /app
+
+# Install CA certificates for HTTPS requests
+RUN apk --no-cache add ca-certificates
+
+# Copy go.mod and go.sum first (to leverage Docker layer caching)
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy the rest of the source code
+COPY ./src ./src
+
+# Build the Go application
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /server ./src/cmd/server
+
+# ---- Final Stage ----
+FROM scratch
+
+# Copy CA certificates from builder
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Copy static binary from builder
+COPY --from=builder /server /server
+
+# Expose service port
+EXPOSE 3030
+
+# Add health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD ["/server", "-health-check"] || exit 1
+
+# Run app
+ENTRYPOINT ["/server"]
+
+File: Makefile
+.PHONY: build test lint run clean docker-build docker-run help
+
+# Go parameters
+GOCMD=go
+GOBUILD=$(GOCMD) build
+GOCLEAN=$(GOCMD) clean
+GOTEST=$(GOCMD) test
+GOGET=$(GOCMD) get
+GOMOD=$(GOCMD) mod
+BINARY_NAME=country-iso-matcher
+BINARY_UNIX=$(BINARY_NAME)_unix
+
+# Docker parameters
+DOCKER_IMAGE=country-iso-service-go
+DOCKER_TAG=latest
+
+all: test build
+
+build: ## Build the binary
+	$(GOBUILD) -o $(BINARY_NAME) -v ./src/cmd/server
+
+test: ## Run tests
+	$(GOTEST) -v -race -coverprofile=coverage.out ./...
+
+test-coverage: test ## Run tests and show coverage
+	$(GOCMD) tool cover -html=coverage.out
+
+lint: ## Run linter
+	golangci-lint run
+
+run: ## Run the application
+	$(GOBUILD) -o $(BINARY_NAME) -v ./src/cmd/server && ./$(BINARY_NAME)
+
+clean: ## Clean build files
+	$(GOCLEAN)
+	rm -f $(BINARY_NAME)
+	rm -f $(BINARY_UNIX)
+
+deps: ## Download dependencies
+	$(GOMOD) download
+	$(GOMOD) tidy
+
+docker-build: ## Build Docker image
+	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
+
+docker-run: ## Run Docker container
+	docker run -p 3030:3030 $(DOCKER_IMAGE):$(DOCKER_TAG)
+
+docker-compose-up: ## Run with docker-compose
+	docker-compose up --build
+
+docker-compose-down: ## Stop docker-compose
+	docker-compose down
+
+help: ## Display this help screen
+	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
+
+File: README.md
+# country-iso-matcher
+
+File: benchmarks/country_lookup_test.go
+package benchmarks
+
+import (
+	"testing"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/repository/memory"
+	"github.com/baditaflorin/country-iso-matcher/internal/service"
+	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+)
+
+func BenchmarkCountryLookup(b *testing.B) {
+	// Setup
+	normalizer := normalizer.NewTextNormalizer()
+	repo := memory.NewCountryRepository(normalizer)
+	service := service.NewCountryService(repo)
+
+	countries := []string{
+		"Romania",
+		"Germany",
+		"United States",
+		"France",
+		"italy",
+		"SPAIN",
+		"united kingdom",
+	}
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		country := countries[i%len(countries)]
+		_, err := service.LookupCountry(country)
+		if err != nil {
+			b.Errorf("unexpected error: %v", err)
+		}
+	}
+}
+
+func BenchmarkNormalizer(b *testing.B) {
+	normalizer := normalizer.NewTextNormalizer()
+
+	inputs := []string{
+		"Côte d'Ivoire",
+		"DEUTSCHLAND",
+		"  United States of America  ",
+		"République française",
+		"中国",
+	}
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		input := inputs[i%len(inputs)]
+		_ = normalizer.Normalize(input)
+	}
+}
+
+
+File: chatgpt.txt
+
+
+File: docker-compose.yml
+services:
+  country-iso-service-go:
+    build:
+      context: .
+    image: country-iso-service-go:latest
+    container_name: country_iso_api_go
+    restart: unless-stopped
+    ports:
+      - "3030:3030"
+    environment:
+      - ENV=production
+      - PORT=3030
+      - READ_TIMEOUT=10
+      - WRITE_TIMEOUT=10
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3030/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+File: go.mod
+module github.com/baditaflorin/country-iso-matcher
+
+go 1.22
+
+require golang.org/x/text v0.16.0
+
+
+File: go.sum
+golang.org/x/text v0.16.0 h1:a94ExnEXNtEwYLGJSIUxnWoxoRz/ZcCsV63ROupILh4=
+golang.org/x/text v0.16.0/go.mod h1:GhwF1Be+LQoKShO3cGOHzqOgRrGaYc9AvblQOmPVHnI=
+
+
+File: k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: country-iso-matcher
+  labels:
+    app: country-iso-matcher
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: country-iso-matcher
+  template:
+    metadata:
+      labels:
+        app: country-iso-matcher
+    spec:
+      containers:
+        - name: country-iso-matcher
+          image: country-iso-service-go:latest
+          ports:
+            - containerPort: 3030
+          env:
+            - name: ENV
+              value: "production"
+            - name: PORT
+              value: "3030"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3030
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3030
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: country-iso-matcher-service
+spec:
+  selector:
+    app: country-iso-matcher
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3030
+  type: LoadBalancer
+
+File: src/cmd/server/main.go
+package main
+
+import (
+	"context"
+	"log/slog"
+	"os"
+	"os/signal"
+	"syscall"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/config"
+	"github.com/baditaflorin/country-iso-matcher/internal/factory"
+)
+
+func main() {
+	// Setup structured logging
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+		Level: slog.LevelInfo,
+	}))
+	slog.SetDefault(logger)
+
+	// Load configuration
+	cfg := config.Load()
+
+	// Create application factory
+	appFactory := factory.NewApplicationFactory(cfg, logger)
+
+	// Build and start server
+	server := appFactory.CreateHTTPServer()
+
+	// Graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go func() {
+		sigCh := make(chan os.Signal, 1)
+		signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
+		<-sigCh
+
+		logger.Info("shutting down server...")
+		if err := server.Shutdown(ctx); err != nil {
+			logger.Error("server shutdown failed", "error", err)
+		}
+		cancel()
+	}()
+
+	logger.Info("starting server", "port", cfg.Port)
+	if err := server.Start(); err != nil {
+		logger.Error("server failed to start", "error", err)
+		os.Exit(1)
+	}
+
+	<-ctx.Done()
+	logger.Info("server stopped")
+}
+
+
+File: src/internal/config/config.go
+package config
+
+import (
+	"os"
+	"strconv"
+)
+
+type Config struct {
+	Port         string
+	Environment  string
+	ReadTimeout  int
+	WriteTimeout int
+}
+
+func Load() *Config {
+	return &Config{
+		Port:         getEnv("PORT", "3030"),
+		Environment:  getEnv("ENV", "development"),
+		ReadTimeout:  getEnvInt("READ_TIMEOUT", 10),
+		WriteTimeout: getEnvInt("WRITE_TIMEOUT", 10),
+	}
+}
+
+func getEnv(key, defaultValue string) string {
+	if value := os.Getenv(key); value != "" {
+		return value
+	}
+	return defaultValue
+}
+
+func getEnvInt(key string, defaultValue int) int {
+	if value := os.Getenv(key); value != "" {
+		if intValue, err := strconv.Atoi(value); err == nil {
+			return intValue
+		}
+	}
+	return defaultValue
+}
+
+
+File: src/internal/domain/country.go
+package domain
+
+type Country struct {
+	Code string `json:"code"`
+	Name string `json:"name"`
+}
+
+type CountryResponse struct {
+	Query        string `json:"query"`
+	OfficialName string `json:"officialName"`
+	ISOCode      string `json:"isoCode"`
+}
+
+func NewCountryResponse(query, officialName, isoCode string) *CountryResponse {
+	return &CountryResponse{
+		Query:        query,
+		OfficialName: officialName,
+		ISOCode:      isoCode,
+	}
+}
+
+
+File: src/internal/domain/errors.go
+package domain
+
+import "fmt"
+
+type AppError struct {
+	Code    int    `json:"-"`
+	Message string `json:"error"`
+	Query   string `json:"query,omitempty"`
+}
+
+func (e *AppError) Error() string {
+	return e.Message
+}
+
+func NewValidationError(message, query string) *AppError {
+	return &AppError{
+		Code:    400,
+		Message: message,
+		Query:   query,
+	}
+}
+
+func NewNotFoundError(query string) *AppError {
+	return &AppError{
+		Code:    404,
+		Message: fmt.Sprintf("Country not found: %s", query),
+		Query:   query,
+	}
+}
+
+func NewInternalError(message string) *AppError {
+	return &AppError{
+		Code:    500,
+		Message: message,
+	}
+}
+
+
+File: src/internal/factory/factory.go
+package factory
+
+import (
+	"log/slog"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/config"
+	"github.com/baditaflorin/country-iso-matcher/internal/handler"
+	"github.com/baditaflorin/country-iso-matcher/internal/repository/memory"
+	"github.com/baditaflorin/country-iso-matcher/internal/server"
+	"github.com/baditaflorin/country-iso-matcher/internal/service"
+	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+)
+
+type ApplicationFactory struct {
+	config *config.Config
+	logger *slog.Logger
+}
+
+func NewApplicationFactory(config *config.Config, logger *slog.Logger) *ApplicationFactory {
+	return &ApplicationFactory{
+		config: config,
+		logger: logger,
+	}
+}
+
+func (f *ApplicationFactory) CreateHTTPServer() server.Server {
+	textNormalizer := normalizer.NewTextNormalizer()
+	countryRepo := memory.NewCountryRepository(textNormalizer)
+	countryService := service.NewCountryService(countryRepo)
+	countryHandler := handler.NewCountryHandler(countryService, f.logger)
+
+	return server.NewHTTPServer(f.config, countryHandler, f.logger)
+}
+
+
+File: src/internal/handler/country_handler.go
+package handler
+
+import (
+	"encoding/json"
+	"log/slog"
+	"net/http"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+	"github.com/baditaflorin/country-iso-matcher/internal/service"
+)
+
+type countryHandler struct {
+	service service.CountryService
+	logger  *slog.Logger
+}
+
+func NewCountryHandler(service service.CountryService, logger *slog.Logger) CountryHandler {
+	return &countryHandler{
+		service: service,
+		logger:  logger,
+	}
+}
+
+func (h *countryHandler) ConvertCountry(w http.ResponseWriter, r *http.Request) {
+	countryName := r.URL.Query().Get("country")
+
+	result, err := h.service.LookupCountry(countryName)
+	if err != nil {
+		h.handleError(w, err, countryName)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(result); err != nil {
+		h.logger.Error("failed to encode response", "error", err)
+	}
+}
+
+func (h *countryHandler) Health(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(map[string]string{
+		"status":  "healthy",
+		"service": "country-iso-matcher",
+	})
+}
+
+func (h *countryHandler) handleError(w http.ResponseWriter, err error, query string) {
+	appErr, ok := err.(*domain.AppError)
+	if !ok {
+		appErr = domain.NewInternalError("Internal server error")
+		h.logger.Error("unexpected error", "error", err, "query", query)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(appErr.Code)
+	json.NewEncoder(w).Encode(appErr)
+}
+
+
+File: src/internal/handler/interfaces.go
+package handler
+
+import "net/http"
+
+type CountryHandler interface {
+	ConvertCountry(w http.ResponseWriter, r *http.Request)
+	Health(w http.ResponseWriter, r *http.Request)
+}
+
+
+File: src/internal/handler/middleware/cors.go
+package middleware
+
+import "net/http"
+
+func CORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
+
+File: src/internal/handler/middleware/logging.go
+package middleware
+
+import (
+	"log/slog"
+	"net/http"
+	"time"
+)
+
+type responseWriter struct {
+	http.ResponseWriter
+	statusCode int
+	written    int
+}
+
+func (rw *responseWriter) WriteHeader(code int) {
+	rw.statusCode = code
+	rw.ResponseWriter.WriteHeader(code)
+}
+
+func (rw *responseWriter) Write(b []byte) (int, error) {
+	n, err := rw.ResponseWriter.Write(b)
+	rw.written += n
+	return n, err
+}
+
+func Logging(logger *slog.Logger) func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
+			rw := &responseWriter{
+				ResponseWriter: w,
+				statusCode:     http.StatusOK,
+			}
+
+			next.ServeHTTP(rw, r)
+
+			duration := time.Since(start)
+			logger.Info("request completed",
+				"method", r.Method,
+				"path", r.URL.Path,
+				"status", rw.statusCode,
+				"duration_ms", duration.Milliseconds(),
+				"bytes", rw.written,
+				"user_agent", r.UserAgent(),
+			)
+		})
+	}
+}
+
+
+File: src/internal/handler/middleware/recovery.go
+package middleware
+
+import (
+	"encoding/json"
+	"log/slog"
+	"net/http"
+	"runtime/debug"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+)
+
+func Recovery(logger *slog.Logger) func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			defer func() {
+				if err := recover(); err != nil {
+					logger.Error("panic recovered",
+						"error", err,
+						"path", r.URL.Path,
+						"method", r.Method,
+						"stack", string(debug.Stack()),
+					)
+
+					w.Header().Set("Content-Type", "application/json")
+					w.WriteHeader(http.StatusInternalServerError)
+					json.NewEncoder(w).Encode(domain.NewInternalError("Internal server error"))
+				}
+			}()
+			next.ServeHTTP(w, r)
+		})
+	}
+}
+
+
+File: src/internal/repository/interfaces.go
+package repository
+
+import "github.com/baditaflorin/country-iso-matcher/internal/domain"
+
+type CountryRepository interface {
+	FindByName(name string) (*domain.Country, error)
+	FindByCode(code string) (*domain.Country, error)
+}
+
+
+File: src/internal/repository/memory/country_repository.go
+package memory
+
+import (
+	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+)
+
+type countryRepository struct {
+	nameToCode    map[string]string
+	codeToCountry map[string]*domain.Country
+	normalizer    normalizer.TextNormalizer
+}
+
+func NewCountryRepository(normalizer normalizer.TextNormalizer) *countryRepository {
+	repo := &countryRepository{
+		nameToCode:    make(map[string]string),
+		codeToCountry: make(map[string]*domain.Country),
+		normalizer:    normalizer,
+	}
+	repo.loadCountries()
+	return repo
+}
+
+func (r *countryRepository) FindByName(name string) (*domain.Country, error) {
+	normalized := r.normalizer.Normalize(name)
+	code, exists := r.nameToCode[normalized]
+	if !exists {
+		return nil, domain.NewNotFoundError(name)
+	}
+	return r.codeToCountry[code], nil
+}
+
+func (r *countryRepository) FindByCode(code string) (*domain.Country, error) {
+	country, exists := r.codeToCountry[code]
+	if !exists {
+		return nil, domain.NewNotFoundError(code)
+	}
+	return country, nil
+}
+
+func (r *countryRepository) loadCountries() {
+	countries := r.getCountryData()
+	aliases := r.getAliasData()
+
+	// Load official countries
+	for _, country := range countries {
+		r.codeToCountry[country.Code] = &country
+		normalized := r.normalizer.Normalize(country.Name)
+		r.nameToCode[normalized] = country.Code
+	}
+
+	// Load aliases
+	for isoCode, aliasNames := range aliases {
+		for _, alias := range aliasNames {
+			normalized := r.normalizer.Normalize(alias)
+			r.nameToCode[normalized] = isoCode
+		}
+	}
+}
+
+func (r *countryRepository) getCountryData() []domain.Country {
+	return []domain.Country{
+		{"AF", "Afghanistan"}, {"AL", "Albania"}, {"DZ", "Algeria"}, {"AD", "Andorra"},
+		{"AO", "Angola"}, {"AG", "Antigua and Barbuda"}, {"AR", "Argentina"}, {"AM", "Armenia"},
+		{"AU", "Australia"}, {"AT", "Austria"}, {"AZ", "Azerbaijan"}, {"BS", "Bahamas"},
+		{"BH", "Bahrain"}, {"BD", "Bangladesh"}, {"BB", "Barbados"}, {"BY", "Belarus"},
+		{"BE", "Belgium"}, {"BZ", "Belize"}, {"BJ", "Benin"}, {"BT", "Bhutan"},
+		{"BO", "Bolivia (Plurinational State of)"}, {"BA", "Bosnia and Herzegovina"}, {"BW", "Botswana"},
+		{"BR", "Brazil"}, {"BN", "Brunei Darussalam"}, {"BG", "Bulgaria"}, {"BF", "Burkina Faso"},
+		{"BI", "Burundi"}, {"CV", "Cabo Verde"}, {"KH", "Cambodia"}, {"CM", "Cameroon"},
+		{"CA", "Canada"}, {"CF", "Central African Republic"}, {"TD", "Chad"}, {"CL", "Chile"},
+		{"CN", "China"}, {"CO", "Colombia"}, {"KM", "Comoros"}, {"CG", "Congo"},
+		{"CD", "Congo, Democratic Republic of the"}, {"CR", "Costa Rica"}, {"CI", "Côte d'Ivoire"},
+		{"HR", "Croatia"}, {"CU", "Cuba"}, {"CY", "Cyprus"}, {"CZ", "Czechia"},
+		{"DK", "Denmark"}, {"DJ", "Djibouti"}, {"DM", "Dominica"}, {"DO", "Dominican Republic"},
+		{"EC", "Ecuador"}, {"EG", "Egypt"}, {"SV", "El Salvador"}, {"GQ", "Equatorial Guinea"},
+		{"ER", "Eritrea"}, {"EE", "Estonia"}, {"SZ", "Eswatini"}, {"ET", "Ethiopia"},
+		{"FI", "Finland"}, {"FR", "France"}, {"GA", "Gabon"}, {"GM", "Gambia"},
+		{"GE", "Georgia"}, {"DE", "Germany"}, {"GH", "Ghana"}, {"GR", "Greece"},
+		{"GD", "Grenada"}, {"GT", "Guatemala"}, {"GN", "Guinea"}, {"GW", "Guinea-Bissau"},
+		{"GY", "Guyana"}, {"HT", "Haiti"}, {"HN", "Honduras"}, {"HU", "Hungary"},
+		{"IS", "Iceland"}, {"IN", "India"}, {"ID", "Indonesia"}, {"IR", "Iran (Islamic Republic of)"},
+		{"IQ", "Iraq"}, {"IE", "Ireland"}, {"IL", "Israel"}, {"IT", "Italy"},
+		{"JM", "Jamaica"}, {"JP", "Japan"}, {"JO", "Jordan"}, {"KZ", "Kazakhstan"},
+		{"KE", "Kenya"}, {"KW", "Kuwait"}, {"KG", "Kyrgyzstan"}, {"LA", "Lao People's Democratic Republic"},
+		{"LV", "Latvia"}, {"LB", "Lebanon"}, {"LS", "Lesotho"}, {"LR", "Liberia"},
+		{"LY", "Libya"}, {"LI", "Liechtenstein"}, {"LT", "Lithuania"}, {"LU", "Luxembourg"},
+		{"MG", "Madagascar"}, {"MW", "Malawi"}, {"MY", "Malaysia"}, {"MV", "Maldives"},
+		{"ML", "Mali"}, {"MT", "Malta"}, {"MR", "Mauritania"}, {"MU", "Mauritius"},
+		{"MX", "Mexico"}, {"MD", "Moldova, Republic of"}, {"MC", "Monaco"}, {"MN", "Mongolia"},
+		{"ME", "Montenegro"}, {"MA", "Morocco"}, {"MZ", "Mozambique"}, {"MM", "Myanmar"},
+		{"NA", "Namibia"}, {"NP", "Nepal"}, {"NL", "Netherlands"}, {"NZ", "New Zealand"},
+		{"NI", "Nicaragua"}, {"NE", "Niger"}, {"NG", "Nigeria"}, {"KP", "North Korea"},
+		{"MK", "North Macedonia"}, {"NO", "Norway"}, {"OM", "Oman"}, {"PK", "Pakistan"},
+		{"PS", "Palestine, State of"}, {"PA", "Panama"}, {"PY", "Paraguay"}, {"PE", "Peru"},
+		{"PH", "Philippines"}, {"PL", "Poland"}, {"PT", "Portugal"}, {"PR", "Puerto Rico"},
+		{"QA", "Qatar"}, {"RO", "Romania"}, {"RU", "Russian Federation"}, {"RW", "Rwanda"},
+		{"KN", "Saint Kitts and Nevis"}, {"LC", "Saint Lucia"}, {"VC", "Saint Vincent and the Grenadines"},
+		{"SM", "San Marino"}, {"ST", "Sao Tome and Principe"}, {"SA", "Saudi Arabia"},
+		{"SN", "Senegal"}, {"RS", "Serbia"}, {"SC", "Seychelles"}, {"SL", "Sierra Leone"},
+		{"SG", "Singapore"}, {"SK", "Slovakia"}, {"SI", "Slovenia"}, {"SO", "Somalia"},
+		{"ZA", "South Africa"}, {"KR", "South Korea"}, {"SS", "South Sudan"}, {"ES", "Spain"},
+		{"LK", "Sri Lanka"}, {"SD", "Sudan"}, {"SE", "Sweden"}, {"CH", "Switzerland"},
+		{"SY", "Syrian Arab Republic"}, {"TW", "Taiwan, Province of China"}, {"TJ", "Tajikistan"},
+		{"TZ", "Tanzania, United Republic of"}, {"TH", "Thailand"}, {"TG", "Togo"},
+		{"TT", "Trinidad and Tobago"}, {"TN", "Tunisia"}, {"TR", "Turkey"}, {"TM", "Turkmenistan"},
+		{"UG", "Uganda"}, {"UA", "Ukraine"}, {"AE", "United Arab Emirates"},
+		{"GB", "United Kingdom of Great Britain and Northern Ireland"}, {"US", "United States of America"},
+		{"UY", "Uruguay"}, {"UZ", "Uzbekistan"}, {"VE", "Venezuela (Bolivarian Republic of)"},
+		{"VN", "Viet Nam"}, {"EH", "Western Sahara"}, {"YE", "Yemen"}, {"ZM", "Zambia"},
+		{"ZW", "Zimbabwe"},
+	}
+}
+
+func (r *countryRepository) getAliasData() map[string][]string {
+	return map[string][]string{
+		"KR": {"south korea", "republic of korea", "korea south", "corée du sud", "südkorea"},
+		"US": {"usa", "united states", "america", "états-unis", "vereinigte staaten"},
+		"GB": {"uk", "united kingdom", "britain", "england", "royaume-uni", "vereinigtes königreich"},
+		"RU": {"russia", "russie", "russland"},
+		"AT": {"austria", "österreich", "autriche"},
+		"BE": {"belgium", "belgique", "belgië", "belgien"},
+		"BG": {"bulgaria", "българия", "bulgarie", "bulgarien"},
+		"HR": {"croatia", "hrvatska", "croatie", "kroatien"},
+		"CY": {"cyprus", "κύπρος", "chypre", "zypern"},
+		"CZ": {"czech republic", "česká republika", "république tchèque", "tschechische republik"},
+		"DK": {"denmark", "danmark", "danemark", "dänemark"},
+		"EE": {"estonia", "eesti", "estonie", "estland"},
+		"FI": {"finland", "suomi", "finlande", "finnland"},
+		"FR": {"france", "frankreich"},
+		"DE": {"germany", "deutschland", "allemagne"},
+		"GR": {"greece", "ελλάδα", "grèce", "griechenland"},
+		"HU": {"hungary", "magyarország", "hongrie", "ungarn"},
+		"IE": {"ireland", "éire", "irlande", "irland"},
+		"IT": {"italy", "italia", "italie", "italien"},
+		"LV": {"latvia", "latvija", "lettonie", "lettland"},
+		"LT": {"lithuania", "lietuva", "lituanie", "litauen"},
+		"LU": {"luxembourg", "luxemburg"},
+		"MT": {"malta", "malte"},
+		"NL": {"netherlands", "nederland", "pays-bas", "niederlande"},
+		"PL": {"poland", "polska", "pologne", "polen"},
+		"PT": {"portugal"},
+		"RO": {"romania", "românia", "roumanie", "rumänien"},
+		"SK": {"slovakia", "slovensko", "slovaquie", "slowakei"},
+		"SI": {"slovenia", "slovenija", "slovénie", "slowenien"},
+		"ES": {"spain", "españa", "espagne", "spanien"},
+		"SE": {"sweden", "sverige", "suède", "schweden"},
+		"TR": {"turkey", "türkiye"},
+		"BA": {"bosnia", "bosnia and herzegovina"},
+		"CH": {"switzerland", "suisse", "schweiz"},
+		"MK": {"north macedonia", "macedonia"},
+		"MD": {"moldova", "republic of moldova"},
+	}
+}
+
+
+File: src/internal/server/http_server.go
+package server
+
+import (
+	"context"
+	"fmt"
+	"log/slog"
+	"net/http"
+	"time"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/config"
+	"github.com/baditaflorin/country-iso-matcher/internal/handler"
+	"github.com/baditaflorin/country-iso-matcher/internal/handler/middleware"
+)
+
+type httpServer struct {
+	server  *http.Server
+	handler handler.CountryHandler
+	logger  *slog.Logger
+}
+
+func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, logger *slog.Logger) Server {
+	mux := http.NewServeMux()
+
+	// Routes
+	mux.HandleFunc("/api/convert", countryHandler.ConvertCountry)
+	mux.HandleFunc("/health", countryHandler.Health)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Country ISO Matcher API. Use /api/convert?country=YourCountryName"))
+	})
+
+	// Apply middleware
+	var handler http.Handler = mux
+	handler = middleware.CORS(handler)
+	handler = middleware.Logging(logger)(handler)
+	handler = middleware.Recovery(logger)(handler)
+
+	server := &http.Server{
+		Addr:         ":" + cfg.Port,
+		Handler:      handler,
+		ReadTimeout:  time.Duration(cfg.ReadTimeout) * time.Second,
+		WriteTimeout: time.Duration(cfg.WriteTimeout) * time.Second,
+	}
+
+	return &httpServer{
+		server:  server,
+		handler: countryHandler,
+		logger:  logger,
+	}
+}
+
+func (s *httpServer) Start() error {
+	s.logger.Info("starting HTTP server", "addr", s.server.Addr)
+	if err := s.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		return fmt.Errorf("server failed to start: %w", err)
+	}
+	return nil
+}
+
+func (s *httpServer) Shutdown(ctx context.Context) error {
+	s.logger.Info("shutting down HTTP server")
+	return s.server.Shutdown(ctx)
+}
+
+
+File: src/internal/server/interfaces.go
+package server
+
+import "context"
+
+type Server interface {
+	Start() error
+	Shutdown(ctx context.Context) error
+}
+
+
+File: src/internal/service/country_service.go
+package service
+
+import (
+	"strings"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+	"github.com/baditaflorin/country-iso-matcher/internal/repository"
+)
+
+type countryService struct {
+	repository repository.CountryRepository
+}
+
+func NewCountryService(repo repository.CountryRepository) CountryService {
+	return &countryService{
+		repository: repo,
+	}
+}
+
+func (s *countryService) LookupCountry(query string) (*domain.CountryResponse, error) {
+	query = strings.TrimSpace(query)
+	if query == "" {
+		return nil, domain.NewValidationError("Country query parameter is required", query)
+	}
+
+	country, err := s.repository.FindByName(query)
+	if err != nil {
+		return nil, err
+	}
+
+	return domain.NewCountryResponse(query, country.Name, country.Code), nil
+}
+
+
+File: src/internal/service/country_service_test.go
+package service_test
+
+import (
+	"errors"
+	"testing"
+
+	"github.com/baditaflorin/country-iso-matcher/internal/domain"
+	"github.com/baditaflorin/country-iso-matcher/internal/service"
+)
+
+type mockRepository struct {
+	countries map[string]*domain.Country
+}
+
+func (m *mockRepository) FindByName(name string) (*domain.Country, error) {
+	country, exists := m.countries[name]
+	if !exists {
+		return nil, domain.NewNotFoundError(name)
+	}
+	return country, nil
+}
+
+func (m *mockRepository) FindByCode(code string) (*domain.Country, error) {
+	for _, country := range m.countries {
+		if country.Code == code {
+			return country, nil
+		}
+	}
+	return nil, domain.NewNotFoundError(code)
+}
+
+func TestCountryService_LookupCountry(t *testing.T) {
+	// Setup
+	mockRepo := &mockRepository{
+		countries: map[string]*domain.Country{
+			"romania": {Code: "RO", Name: "Romania"},
+			"germany": {Code: "DE", Name: "Germany"},
+		},
+	}
+
+	service := service.NewCountryService(mockRepo)
+
+	tests := []struct {
+		name          string
+		query         string
+		expectedCode  string
+		expectedName  string
+		expectedError bool
+	}{
+		{
+			name:         "valid country",
+			query:        "romania",
+			expectedCode: "RO",
+			expectedName: "Romania",
+		},
+		{
+			name:          "empty query",
+			query:         "",
+			expectedError: true,
+		},
+		{
+			name:          "whitespace query",
+			query:         "   ",
+			expectedError: true,
+		},
+		{
+			name:          "unknown country",
+			query:         "unknown",
+			expectedError: true,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := service.LookupCountry(tt.query)
+
+			if tt.expectedError {
+				if err == nil {
+					t.Errorf("expected error but got none")
+				}
+				return
+			}
+
+			if err != nil {
+				t.Errorf("unexpected error: %v", err)
+				return
+			}
+
+			if result.ISOCode != tt.expectedCode {
+				t.Errorf("expected ISO code %s, got %s", tt.expectedCode, result.ISOCode)
+			}
+
+			if result.OfficialName != tt.expectedName {
+				t.Errorf("expected name %s, got %s", tt.expectedName, result.OfficialName)
+			}
+		})
+	}
+}
+
+
+File: src/internal/service/interfaces.go
+package service
+
+import "github.com/baditaflorin/country-iso-matcher/internal/domain"
+
+type CountryService interface {
+	LookupCountry(query string) (*domain.CountryResponse, error)
+}
+
+
+File: src/pkg/countries/countries.go
+package countries
+
+// Country defines the structure for a country's code and official name.
+type Country struct {
+	Code string
+	Name string
+}
+
+// countries contains the official list of country names and codes.
+var List = []Country{
+	{"AF", "Afghanistan"}, {"AL", "Albania"}, {"DZ", "Algeria"}, {"AD", "Andorra"},
+	{"AO", "Angola"}, {"AG", "Antigua and Barbuda"}, {"AR", "Argentina"}, {"AM", "Armenia"},
+	{"AU", "Australia"}, {"AT", "Austria"}, {"AZ", "Azerbaijan"}, {"BS", "Bahamas"},
+	{"BH", "Bahrain"}, {"BD", "Bangladesh"}, {"BB", "Barbados"}, {"BY", "Belarus"},
+	{"BE", "Belgium"}, {"BZ", "Belize"}, {"BJ", "Benin"}, {"BT", "Bhutan"},
+	{"BO", "Bolivia (Plurinational State of)"}, {"BA", "Bosnia and Herzegovina"}, {"BW", "Botswana"},
+	{"BR", "Brazil"}, {"BN", "Brunei Darussalam"}, {"BG", "Bulgaria"}, {"BF", "Burkina Faso"},
+	{"BI", "Burundi"}, {"CV", "Cabo Verde"}, {"KH", "Cambodia"}, {"CM", "Cameroon"},
+	{"CA", "Canada"}, {"CF", "Central African Republic"}, {"TD", "Chad"}, {"CL", "Chile"},
+	{"CN", "China"}, {"CO", "Colombia"}, {"KM", "Comoros"}, {"CG", "Congo"},
+	{"CD", "Congo, Democratic Republic of the"}, {"CR", "Costa Rica"}, {"CI", "Côte d'Ivoire"},
+	{"HR", "Croatia"}, {"CU", "Cuba"}, {"CY", "Cyprus"}, {"CZ", "Czechia"},
+	{"DK", "Denmark"}, {"DJ", "Djibouti"}, {"DM", "Dominica"}, {"DO", "Dominican Republic"},
+	{"EC", "Ecuador"}, {"EG", "Egypt"}, {"SV", "El Salvador"}, {"GQ", "Equatorial Guinea"},
+	{"ER", "Eritrea"}, {"EE", "Estonia"}, {"SZ", "Eswatini"}, {"ET", "Ethiopia"},
+	{"FI", "Finland"}, {"FR", "France"}, {"GA", "Gabon"}, {"GM", "Gambia"},
+	{"GE", "Georgia"}, {"DE", "Germany"}, {"GH", "Ghana"}, {"GR", "Greece"},
+	{"GD", "Grenada"}, {"GT", "Guatemala"}, {"GN", "Guinea"}, {"GW", "Guinea-Bissau"},
+	{"GY", "Guyana"}, {"HT", "Haiti"}, {"HN", "Honduras"}, {"HU", "Hungary"},
+	{"IS", "Iceland"}, {"IN", "India"}, {"ID", "Indonesia"}, {"IR", "Iran (Islamic Republic of)"},
+	{"IQ", "Iraq"}, {"IE", "Ireland"}, {"IL", "Israel"}, {"IT", "Italy"},
+	{"JM", "Jamaica"}, {"JP", "Japan"}, {"JO", "Jordan"}, {"KZ", "Kazakhstan"},
+	{"KE", "Kenya"}, {"KW", "Kuwait"}, {"KG", "Kyrgyzstan"}, {"LA", "Lao People's Democratic Republic"},
+	{"LV", "Latvia"}, {"LB", "Lebanon"}, {"LS", "Lesotho"}, {"LR", "Liberia"},
+	{"LY", "Libya"}, {"LI", "Liechtenstein"}, {"LT", "Lithuania"}, {"LU", "Luxembourg"},
+	{"MG", "Madagascar"}, {"MW", "Malawi"}, {"MY", "Malaysia"}, {"MV", "Maldives"},
+	{"ML", "Mali"}, {"MT", "Malta"}, {"MR", "Mauritania"}, {"MU", "Mauritius"},
+	{"MX", "Mexico"}, {"MD", "Moldova, Republic of"}, {"MC", "Monaco"}, {"MN", "Mongolia"},
+	{"ME", "Montenegro"}, {"MA", "Morocco"}, {"MZ", "Mozambique"}, {"MM", "Myanmar"},
+	{"NA", "Namibia"}, {"NP", "Nepal"}, {"NL", "Netherlands"}, {"NZ", "New Zealand"},
+	{"NI", "Nicaragua"}, {"NE", "Niger"}, {"NG", "Nigeria"}, {"KP", "North Korea"},
+	{"MK", "North Macedonia"}, {"NO", "Norway"}, {"OM", "Oman"}, {"PK", "Pakistan"},
+	{"PS", "Palestine, State of"}, {"PA", "Panama"}, {"PY", "Paraguay"}, {"PE", "Peru"},
+	{"PH", "Philippines"}, {"PL", "Poland"}, {"PT", "Portugal"}, {"PR", "Puerto Rico"},
+	{"QA", "Qatar"}, {"RO", "Romania"}, {"RU", "Russian Federation"}, {"RW", "Rwanda"},
+	{"KN", "Saint Kitts and Nevis"}, {"LC", "Saint Lucia"}, {"VC", "Saint Vincent and the Grenadines"},
+	{"SM", "San Marino"}, {"ST", "Sao Tome and Principe"}, {"SA", "Saudi Arabia"},
+	{"SN", "Senegal"}, {"RS", "Serbia"}, {"SC", "Seychelles"}, {"SL", "Sierra Leone"},
+	{"SG", "Singapore"}, {"SK", "Slovakia"}, {"SI", "Slovenia"}, {"SO", "Somalia"},
+	{"ZA", "South Africa"}, {"KR", "South Korea"}, {"SS", "South Sudan"}, {"ES", "Spain"},
+	{"LK", "Sri Lanka"}, {"SD", "Sudan"}, {"SE", "Sweden"}, {"CH", "Switzerland"},
+	{"SY", "Syrian Arab Republic"}, {"TW", "Taiwan, Province of China"}, {"TJ", "Tajikistan"},
+	{"TZ", "Tanzania, United Republic of"}, {"TH", "Thailand"}, {"TG", "Togo"},
+	{"TT", "Trinidad and Tobago"}, {"TN", "Tunisia"}, {"TR", "Turkey"}, {"TM", "Turkmenistan"},
+	{"UG", "Uganda"}, {"UA", "Ukraine"}, {"AE", "United Arab Emirates"},
+	{"GB", "United Kingdom of Great Britain and Northern Ireland"}, {"US", "United States of America"},
+	{"UY", "Uruguay"}, {"UZ", "Uzbekistan"}, {"VE", "Venezuela (Bolivarian Republic of)"},
+	{"VN", "Viet Nam"}, {"EH", "Western Sahara"}, {"YE", "Yemen"}, {"ZM", "Zambia"},
+	{"ZW", "Zimbabwe"},
+	// List can be expanded as needed
+}
+
+// countryAliases provides common alternative names for countries.
+var Aliases = map[string][]string{
+	"KR": {"south korea", "republic of korea", "korea south", "corée du sud", "südkorea"},
+	"US": {"usa", "united states", "america", "états-unis", "vereinigte staaten"},
+	"GB": {"uk", "united kingdom", "britain", "england", "royaume-uni", "vereinigtes königreich"},
+	"RU": {"russia", "russie", "russland"},
+	"AT": {"austria", "österreich", "autriche"},
+	"BE": {"belgium", "belgique", "belgië", "belgien"},
+	"BG": {"bulgaria", "българия", "bulgarie", "bulgarien"},
+	"HR": {"croatia", "hrvatska", "croatie", "kroatien"},
+	"CY": {"cyprus", "κύπρος", "chypre", "zypern"},
+	"CZ": {"czech republic", "česká republika", "république tchèque", "tschechische republik"},
+	"DK": {"denmark", "danmark", "danemark", "dänemark"},
+	"EE": {"estonia", "eesti", "estonie", "estland"},
+	"FI": {"finland", "suomi", "finlande", "finnland"},
+	"FR": {"france", "frankreich"},
+	"DE": {"germany", "deutschland", "allemagne"},
+	"GR": {"greece", "ελλάδα", "grèce", "griechenland"},
+	"HU": {"hungary", "magyarország", "hongrie", "ungarn"},
+	"IE": {"ireland", "éire", "irlande", "irland"},
+	"IT": {"italy", "italia", "italie", "italien"},
+	"LV": {"latvia", "latvija", "lettonie", "lettland"},
+	"LT": {"lithuania", "lietuva", "lituanie", "litauen"},
+	"LU": {"luxembourg", "luxemburg"},
+	"MT": {"malta", "malte"},
+	"NL": {"netherlands", "nederland", "pays-bas", "niederlande"},
+	"PL": {"poland", "polska", "pologne", "polen"},
+	"PT": {"portugal"},
+	"RO": {"romania", "românia", "roumanie", "rumänien"},
+	"SK": {"slovakia", "slovensko", "slovaquie", "slowakei"},
+	"SI": {"slovenia", "slovenija", "slovénie", "slowenien"},
+	"ES": {"spain", "españa", "espagne", "spanien"},
+	"SE": {"sweden", "sverige", "suède", "schweden"},
+	"TR": {"turkey", "türkiye"},
+	"BA": {"bosnia", "bosnia and herzegovina"},
+	"CH": {"switzerland", "suisse", "schweiz"},
+	"MK": {"north macedonia", "macedonia"},
+	"MD": {"moldova", "republic of moldova"},
+}
+
+
+File: src/pkg/countries/lookup.go
+package countries
+
+import (
+	"strings"
+	"unicode"
+
+	"golang.org/x/text/runes"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
+)
+
+var (
+	normalizedCountryNames map[string]string
+	isoToOfficialName      map[string]string
+	accentRemover          = transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
+)
+
+func init() {
+	normalizedCountryNames = make(map[string]string)
+	isoToOfficialName = make(map[string]string)
+
+	// Build lookups from official list
+	for _, country := range List {
+		isoToOfficialName[country.Code] = country.Name
+
+		normalized, _, _ := transform.String(accentRemover, country.Name)
+		normalizedCountryNames[strings.ToLower(normalized)] = country.Code
+		normalizedCountryNames[strings.ToLower(country.Name)] = country.Code
+	}
+
+	// Add aliases
+	for isoCode, aliases := range Aliases {
+		for _, alias := range aliases {
+			normalized, _, _ := transform.String(accentRemover, alias)
+			normalizedCountryNames[strings.ToLower(normalized)] = isoCode
+		}
+	}
+}
+
+// NormalizeString removes accents and lowercases
+func NormalizeString(s string) string {
+	normalized, _, _ := transform.String(accentRemover, s)
+	return strings.ToLower(normalized)
+}
+
+// LookupISO returns iso code + official name given a query
+func LookupISO(query string) (isoCode, officialName string, found bool) {
+	normalized := NormalizeString(query)
+	code, ok := normalizedCountryNames[normalized]
+	if !ok {
+		return "", "", false
+	}
+	return code, isoToOfficialName[code], true
+}
+
+
+File: src/pkg/normalizer/text.go
+package normalizer
+
+import (
+	"strings"
+	"unicode"
+
+	"golang.org/x/text/runes"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
+)
+
+type TextNormalizer interface {
+	Normalize(text string) string
+}
+
+type textNormalizer struct {
+	transformer transform.Transformer
+}
+
+func NewTextNormalizer() TextNormalizer {
+	return &textNormalizer{
+		transformer: transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC),
+	}
+}
+
+func (n *textNormalizer) Normalize(text string) string {
+	normalized, _, _ := transform.String(n.transformer, text)
+	return strings.ToLower(strings.TrimSpace(normalized))
+}
+
+
+File: src/pkg/normalizer/text_test.go
+package normalizer_test
+
+import (
+	"testing"
+
+	"github.com/baditaflorin/country-iso-matcher/pkg/normalizer"
+)
+
+func TestTextNormalizer_Normalize(t *testing.T) {
+	normalizer := normalizer.NewTextNormalizer()
+
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "basic lowercase",
+			input:    "Hello",
+			expected: "hello",
+		},
+		{
+			name:     "remove accents",
+			input:    "Côte d'Ivoire",
+			expected: "cote d'ivoire",
+		},
+		{
+			name:     "trim whitespace",
+			input:    "  Germany  ",
+			expected: "germany",
+		},
+		{
+			name:     "complex with accents and case",
+			input:    "  FRANÇAIS  ",
+			expected: "francais",
+		},
+		{
+			name:     "empty string",
+			input:    "",
+			expected: "",
+		},
+		{
+			name:     "only whitespace",
+			input:    "   ",
+			expected: "",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := normalizer.Normalize(tt.input)
+			if result != tt.expected {
+				t.Errorf("expected '%s', got '%s'", tt.expected, result)
+			}
+		})
+	}
+}
+
+
+

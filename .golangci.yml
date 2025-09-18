@@ -1,0 +1,37 @@
+run:
+  timeout: 5m
+  issues-exit-code: 1
+  tests: true
+
+linters:
+  enable:
+    - gofmt
+    - goimports
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - typecheck
+    - deadcode
+    - varcheck
+    - structcheck
+    - misspell
+    - unconvert
+    - gocyclo
+    - revive
+    - gosec
+    - exportloopref
+    - nolintlint
+
+linters-settings:
+  gocyclo:
+    min-complexity: 15
+  revive:
+    rules:
+      - name: exported
+        arguments: [true]
+  gosec:
+    excludes:
+      - G404 # Use of weak random number generator
