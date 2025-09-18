@@ -626,8 +626,10 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/prometheus/client_golang/prometheus"
 	"log/slog"
 	"net/http"
+	"sort"
 
 	"country-iso-matcher/src/internal/domain"
 	"country-iso-matcher/src/internal/service"
@@ -682,15 +684,113 @@ func (h *countryHandler) handleError(w http.ResponseWriter, err error, query str
 	json.NewEncoder(w).Encode(appErr)
 }
 
+type StatsResponse struct {
+	TotalRequests        float64          `json:"total_requests"`
+	SuccessCount         float64          `json:"success_count"`
+	NotFoundCount        float64          `json:"not_found_count"`
+	ErrorCount           float64          `json:"error_count"`
+	ValidationErrorCount float64          `json:"validation_error_count"`
+	SuccessRate          float64          `json:"success_rate"`
+	FailureRate          float64          `json:"failure_rate"`
+	PopularCountries     []PopularCountry `json:"popular_countries,omitempty"`
+}
+
+type PopularCountry struct {
+	Code  string  `json:"code"`
+	Name  string  `json:"name"`
+	Count float64 `json:"count"`
+}
+
+func (h *countryHandler) GetStats(w http.ResponseWriter, r *http.Request) {
+	stats := StatsResponse{}
+
+	// Get metrics from Prometheus registry
+	metricFamilies, err := prometheus.DefaultGatherer.Gather()
+	if err != nil {
+		h.logger.Error("failed to gather metrics", "error", err)
+		h.handleError(w, domain.NewInternalError("Failed to gather metrics"), "")
+		return
+	}
+
+	var popularCountries []PopularCountry
+
+	// Parse metrics
+	for _, mf := range metricFamilies {
+		switch mf.GetName() {
+		case "country_lookups_total":
+			for _, metric := range mf.GetMetric() {
+				value := metric.GetCounter().GetValue()
+				for _, label := range metric.GetLabel() {
+					if label.GetName() == "result" {
+						switch label.GetValue() {
+						case "success":
+							stats.SuccessCount = value
+						case "not_found":
+							stats.NotFoundCount = value
+						case "error":
+							stats.ErrorCount = value
+						case "validation_error":
+							stats.ValidationErrorCount = value
+						}
+					}
+				}
+			}
+		case "popular_countries_total":
+			for _, metric := range mf.GetMetric() {
+				var country PopularCountry
+				country.Count = metric.GetCounter().GetValue()
+				for _, label := range metric.GetLabel() {
+					switch label.GetName() {
+					case "country_code":
+						country.Code = label.GetValue()
+					case "country_name":
+						country.Name = label.GetValue()
+					}
+				}
+				if country.Count > 0 {
+					popularCountries = append(popularCountries, country)
+				}
+			}
+		}
+	}
+
+	// Sort popular countries by count (descending)
+	sort.Slice(popularCountries, func(i, j int) bool {
+		return popularCountries[i].Count > popularCountries[j].Count
+	})
+
+	// Take top 10 most popular countries
+	if len(popularCountries) > 10 {
+		popularCountries = popularCountries[:10]
+	}
+	stats.PopularCountries = popularCountries
+
+	// Calculate totals and rates
+	stats.TotalRequests = stats.SuccessCount + stats.NotFoundCount + stats.ErrorCount + stats.ValidationErrorCount
+	if stats.TotalRequests > 0 {
+		stats.SuccessRate = stats.SuccessCount / stats.TotalRequests
+		stats.FailureRate = (stats.NotFoundCount + stats.ErrorCount + stats.ValidationErrorCount) / stats.TotalRequests
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(stats); err != nil {
+		h.logger.Error("failed to encode stats response", "error", err)
+	}
+}
+
 
 File: src/internal/handler/interfaces.go
 package handler
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type CountryHandler interface {
 	ConvertCountry(w http.ResponseWriter, r *http.Request)
 	Health(w http.ResponseWriter, r *http.Request)
+	GetStats(w http.ResponseWriter, r *http.Request)
 }
 
 
@@ -887,52 +987,9 @@ package metrics
 import (
 	"runtime"
 	"time"
-
-	"github.com/prometheus/client_golang/prometheus"
 )
 
-// SystemMetricsCollector collects system-level metrics
-type SystemMetricsCollector struct{}
-
-// NewSystemMetricsCollector creates a new system metrics collector
-func NewSystemMetricsCollector() *SystemMetricsCollector {
-	collector := &SystemMetricsCollector{}
-	prometheus.MustRegister(collector)
-	return collector
-}
-
-// Describe implements the prometheus.Collector interface
-func (c *SystemMetricsCollector) Describe(ch chan<- *prometheus.Desc) {
-	ch <- prometheus.NewDesc("go_goroutines", "Number of goroutines", nil, nil)
-	ch <- prometheus.NewDesc("go_memory_heap_bytes", "Heap memory usage in bytes", nil, nil)
-	ch <- prometheus.NewDesc("go_memory_stack_bytes", "Stack memory usage in bytes", nil, nil)
-}
-
-// Collect implements the prometheus.Collector interface
-func (c *SystemMetricsCollector) Collect(ch chan<- prometheus.Metric) {
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
-
-	ch <- prometheus.MustNewConstMetric(
-		prometheus.NewDesc("go_goroutines", "Number of goroutines", nil, nil),
-		prometheus.GaugeValue,
-		float64(runtime.NumGoroutine()),
-	)
-
-	ch <- prometheus.MustNewConstMetric(
-		prometheus.NewDesc("go_memory_heap_bytes", "Heap memory usage in bytes", nil, nil),
-		prometheus.GaugeValue,
-		float64(m.HeapInuse),
-	)
-
-	ch <- prometheus.MustNewConstMetric(
-		prometheus.NewDesc("go_memory_stack_bytes", "Stack memory usage in bytes", nil, nil),
-		prometheus.GaugeValue,
-		float64(m.StackInuse),
-	)
-}
-
-// StartSystemMetricsCollection starts collecting system metrics periodically
+// StartSystemMetricsCollection starts collecting custom system metrics periodically
 func StartSystemMetricsCollection() {
 	go func() {
 		ticker := time.NewTicker(15 * time.Second)
@@ -974,21 +1031,40 @@ var (
 		[]string{"method", "endpoint", "status_code"},
 	)
 
-	// Business logic metrics
+	// Business logic metrics - Enhanced for success/failure tracking
 	CountryLookupsTotal = promauto.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "country_lookups_total",
-			Help: "Total number of country lookups",
+			Help: "Total number of country lookups by result type",
 		},
-		[]string{"result"}, // "success" or "not_found" or "error"
+		[]string{"result"}, // "success", "not_found", "validation_error", "error"
 	)
 
-	CountryLookupDuration = promauto.NewHistogram(
+	CountryLookupDuration = promauto.NewHistogramVec(
 		prometheus.HistogramOpts{
 			Name:    "country_lookup_duration_seconds",
-			Help:    "Country lookup duration in seconds",
+			Help:    "Country lookup duration in seconds by result type",
 			Buckets: []float64{0.001, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0},
 		},
+		[]string{"result"}, // Track duration by success/failure
+	)
+
+	// Success rate metrics - easier to query
+	CountryLookupSuccessRate = promauto.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Name: "country_lookup_success_rate",
+			Help: "Success rate of country lookups (0-1)",
+		},
+		[]string{"time_window"}, // "1m", "5m", "15m" etc
+	)
+
+	// Popular countries metrics
+	PopularCountries = promauto.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "popular_countries_total",
+			Help: "Count of successful lookups by country code",
+		},
+		[]string{"country_code", "country_name"},
 	)
 
 	// System metrics
@@ -1243,8 +1319,7 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 	// Set build info
 	metrics.SetBuildInfo("1.0.0", runtime.Version(), runtime.GOOS, runtime.GOARCH)
 
-	// Start system metrics collection
-	metrics.NewSystemMetricsCollector()
+	// Start system metrics collection (only custom metrics, not conflicting ones)
 	metrics.StartSystemMetricsCollection()
 
 	return &httpServer{
@@ -1303,23 +1378,44 @@ func NewCountryService(repo repository.CountryRepository) CountryService {
 
 func (s *countryService) LookupCountry(query string) (*domain.CountryResponse, error) {
 	start := time.Now()
+	var result string
+
 	defer func() {
-		metrics.CountryLookupDuration.Observe(time.Since(start).Seconds())
+		duration := time.Since(start).Seconds()
+		metrics.CountryLookupDuration.WithLabelValues(result).Observe(duration)
 	}()
 
 	query = strings.TrimSpace(query)
 	if query == "" {
-		metrics.CountryLookupsTotal.WithLabelValues("error").Inc()
+		result = "validation_error"
+		metrics.CountryLookupsTotal.WithLabelValues("validation_error").Inc()
 		return nil, domain.NewValidationError("Country query parameter is required", query)
 	}
 
 	country, err := s.repository.FindByName(query)
 	if err != nil {
-		metrics.CountryLookupsTotal.WithLabelValues("not_found").Inc()
+		// Check if it's a not found error or other error
+		if appErr, ok := err.(*domain.AppError); ok {
+			if appErr.Code == 404 {
+				result = "not_found"
+				metrics.CountryLookupsTotal.WithLabelValues("not_found").Inc()
+			} else {
+				result = "error"
+				metrics.CountryLookupsTotal.WithLabelValues("error").Inc()
+			}
+		} else {
+			result = "error"
+			metrics.CountryLookupsTotal.WithLabelValues("error").Inc()
+		}
 		return nil, err
 	}
 
+	result = "success"
 	metrics.CountryLookupsTotal.WithLabelValues("success").Inc()
+
+	// Track popular countries for successful lookups
+	metrics.PopularCountries.WithLabelValues(country.Code, country.Name).Inc()
+
 	return domain.NewCountryResponse(query, country.Name, country.Code), nil
 }
 
