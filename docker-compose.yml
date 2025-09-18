@@ -1,0 +1,9 @@
+services:
+  country-iso-service-go:
+    build:
+      context: .
+    image: country-iso-service-go:latest
+    container_name: country_iso_api_go
+    restart: unless-stopped
+    ports:
+      - "3030:3030"
