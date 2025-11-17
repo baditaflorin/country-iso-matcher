@@ -14,15 +14,11 @@ linters:
     - gosimple
     - ineffassign
     - typecheck
-    - deadcode
-    - varcheck
-    - structcheck
     - misspell
     - unconvert
     - gocyclo
     - revive
     - gosec
-    - exportloopref
     - nolintlint
 
 linters-settings:
@@ -31,7 +27,7 @@ linters-settings:
   revive:
     rules:
       - name: exported
-        arguments: [true]
+        arguments: ["checkPrivateReceivers"]
   gosec:
     excludes:
       - G404 # Use of weak random number generator

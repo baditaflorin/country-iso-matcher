@@ -136,14 +136,17 @@ func validateDataSource(cfg *DataConfig, dbEnabled bool) error {
 			return fmt.Errorf("aliases_file cannot be empty for %s source", cfg.Source)
 		}
 
-		// Check if files exist (warning, not error)
+		// Check if files exist (now an error)
 		if _, err := os.Stat(cfg.CountriesFile); os.IsNotExist(err) {
-			// This is just a warning - file might be created later
-			// But we'll validate in the data loader
+			return fmt.Errorf("countries_file does not exist: %s", cfg.CountriesFile)
+		} else if err != nil {
+			return fmt.Errorf("error checking countries_file: %v", err)
 		}
 
 		if _, err := os.Stat(cfg.AliasesFile); os.IsNotExist(err) {
-			// This is just a warning
+			return fmt.Errorf("aliases_file does not exist: %s", cfg.AliasesFile)
+		} else if err != nil {
+			return fmt.Errorf("error checking aliases_file: %v", err)
 		}
 	}
 

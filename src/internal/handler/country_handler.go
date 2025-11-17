@@ -2,10 +2,11 @@ package handler
 
 import (
 	"encoding/json"
-	"github.com/prometheus/client_golang/prometheus"
 	"log/slog"
 	"net/http"
 	"sort"
+
+	"github.com/prometheus/client_golang/prometheus"
 
 	"country-iso-matcher/src/internal/domain"
 	"country-iso-matcher/src/internal/service"
@@ -42,10 +43,12 @@ func (h *countryHandler) ConvertCountry(w http.ResponseWriter, r *http.Request) 
 func (h *countryHandler) Health(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{
+	if err := json.NewEncoder(w).Encode(map[string]string{
 		"status":  "healthy",
 		"service": "country-iso-matcher",
-	})
+	}); err != nil {
+		h.logger.Error("Failed to encode health response", "error", err)
+	}
 }
 
 func (h *countryHandler) handleError(w http.ResponseWriter, err error, query string) {
@@ -57,7 +60,9 @@ func (h *countryHandler) handleError(w http.ResponseWriter, err error, query str
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(appErr.Code)
-	json.NewEncoder(w).Encode(appErr)
+	if err := json.NewEncoder(w).Encode(appErr); err != nil {
+		h.logger.Error("Failed to encode error response", "error", err)
+	}
 }
 
 type StatsResponse struct {

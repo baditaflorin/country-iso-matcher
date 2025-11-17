@@ -35,12 +35,12 @@ type DatabaseConfig struct {
 
 // SchemaConfig defines database table and column names
 type SchemaConfig struct {
-	CountriesTable   string `yaml:"countries_table" json:"countries_table"`
-	AliasesTable     string `yaml:"aliases_table" json:"aliases_table"`
-	CodeColumn       string `yaml:"code_column" json:"code_column"`
-	NameColumn       string `yaml:"name_column" json:"name_column"`
-	AliasCodeColumn  string `yaml:"alias_code_column" json:"alias_code_column"`
-	AliasNameColumn  string `yaml:"alias_name_column" json:"alias_name_column"`
+	CountriesTable  string `yaml:"countries_table" json:"countries_table"`
+	AliasesTable    string `yaml:"aliases_table" json:"aliases_table"`
+	CodeColumn      string `yaml:"code_column" json:"code_column"`
+	NameColumn      string `yaml:"name_column" json:"name_column"`
+	AliasCodeColumn string `yaml:"alias_code_column" json:"alias_code_column"`
+	AliasNameColumn string `yaml:"alias_name_column" json:"alias_name_column"`
 }
 
 // DataConfig specifies the data source configuration
