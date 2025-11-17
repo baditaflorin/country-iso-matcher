@@ -6,11 +6,13 @@ import (
 	"log/slog"
 	"net/http"
 	"runtime"
+	"strings"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"country-iso-matcher/src/internal/config"
+	"country-iso-matcher/src/internal/gui"
 	"country-iso-matcher/src/internal/handler"
 	"country-iso-matcher/src/internal/handler/middleware"
 	"country-iso-matcher/src/internal/metrics"
@@ -25,26 +27,62 @@ type httpServer struct {
 func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, logger *slog.Logger) Server {
 	mux := http.NewServeMux()
 
-	// Routes
+	// API Routes
 	mux.HandleFunc("/api/convert", countryHandler.ConvertCountry)
 	mux.HandleFunc("/health", countryHandler.Health)
+	mux.HandleFunc("/stats", countryHandler.GetStats)
 	mux.Handle("/metrics", promhttp.Handler()) // Prometheus metrics endpoint
+
+	// GUI Routes (if enabled)
+	if cfg.GUI.Enabled {
+		guiHandler := gui.NewHandler(logger)
+		configAPI := gui.NewConfigAPI(cfg, "", logger)
+
+		// Serve GUI static files
+		guiPath := cfg.GUI.Path
+		if !strings.HasSuffix(guiPath, "/") {
+			guiPath += "/"
+		}
+
+		mux.HandleFunc(guiPath, func(w http.ResponseWriter, r *http.Request) {
+			// Remove the GUI path prefix and serve
+			r.URL.Path = strings.TrimPrefix(r.URL.Path, strings.TrimSuffix(guiPath, "/"))
+			if r.URL.Path == "" {
+				r.URL.Path = "/"
+			}
+			guiHandler.ServeGUI(w, r)
+		})
+
+		// Config API endpoints
+		mux.HandleFunc("/api/config", configAPI.GetConfig)
+		mux.HandleFunc("/api/config/save", configAPI.SaveConfig)
+		mux.HandleFunc("/api/config/reload", configAPI.ReloadConfig)
+
+		logger.Info("GUI enabled", "path", cfg.GUI.Path)
+	}
+
+	// Root route
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
 		w.Write([]byte("Country ISO Matcher API. Use /api/convert?country=YourCountryName"))
 	})
 
 	// Apply middleware (order matters!)
-	var handler http.Handler = mux
-	handler = middleware.CORS(handler)
-	handler = middleware.PrometheusMetrics(handler) // Add Prometheus metrics
-	handler = middleware.Logging(logger)(handler)
-	handler = middleware.Recovery(logger)(handler)
+	var httpHandler http.Handler = mux
+	httpHandler = middleware.CORS(httpHandler)
+	httpHandler = middleware.PrometheusMetrics(httpHandler) // Add Prometheus metrics
+	httpHandler = middleware.Logging(logger)(httpHandler)
+	httpHandler = middleware.Recovery(logger)(httpHandler)
 
+	addr := cfg.Server.Host + ":" + cfg.Server.Port
 	server := &http.Server{
-		Addr:         ":" + cfg.Port,
-		Handler:      handler,
-		ReadTimeout:  time.Duration(cfg.ReadTimeout) * time.Second,
-		WriteTimeout: time.Duration(cfg.WriteTimeout) * time.Second,
+		Addr:         addr,
+		Handler:      httpHandler,
+		ReadTimeout:  time.Duration(cfg.Server.ReadTimeout) * time.Second,
+		WriteTimeout: time.Duration(cfg.Server.WriteTimeout) * time.Second,
 	}
 
 	// Set build info

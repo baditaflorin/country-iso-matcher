@@ -1,0 +1,41 @@
+# Country ISO Matcher - Configuration Example
+# Copy this file to config.yaml and customize for your environment
+
+server:
+  port: "3030"
+  host: "0.0.0.0"
+  environment: "development"  # development, staging, production, test
+  read_timeout: 10            # seconds
+  write_timeout: 10           # seconds
+
+database:
+  enabled: false              # Set to true to use database instead of files
+  type: "postgres"            # postgres, mysql, sqlite
+  host: "localhost"
+  port: 5432
+  database: "countries"
+  username: "postgres"
+  password: "your_password_here"
+  ssl_mode: "disable"         # disable, require, verify-ca, verify-full
+
+  # Configurable schema - customize table and column names
+  schema:
+    countries_table: "countries"
+    aliases_table: "country_aliases"
+    code_column: "code"
+    name_column: "name"
+    alias_code_column: "country_code"
+    alias_name_column: "alias"
+
+data:
+  source: "csv"               # memory, csv, tsv, database
+  countries_file: "data/countries.csv"
+  aliases_file: "data/aliases.csv"
+
+logging:
+  level: "info"               # debug, info, warn, error
+  format: "json"              # json, text
+
+gui:
+  enabled: true
+  path: "/admin"              # URL path for configuration GUI
