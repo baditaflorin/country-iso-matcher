@@ -18,16 +18,34 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /server ./src/cmd/server
 
 # ---- Final Stage ----
-FROM scratch
+FROM alpine:latest
 
-# Copy CA certificates from builder
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+# Install ca-certificates for HTTPS
+RUN apk --no-cache add ca-certificates
 
-# Copy static binary from builder
-COPY --from=builder /server /server
+WORKDIR /app
+
+# Copy binary from builder
+COPY --from=builder /server /app/server
+
+# Copy data files (CSV/TSV)
+COPY --from=builder /app/data /app/data
+
+# Copy web GUI files
+COPY --from=builder /app/web /app/web
+
+# Copy example configuration
+COPY --from=builder /app/configs /app/configs
 
 # Expose service port
 EXPOSE 3030
 
+# Set environment variables for default CSV data source
+ENV DATA_SOURCE=csv
+ENV DATA_COUNTRIES_FILE=data/countries.csv
+ENV DATA_ALIASES_FILE=data/aliases.csv
+ENV GUI_ENABLED=true
+ENV GUI_PATH=/admin
+
 # Run app
-ENTRYPOINT ["/server"]
+ENTRYPOINT ["/app/server"]

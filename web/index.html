@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country ISO Matcher - Configuration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Country ISO Matcher</h1>
+            <p>Configuration Management</p>
+        </header>
+
+        <div class="content">
+            <div class="section">
+                <h2>Server Configuration</h2>
+                <div class="form-group">
+                    <label for="server-port">Port</label>
+                    <input type="text" id="server-port" placeholder="3030">
+                </div>
+                <div class="form-group">
+                    <label for="server-host">Host</label>
+                    <input type="text" id="server-host" placeholder="0.0.0.0">
+                </div>
+                <div class="form-group">
+                    <label for="server-environment">Environment</label>
+                    <select id="server-environment">
+                        <option value="development">Development</option>
+                        <option value="staging">Staging</option>
+                        <option value="production">Production</option>
+                        <option value="test">Test</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="server-read-timeout">Read Timeout (seconds)</label>
+                        <input type="number" id="server-read-timeout" placeholder="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="server-write-timeout">Write Timeout (seconds)</label>
+                        <input type="number" id="server-write-timeout" placeholder="10">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Data Source Configuration</h2>
+                <div class="form-group">
+                    <label for="data-source">Data Source</label>
+                    <select id="data-source" onchange="toggleDataSourceFields()">
+                        <option value="csv">CSV Files</option>
+                        <option value="tsv">TSV Files</option>
+                        <option value="memory">Memory (Hardcoded)</option>
+                        <option value="database">Database</option>
+                    </select>
+                </div>
+                <div id="file-fields">
+                    <div class="form-group">
+                        <label for="countries-file">Countries File</label>
+                        <input type="text" id="countries-file" placeholder="data/countries.csv">
+                    </div>
+                    <div class="form-group">
+                        <label for="aliases-file">Aliases File</label>
+                        <input type="text" id="aliases-file" placeholder="data/aliases.csv">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="database-section" style="display: none;">
+                <h2>Database Configuration</h2>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="db-enabled">
+                        Enable Database
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="db-type">Database Type</label>
+                    <select id="db-type">
+                        <option value="postgres">PostgreSQL</option>
+                        <option value="mysql">MySQL</option>
+                        <option value="sqlite">SQLite</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="db-host">Host</label>
+                        <input type="text" id="db-host" placeholder="localhost">
+                    </div>
+                    <div class="form-group">
+                        <label for="db-port">Port</label>
+                        <input type="number" id="db-port" placeholder="5432">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="db-name">Database Name</label>
+                        <input type="text" id="db-name" placeholder="countries">
+                    </div>
+                    <div class="form-group">
+                        <label for="db-ssl-mode">SSL Mode</label>
+                        <select id="db-ssl-mode">
+                            <option value="disable">Disable</option>
+                            <option value="require">Require</option>
+                            <option value="verify-ca">Verify CA</option>
+                            <option value="verify-full">Verify Full</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="db-username">Username</label>
+                        <input type="text" id="db-username" placeholder="postgres">
+                    </div>
+                    <div class="form-group">
+                        <label for="db-password">Password</label>
+                        <input type="password" id="db-password" placeholder="****">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Logging Configuration</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="log-level">Log Level</label>
+                        <select id="log-level">
+                            <option value="debug">Debug</option>
+                            <option value="info">Info</option>
+                            <option value="warn">Warn</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="log-format">Log Format</label>
+                        <select id="log-format">
+                            <option value="json">JSON</option>
+                            <option value="text">Text</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>GUI Configuration</h2>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="gui-enabled" checked>
+                        Enable GUI
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="gui-path">GUI Path</label>
+                    <input type="text" id="gui-path" placeholder="/admin">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="saveConfig()">💾 Save Configuration</button>
+                <button class="btn btn-secondary" onclick="loadConfig()">📂 Load from Server</button>
+                <button class="btn btn-secondary" onclick="downloadConfig()">⬇️ Download YAML</button>
+                <button class="btn btn-warning" onclick="resetConfig()">🔄 Reset to Defaults</button>
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <div class="section">
+                <h2>Generated YAML Configuration</h2>
+                <pre id="yaml-output"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
