@@ -80,10 +80,12 @@ func (api *ConfigAPI) SaveConfig(w http.ResponseWriter, r *http.Request) {
 	api.config = &newConfig
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{
+	if err := json.NewEncoder(w).Encode(map[string]string{
 		"message": "Configuration saved successfully",
 		"path":    savePath,
-	})
+	}); err != nil {
+		api.logger.Error("Failed to encode response", "error", err)
+	}
 }
 
 // ReloadConfig reloads the configuration from file
@@ -116,7 +118,9 @@ func (api *ConfigAPI) ReloadConfig(w http.ResponseWriter, r *http.Request) {
 	api.logger.Info("Configuration reloaded", "path", api.configPath)
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{
+	if err := json.NewEncoder(w).Encode(map[string]string{
 		"message": "Configuration reloaded successfully",
-	})
+	}); err != nil {
+		api.logger.Error("Failed to encode response", "error", err)
+	}
 }

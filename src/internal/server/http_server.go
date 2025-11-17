@@ -67,7 +67,9 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 			http.NotFound(w, r)
 			return
 		}
-		w.Write([]byte("Country ISO Matcher API. Use /api/convert?country=YourCountryName"))
+		if _, err := w.Write([]byte("Country ISO Matcher API. Use /api/convert?country=YourCountryName")); err != nil {
+			logger.Error("Failed to write response", "error", err)
+		}
 	})
 
 	// Apply middleware (order matters!)

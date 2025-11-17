@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 	"net/url"
 	"os"
@@ -66,7 +67,9 @@ func main() {
 		defer writerWg.Done()
 		writer := bufio.NewWriter(out)
 		for result := range results {
-			writer.WriteString(result + "\n")
+			if _, err := writer.WriteString(result + "\n"); err != nil {
+				slog.Error("Failed to write result", "error", err)
+			}
 		}
 		writer.Flush() // Flush any remaining buffered data at the very end.
 	}()
