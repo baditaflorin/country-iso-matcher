@@ -68,8 +68,12 @@ func (l *CSVLoader) LoadCountries() ([]domain.Country, error) {
 		}
 
 		countries = append(countries, domain.Country{
-			Code: code,
-			Name: name,
+			ISO2: code,
+			ISO3: code, // Fallback: use ISO2 if ISO3 not available
+			Names: map[string]string{
+				"en": name,
+			},
+			Aliases: []string{},
 		})
 	}
 

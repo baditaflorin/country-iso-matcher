@@ -1,0 +1,26 @@
+{
+  "iso2": "IN",
+  "iso3": "IND",
+  "names": {
+    "en": "India",
+    "es": "India",
+    "fr": "Inde",
+    "de": "Indien",
+    "zh": "印度",
+    "ja": "インド",
+    "ar": "الهند",
+    "ru": "Индия",
+    "pt": "Índia",
+    "it": "India",
+    "hi": "भारत"
+  },
+  "aliases": [
+    "india",
+    "bharat",
+    "hindustan",
+    "indea",
+    "inida",
+    "inde",
+    "indien"
+  ]
+}

@@ -63,14 +63,23 @@ func (r *countryRepository) loadCountries(loader data.Loader) error {
 		return fmt.Errorf("failed to load aliases: %w", err)
 	}
 
-	// Build country code map
+	// Build country code map and add all names to lookup
 	for i := range countries {
 		country := &countries[i]
-		r.codeToCountry[country.Code] = country
 
-		// Add official name to lookup map
-		normalized := r.normalizer.Normalize(country.Name)
-		r.nameToCode[normalized] = country.Code
+		// Store by both ISO2 and ISO3 codes
+		r.codeToCountry[country.ISO2] = country
+		r.codeToCountry[country.ISO3] = country
+
+		// Add all multilingual names to lookup map
+		for _, name := range country.Names {
+			normalized := r.normalizer.Normalize(name)
+			r.nameToCode[normalized] = country.ISO2
+		}
+
+		// Add ISO codes themselves as lookup keys
+		r.nameToCode[r.normalizer.Normalize(country.ISO2)] = country.ISO2
+		r.nameToCode[r.normalizer.Normalize(country.ISO3)] = country.ISO2
 	}
 
 	// Build alias lookup map

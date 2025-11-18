@@ -1,0 +1,28 @@
+{
+  "iso2": "ES",
+  "iso3": "ESP",
+  "names": {
+    "en": "Spain",
+    "es": "España",
+    "fr": "Espagne",
+    "de": "Spanien",
+    "zh": "西班牙",
+    "ja": "スペイン",
+    "ar": "إسبانيا",
+    "ru": "Испания",
+    "pt": "Espanha",
+    "it": "Spagna",
+    "ca": "Espanya"
+  },
+  "aliases": [
+    "spain",
+    "españa",
+    "espagne",
+    "spanien",
+    "spagna",
+    "espanya",
+    "espania",
+    "spane",
+    "spian"
+  ]
+}

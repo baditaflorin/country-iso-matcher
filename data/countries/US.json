@@ -1,0 +1,36 @@
+{
+  "iso2": "US",
+  "iso3": "USA",
+  "names": {
+    "en": "United States of America",
+    "es": "Estados Unidos de América",
+    "fr": "États-Unis d'Amérique",
+    "de": "Vereinigte Staaten von Amerika",
+    "zh": "美国",
+    "ja": "アメリカ合衆国",
+    "ar": "الولايات المتحدة الأمريكية",
+    "ru": "Соединённые Штаты Америки",
+    "pt": "Estados Unidos da América",
+    "it": "Stati Uniti d'America"
+  },
+  "aliases": [
+    "usa",
+    "united states",
+    "america",
+    "états-unis",
+    "vereinigte staaten",
+    "'merica",
+    "murica",
+    "united statas",
+    "united stetes",
+    "united staes",
+    "united stets",
+    "united staates",
+    "untied states",
+    "estados unidos",
+    "amérique",
+    "us",
+    "u.s.a.",
+    "u.s."
+  ]
+}

@@ -57,7 +57,7 @@ func (s *countryService) LookupCountry(query string) (*domain.CountryResponse, e
 	metrics.CountryLookupsTotal.WithLabelValues("success").Inc()
 
 	// Track popular countries for successful lookups
-	metrics.PopularCountries.WithLabelValues(country.Code, country.Name).Inc()
+	metrics.PopularCountries.WithLabelValues(country.ISO2, country.GetOfficialName()).Inc()
 
-	return domain.NewCountryResponse(query, country.Name, country.Code), nil
+	return domain.NewCountryResponse(query, country), nil
 }

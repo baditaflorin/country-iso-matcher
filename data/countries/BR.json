@@ -1,0 +1,23 @@
+{
+  "iso2": "BR",
+  "iso3": "BRA",
+  "names": {
+    "en": "Brazil",
+    "es": "Brasil",
+    "fr": "Brésil",
+    "de": "Brasilien",
+    "zh": "巴西",
+    "ja": "ブラジル",
+    "ar": "البرازيل",
+    "ru": "Бразилия",
+    "pt": "Brasil",
+    "it": "Brasile"
+  },
+  "aliases": [
+    "brasil",
+    "brazil",
+    "brasilz",
+    "braszil",
+    "brazyl"
+  ]
+}
