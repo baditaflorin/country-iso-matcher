@@ -1,0 +1,29 @@
+{
+  "iso2": "CN",
+  "iso3": "CHN",
+  "names": {
+    "en": "China",
+    "es": "China",
+    "fr": "Chine",
+    "de": "China",
+    "zh": "中国",
+    "ja": "中国",
+    "ar": "الصين",
+    "ru": "Китай",
+    "pt": "China",
+    "it": "Cina"
+  },
+  "aliases": [
+    "china",
+    "chine",
+    "chaina",
+    "chyna",
+    "chinia",
+    "chinna",
+    "chinah",
+    "mainland china",
+    "prc",
+    "people's republic of china",
+    "zhongguo"
+  ]
+}

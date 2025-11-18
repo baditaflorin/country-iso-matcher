@@ -111,6 +111,7 @@ func validateDatabase(cfg *DatabaseConfig) error {
 
 func validateDataSource(cfg *DataConfig, dbEnabled bool) error {
 	validSources := map[string]bool{
+		"json":     true,
 		"memory":   true,
 		"csv":      true,
 		"tsv":      true,
@@ -118,12 +119,26 @@ func validateDataSource(cfg *DataConfig, dbEnabled bool) error {
 	}
 
 	if !validSources[cfg.Source] {
-		return fmt.Errorf("invalid data source: %s (must be memory, csv, tsv, or database)", cfg.Source)
+		return fmt.Errorf("invalid data source: %s (must be json, memory, csv, tsv, or database)", cfg.Source)
 	}
 
 	// If source is database, database must be enabled
 	if cfg.Source == "database" && !dbEnabled {
 		return fmt.Errorf("data source is 'database' but database is not enabled")
+	}
+
+	// Validate directory path for json source
+	if cfg.Source == "json" {
+		if cfg.CountriesDir == "" {
+			return fmt.Errorf("countries_dir cannot be empty for json source")
+		}
+
+		// Check if directory exists (warning, not error)
+		if info, err := os.Stat(cfg.CountriesDir); os.IsNotExist(err) {
+			// This is just a warning - directory might be created later
+		} else if err == nil && !info.IsDir() {
+			return fmt.Errorf("countries_dir must be a directory, not a file")
+		}
 	}
 
 	// Validate file paths for csv/tsv sources

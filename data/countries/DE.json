@@ -1,0 +1,26 @@
+{
+  "iso2": "DE",
+  "iso3": "DEU",
+  "names": {
+    "en": "Germany",
+    "es": "Alemania",
+    "fr": "Allemagne",
+    "de": "Deutschland",
+    "zh": "德国",
+    "ja": "ドイツ",
+    "ar": "ألمانيا",
+    "ru": "Германия",
+    "pt": "Alemanha",
+    "it": "Germania"
+  },
+  "aliases": [
+    "germany",
+    "deutschland",
+    "allemagne",
+    "germania",
+    "alemania",
+    "deutchland",
+    "deutchlnd",
+    "deutcheland"
+  ]
+}

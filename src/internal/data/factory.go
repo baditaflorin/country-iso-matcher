@@ -12,6 +12,12 @@ func NewLoader(cfg *config.DataConfig) (Loader, error) {
 	case "memory":
 		return NewMemoryLoader(), nil
 
+	case "json":
+		if cfg.CountriesDir == "" {
+			return nil, fmt.Errorf("countries_dir must be specified for JSON source")
+		}
+		return NewJSONLoader(cfg.CountriesDir), nil
+
 	case "csv":
 		if cfg.CountriesFile == "" || cfg.AliasesFile == "" {
 			return nil, fmt.Errorf("countries_file and aliases_file must be specified for CSV source")
@@ -28,6 +34,6 @@ func NewLoader(cfg *config.DataConfig) (Loader, error) {
 		return nil, fmt.Errorf("database loader not yet implemented - will be available with database repository")
 
 	default:
-		return nil, fmt.Errorf("unknown data source: %s (must be memory, csv, tsv, or database)", cfg.Source)
+		return nil, fmt.Errorf("unknown data source: %s (must be json, memory, csv, tsv, or database)", cfg.Source)
 	}
 }

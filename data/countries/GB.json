@@ -1,0 +1,31 @@
+{
+  "iso2": "GB",
+  "iso3": "GBR",
+  "names": {
+    "en": "United Kingdom of Great Britain and Northern Ireland",
+    "es": "Reino Unido de Gran Bretaña e Irlanda del Norte",
+    "fr": "Royaume-Uni de Grande-Bretagne et d'Irlande du Nord",
+    "de": "Vereinigtes Königreich Großbritannien und Nordirland",
+    "zh": "大不列颠及北爱尔兰联合王国",
+    "ja": "グレートブリテン及び北アイルランド連合王国",
+    "ar": "المملكة المتحدة لبريطانيا العظمى وأيرلندا الشمالية",
+    "ru": "Соединённое Королевство Великобритании и Северной Ирландии",
+    "pt": "Reino Unido da Grã-Bretanha e Irlanda do Norte",
+    "it": "Regno Unito di Gran Bretagna e Irlanda del Nord"
+  },
+  "aliases": [
+    "uk",
+    "united kingdom",
+    "britain",
+    "england",
+    "royaume-uni",
+    "vereinigtes königreich",
+    "great britain",
+    "u.k.",
+    "northern ireland",
+    "scotland",
+    "wales",
+    "écosse",
+    "angleterre"
+  ]
+}

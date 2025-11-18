@@ -1,0 +1,25 @@
+{
+  "iso2": "JP",
+  "iso3": "JPN",
+  "names": {
+    "en": "Japan",
+    "es": "Japón",
+    "fr": "Japon",
+    "de": "Japan",
+    "zh": "日本",
+    "ja": "日本",
+    "ar": "اليابان",
+    "ru": "Япония",
+    "pt": "Japão",
+    "it": "Giappone",
+    "ko": "일본"
+  },
+  "aliases": [
+    "japan",
+    "nippon",
+    "nihon",
+    "japon",
+    "jappan",
+    "japn"
+  ]
+}

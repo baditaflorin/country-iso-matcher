@@ -1,0 +1,25 @@
+{
+  "iso2": "FR",
+  "iso3": "FRA",
+  "names": {
+    "en": "France",
+    "es": "Francia",
+    "fr": "France",
+    "de": "Frankreich",
+    "zh": "法国",
+    "ja": "フランス",
+    "ar": "فرنسا",
+    "ru": "Франция",
+    "pt": "França",
+    "it": "Francia"
+  },
+  "aliases": [
+    "france",
+    "frankreich",
+    "francia",
+    "francais",
+    "franse",
+    "franc",
+    "francz"
+  ]
+}

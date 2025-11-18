@@ -45,7 +45,8 @@ type SchemaConfig struct {
 
 // DataConfig specifies the data source configuration
 type DataConfig struct {
-	Source        string `yaml:"source" json:"source"` // memory, csv, tsv, database
+	Source        string `yaml:"source" json:"source"` // json, memory, csv, tsv, database
+	CountriesDir  string `yaml:"countries_dir" json:"countries_dir"` // for JSON source
 	CountriesFile string `yaml:"countries_file" json:"countries_file"`
 	AliasesFile   string `yaml:"aliases_file" json:"aliases_file"`
 }
@@ -91,7 +92,8 @@ func DefaultConfig() *Config {
 			},
 		},
 		Data: DataConfig{
-			Source:        "csv",
+			Source:        "json",
+			CountriesDir:  "data/countries",
 			CountriesFile: "data/countries.csv",
 			AliasesFile:   "data/aliases.csv",
 		},

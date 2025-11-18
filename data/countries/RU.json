@@ -1,0 +1,32 @@
+{
+  "iso2": "RU",
+  "iso3": "RUS",
+  "names": {
+    "en": "Russian Federation",
+    "es": "Federación de Rusia",
+    "fr": "Fédération de Russie",
+    "de": "Russische Föderation",
+    "zh": "俄罗斯联邦",
+    "ja": "ロシア連邦",
+    "ar": "الاتحاد الروسي",
+    "ru": "Российская Федерация",
+    "pt": "Federação Russa",
+    "it": "Federazione Russa"
+  },
+  "aliases": [
+    "russia",
+    "russie",
+    "russland",
+    "russian federation",
+    "rossiya",
+    "rossia",
+    "rusia",
+    "rusija",
+    "russa",
+    "russha",
+    "soviet union",
+    "ussr",
+    "union of soviet socialist republics",
+    "sovjet"
+  ]
+}
