@@ -16,6 +16,7 @@ import (
 	"country-iso-matcher/src/internal/handler"
 	"country-iso-matcher/src/internal/handler/middleware"
 	"country-iso-matcher/src/internal/metrics"
+	"country-iso-matcher/src/internal/service"
 )
 
 type httpServer struct {
@@ -24,7 +25,7 @@ type httpServer struct {
 	logger  *slog.Logger
 }
 
-func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, logger *slog.Logger) Server {
+func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, countryService service.CountryService, logger *slog.Logger) Server {
 	mux := http.NewServeMux()
 
 	// API Routes
@@ -37,6 +38,8 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 	if cfg.GUI.Enabled {
 		guiHandler := gui.NewHandler(logger)
 		configAPI := gui.NewConfigAPI(cfg, "", logger)
+		lookupAPI := gui.NewLookupAPI(countryService, logger)
+		statsAPI := gui.NewStatsAPI(logger)
 
 		// Serve GUI static files
 		guiPath := cfg.GUI.Path
@@ -57,6 +60,10 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, lo
 		mux.HandleFunc("/api/config", configAPI.GetConfig)
 		mux.HandleFunc("/api/config/save", configAPI.SaveConfig)
 		mux.HandleFunc("/api/config/reload", configAPI.ReloadConfig)
+
+		// Lookup and Stats API endpoints for GUI
+		mux.HandleFunc("/api/gui/lookup", lookupAPI.LookupCountry)
+		mux.HandleFunc("/api/gui/stats", statsAPI.GetStats)
 
 		logger.Info("GUI enabled", "path", cfg.GUI.Path)
 	}

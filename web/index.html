@@ -10,10 +10,28 @@
     <div class="container">
         <header>
             <h1>🌍 Country ISO Matcher</h1>
-            <p>Configuration Management</p>
+            <p>Configuration Management & Testing</p>
         </header>
 
         <div class="content">
+            <!-- Country Lookup Testing Section -->
+            <div class="section lookup-section">
+                <h2>🔍 Test Country Lookup</h2>
+                <div class="form-group">
+                    <label for="country-input">Enter Country Name</label>
+                    <input type="text" id="country-input" placeholder="e.g., United States, UK, România">
+                </div>
+                <button class="btn btn-primary" onclick="testLookup()">🔍 Lookup Country</button>
+                <div id="lookup-result" class="result-box"></div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="section stats-section">
+                <h2>📊 Statistics</h2>
+                <button class="btn btn-secondary" onclick="loadStats()">🔄 Refresh Stats</button>
+                <div id="stats-result" class="stats-box"></div>
+            </div>
+
             <div class="section">
                 <h2>Server Configuration</h2>
                 <div class="form-group">

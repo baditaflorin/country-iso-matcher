@@ -190,27 +190,195 @@ document.querySelectorAll('input, select').forEach(element => {
     element.addEventListener('change', updateYAMLOutput);
 });
 
-// Save configuration
-function saveConfig() {
-    const config = getCurrentConfig();
-    const yaml = configToYAML(config);
+// Test country lookup
+async function testLookup() {
+    const countryInput = document.getElementById('country-input').value.trim();
+    const resultDiv = document.getElementById('lookup-result');
 
-    // In a real implementation, this would send to the server
-    // For now, we'll just show a success message and offer download
-    showMessage('Configuration ready! Click "Download YAML" to save to file.', 'success');
-    console.log('Configuration to save:', config);
+    if (!countryInput) {
+        resultDiv.innerHTML = '<div class="error">Please enter a country name</div>';
+        return;
+    }
+
+    resultDiv.innerHTML = '<div class="loading">Looking up...</div>';
+
+    try {
+        const response = await fetch(`/api/gui/lookup?country=${encodeURIComponent(countryInput)}`);
+        const data = await response.json();
+
+        if (response.ok) {
+            resultDiv.innerHTML = `
+                <div class="success">
+                    <h3>✅ Match Found!</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Country Code:</strong></td>
+                            <td>${data.country_code}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Official Name:</strong></td>
+                            <td>${data.country_name}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Query:</strong></td>
+                            <td>${data.query}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="error">
+                    <h3>❌ ${data.error || 'Error'}</h3>
+                    <p>${data.message || 'Country not found'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        resultDiv.innerHTML = `
+            <div class="error">
+                <h3>❌ Request Failed</h3>
+                <p>${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+// Load statistics
+async function loadStats() {
+    const statsDiv = document.getElementById('stats-result');
+    statsDiv.innerHTML = '<div class="loading">Loading statistics...</div>';
+
+    try {
+        const response = await fetch('/api/gui/stats');
+        const data = await response.json();
+
+        if (response.ok) {
+            const successRate = (data.success_rate * 100).toFixed(2);
+            const failureRate = (data.failure_rate * 100).toFixed(2);
+
+            let popularCountriesHTML = '';
+            if (data.popular_countries && data.popular_countries.length > 0) {
+                popularCountriesHTML = `
+                    <h3>🏆 Most Popular Countries</h3>
+                    <table>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Count</th>
+                        </tr>
+                        ${data.popular_countries.map((country, index) => `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${country.code}</td>
+                                <td>${country.name}</td>
+                                <td>${country.count}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                `;
+            }
+
+            statsDiv.innerHTML = `
+                <div class="stats-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">${data.total_requests}</div>
+                            <div class="stat-label">Total Requests</div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-value">${data.success_count}</div>
+                            <div class="stat-label">Successful</div>
+                        </div>
+                        <div class="stat-card error">
+                            <div class="stat-value">${data.not_found_count}</div>
+                            <div class="stat-label">Not Found</div>
+                        </div>
+                        <div class="stat-card error">
+                            <div class="stat-value">${data.error_count}</div>
+                            <div class="stat-label">Errors</div>
+                        </div>
+                    </div>
+                    <div class="stats-rates">
+                        <div class="rate-bar">
+                            <div class="rate-label">Success Rate: ${successRate}%</div>
+                            <div class="rate-progress">
+                                <div class="rate-fill success" style="width: ${successRate}%"></div>
+                            </div>
+                        </div>
+                        <div class="rate-bar">
+                            <div class="rate-label">Failure Rate: ${failureRate}%</div>
+                            <div class="rate-progress">
+                                <div class="rate-fill error" style="width: ${failureRate}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    ${popularCountriesHTML}
+                </div>
+            `;
+        } else {
+            statsDiv.innerHTML = `
+                <div class="error">
+                    <h3>❌ Failed to Load Statistics</h3>
+                    <p>${data.message || 'Unknown error'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        statsDiv.innerHTML = `
+            <div class="error">
+                <h3>❌ Request Failed</h3>
+                <p>${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+// Save configuration
+async function saveConfig() {
+    const config = getCurrentConfig();
+
+    try {
+        const response = await fetch('/api/config/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(config)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showMessage('Configuration saved successfully!', 'success');
+        } else {
+            showMessage('Failed to save: ' + (data.message || 'Unknown error'), 'error');
+        }
+    } catch (error) {
+        showMessage('Failed to save configuration: ' + error.message, 'error');
+    }
 }
 
 // Load configuration from server
 async function loadConfig() {
     try {
-        // In a real implementation, this would fetch from the server
-        // For now, we'll use the default config
-        showMessage('Loading default configuration...', 'success');
-        loadConfigIntoForm(defaultConfig);
-        updateYAMLOutput();
+        const response = await fetch('/api/config');
+
+        if (response.ok) {
+            const config = await response.json();
+            loadConfigIntoForm(config);
+            updateYAMLOutput();
+            showMessage('Configuration loaded from server', 'success');
+        } else {
+            showMessage('Failed to load configuration from server', 'error');
+            loadConfigIntoForm(defaultConfig);
+            updateYAMLOutput();
+        }
     } catch (error) {
         showMessage('Failed to load configuration: ' + error.message, 'error');
+        loadConfigIntoForm(defaultConfig);
+        updateYAMLOutput();
     }
 }
 
