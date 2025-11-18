@@ -58,5 +58,5 @@ func (f *ApplicationFactory) CreateHTTPServer() (server.Server, error) {
 	countryHandler := handler.NewCountryHandler(countryService, f.logger)
 
 	// Create and return HTTP server
-	return server.NewHTTPServer(f.config, countryHandler, f.logger), nil
+	return server.NewHTTPServer(f.config, countryHandler, countryService, f.logger), nil
 }
