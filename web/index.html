@@ -25,6 +25,23 @@
                 <div id="lookup-result" class="result-box"></div>
             </div>
 
+            <!-- Bulk Processing Section -->
+            <div class="section bulk-section">
+                <h2>📁 Bulk Country Lookup (CSV/TSV)</h2>
+                <p>Upload a CSV or TSV file with country names to process in bulk. The file should have a header row with a column named "country" or "country_name".</p>
+                <div class="form-group">
+                    <label for="file-input">Select File (CSV/TSV)</label>
+                    <input type="file" id="file-input" accept=".csv,.tsv,.txt" onchange="handleFileSelect()">
+                </div>
+                <div class="form-group">
+                    <label for="column-name">Column Name (containing country names)</label>
+                    <input type="text" id="column-name" placeholder="country" value="country">
+                </div>
+                <button class="btn btn-primary" onclick="processBulk()" id="process-btn" disabled>🚀 Process Bulk Lookup</button>
+                <button class="btn btn-secondary" onclick="downloadResults()" id="download-btn" disabled style="display: none;">⬇️ Download Results</button>
+                <div id="bulk-result" class="result-box"></div>
+            </div>
+
             <!-- Statistics Section -->
             <div class="section stats-section">
                 <h2>📊 Statistics</h2>

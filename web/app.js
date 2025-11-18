@@ -213,11 +213,11 @@ async function testLookup() {
                     <table>
                         <tr>
                             <td><strong>Country Code:</strong></td>
-                            <td>${data.country_code}</td>
+                            <td>${data.isoCode}</td>
                         </tr>
                         <tr>
                             <td><strong>Official Name:</strong></td>
-                            <td>${data.country_name}</td>
+                            <td>${data.officialName}</td>
                         </tr>
                         <tr>
                             <td><strong>Query:</strong></td>
@@ -414,4 +414,242 @@ function showMessage(text, type) {
     setTimeout(() => {
         messageEl.className = 'message';
     }, 5000);
+}
+
+// Bulk processing variables
+let uploadedFile = null;
+let bulkResults = [];
+
+// Handle file selection
+function handleFileSelect() {
+    const fileInput = document.getElementById('file-input');
+    const processBtn = document.getElementById('process-btn');
+
+    if (fileInput.files.length > 0) {
+        uploadedFile = fileInput.files[0];
+        processBtn.disabled = false;
+
+        const resultDiv = document.getElementById('bulk-result');
+        resultDiv.innerHTML = `<div class="info">File selected: ${uploadedFile.name} (${(uploadedFile.size / 1024).toFixed(2)} KB)</div>`;
+    } else {
+        uploadedFile = null;
+        processBtn.disabled = true;
+    }
+}
+
+// Parse CSV/TSV content
+function parseFile(content, delimiter) {
+    const lines = content.trim().split('\n');
+    if (lines.length === 0) {
+        return { headers: [], rows: [] };
+    }
+
+    const headers = lines[0].split(delimiter).map(h => h.trim().replace(/^["']|["']$/g, ''));
+    const rows = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim() === '') continue;
+
+        const values = lines[i].split(delimiter).map(v => v.trim().replace(/^["']|["']$/g, ''));
+        const row = {};
+        headers.forEach((header, index) => {
+            row[header] = values[index] || '';
+        });
+        rows.push(row);
+    }
+
+    return { headers, rows };
+}
+
+// Process bulk lookup
+async function processBulk() {
+    if (!uploadedFile) {
+        return;
+    }
+
+    const resultDiv = document.getElementById('bulk-result');
+    const processBtn = document.getElementById('process-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const columnName = document.getElementById('column-name').value.trim();
+
+    processBtn.disabled = true;
+    downloadBtn.style.display = 'none';
+    resultDiv.innerHTML = '<div class="loading">Reading file...</div>';
+
+    try {
+        const content = await uploadedFile.text();
+        const delimiter = uploadedFile.name.endsWith('.tsv') ? '\t' : ',';
+        const { headers, rows } = parseFile(content, delimiter);
+
+        if (rows.length === 0) {
+            resultDiv.innerHTML = '<div class="error">No data found in file</div>';
+            processBtn.disabled = false;
+            return;
+        }
+
+        // Find the column index
+        let countryColumn = columnName;
+        if (!headers.includes(countryColumn)) {
+            // Try common alternatives
+            const alternatives = ['country', 'country_name', 'name', 'Country', 'Country Name'];
+            countryColumn = alternatives.find(alt => headers.includes(alt));
+
+            if (!countryColumn) {
+                resultDiv.innerHTML = `<div class="error">Column "${columnName}" not found. Available columns: ${headers.join(', ')}</div>`;
+                processBtn.disabled = false;
+                return;
+            }
+        }
+
+        resultDiv.innerHTML = `<div class="loading">Processing ${rows.length} countries...</div>`;
+
+        // Process lookups
+        bulkResults = [];
+        let processed = 0;
+
+        for (const row of rows) {
+            const countryName = row[countryColumn];
+            if (!countryName || countryName.trim() === '') {
+                bulkResults.push({
+                    query: '',
+                    isoCode: '',
+                    officialName: '',
+                    status: 'skipped',
+                    error: 'Empty country name'
+                });
+                continue;
+            }
+
+            try {
+                const response = await fetch(`/api/gui/lookup?country=${encodeURIComponent(countryName)}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    bulkResults.push({
+                        query: data.query,
+                        isoCode: data.isoCode,
+                        officialName: data.officialName,
+                        status: 'success'
+                    });
+                } else {
+                    bulkResults.push({
+                        query: countryName,
+                        isoCode: '',
+                        officialName: '',
+                        status: 'not_found',
+                        error: data.message || 'Not found'
+                    });
+                }
+            } catch (error) {
+                bulkResults.push({
+                    query: countryName,
+                    isoCode: '',
+                    officialName: '',
+                    status: 'error',
+                    error: error.message
+                });
+            }
+
+            processed++;
+            if (processed % 10 === 0) {
+                resultDiv.innerHTML = `<div class="loading">Processing ${processed}/${rows.length} countries...</div>`;
+            }
+        }
+
+        displayBulkResults();
+        processBtn.disabled = false;
+        downloadBtn.style.display = 'inline-block';
+        downloadBtn.disabled = false;
+
+    } catch (error) {
+        resultDiv.innerHTML = `<div class="error">Failed to process file: ${error.message}</div>`;
+        processBtn.disabled = false;
+    }
+}
+
+// Display bulk results
+function displayBulkResults() {
+    const resultDiv = document.getElementById('bulk-result');
+
+    const successCount = bulkResults.filter(r => r.status === 'success').length;
+    const notFoundCount = bulkResults.filter(r => r.status === 'not_found').length;
+    const errorCount = bulkResults.filter(r => r.status === 'error').length;
+    const skippedCount = bulkResults.filter(r => r.status === 'skipped').length;
+
+    let tableHTML = `
+        <div class="success">
+            <h3>✅ Bulk Processing Complete</h3>
+            <p>
+                Total: ${bulkResults.length} |
+                Success: ${successCount} |
+                Not Found: ${notFoundCount} |
+                Error: ${errorCount} |
+                Skipped: ${skippedCount}
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Query</th>
+                        <th>ISO Code</th>
+                        <th>Official Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    bulkResults.forEach((result, index) => {
+        const statusClass = result.status === 'success' ? 'success' : 'error';
+        const statusIcon = result.status === 'success' ? '✅' : '❌';
+        const displayStatus = result.status === 'success' ? 'Success' : (result.error || result.status);
+
+        tableHTML += `
+            <tr class="${statusClass}">
+                <td>${index + 1}</td>
+                <td>${result.query}</td>
+                <td>${result.isoCode || '-'}</td>
+                <td>${result.officialName || '-'}</td>
+                <td>${statusIcon} ${displayStatus}</td>
+            </tr>
+        `;
+    });
+
+    tableHTML += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    resultDiv.innerHTML = tableHTML;
+}
+
+// Download results as CSV
+function downloadResults() {
+    if (bulkResults.length === 0) {
+        return;
+    }
+
+    let csv = 'Query,ISO Code,Official Name,Status,Error\n';
+
+    bulkResults.forEach(result => {
+        const row = [
+            `"${result.query}"`,
+            `"${result.isoCode || ''}"`,
+            `"${result.officialName || ''}"`,
+            `"${result.status}"`,
+            `"${result.error || ''}"`
+        ];
+        csv += row.join(',') + '\n';
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bulk-lookup-results.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
