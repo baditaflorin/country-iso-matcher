@@ -9,6 +9,7 @@ import (
 
 	"country-iso-matcher/src/internal/domain"
 	"country-iso-matcher/src/internal/service"
+	"country-iso-matcher/src/internal/version"
 )
 
 type countryHandler struct {
@@ -39,12 +40,26 @@ func (h *countryHandler) ConvertCountry(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+// Health implements the fleet-canonical health probe shape:
+// {"status":"ok","service":"<id>","version":"<ver>"}.
 func (h *countryHandler) Health(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{
-		"status":  "healthy",
-		"service": "country-iso-matcher",
+		"status":  "ok",
+		"service": version.ServiceID,
+		"version": version.Version,
+	})
+}
+
+// Version implements the fleet-canonical version probe shape:
+// {"version":"<ver>"}. fleet-runner deploy's smoke gate compares this
+// against the version it just pushed.
+func (h *countryHandler) Version(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(map[string]string{
+		"version": version.Version,
 	})
 }
 

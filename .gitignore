@@ -30,3 +30,10 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Pre-built host binary (auto-named after the repo by `go build`).
+/country-iso-matcher
+/server
+*.exe
+bin/
+dist/

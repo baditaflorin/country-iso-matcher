@@ -1,87 +1,15 @@
-version: '3.8'
-
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: country-iso-matcher:latest
-    container_name: country-iso-matcher
-    restart: unless-stopped
+    image: ghcr.io/baditaflorin/country-iso-matcher:latest
+    container_name: country-iso-matcher-app-1
+    restart: always
     ports:
-      - "3030:3030"
+      - "18315:18315"
     environment:
-      # Server configuration
-      - SERVER_PORT=3030
-      - SERVER_HOST=0.0.0.0
-      - SERVER_ENVIRONMENT=production
-      - SERVER_READ_TIMEOUT=10
-      - SERVER_WRITE_TIMEOUT=10
-
-      # Data source (use CSV by default, change to 'database' to use PostgreSQL)
-      - DATA_SOURCE=csv
-      - DATA_COUNTRIES_FILE=data/countries.csv
-      - DATA_ALIASES_FILE=data/aliases.csv
-
-      # Database configuration (uncomment and set DATA_SOURCE=database to use)
-      # - DB_ENABLED=true
-      # - DB_TYPE=postgres
-      # - DB_HOST=postgres
-      # - DB_PORT=5432
-      # - DB_NAME=countries
-      # - DB_USER=postgres
-      # - DB_PASSWORD=postgres
-      # - DB_SSLMODE=disable
-
-      # Logging
-      - LOG_LEVEL=info
-      - LOG_FORMAT=json
-
-      # GUI
-      - GUI_ENABLED=true
-      - GUI_PATH=/admin
-    volumes:
-      # Mount data directory for easy updates
-      - ./data:/app/data
-      # Mount web directory for GUI development
-      - ./web:/app/web
-      # Optional: Mount config file
-      # - ./config.yaml:/app/config.yaml
-    healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3030/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
+      - PORT=18315
+      # The bundled /admin GUI also mounts /api/config (dumps the whole
+      # config, database password included) and /api/config/save (writes
+      # attacker-supplied config to disk). Keep it off on the fleet.
+      - GUI_ENABLED=false
     networks:
-      - country-iso-network
-
-  # PostgreSQL database (optional - uncomment to use)
-  # postgres:
-  #   image: postgres:15-alpine
-  #   container_name: country-iso-postgres
-  #   restart: unless-stopped
-  #   environment:
-  #     - POSTGRES_DB=countries
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-  #     # Optional: Initialize database with schema
-  #     # - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
-  #   networks:
-  #     - country-iso-network
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-
-networks:
-  country-iso-network:
-    driver: bridge
-
-# volumes:
-#   postgres_data:
+      - default

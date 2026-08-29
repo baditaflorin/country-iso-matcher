@@ -1,0 +1,48 @@
+id: country-iso-matcher
+name: Country Iso Matcher
+category: geo
+version: "0.1.0"
+port: 18315
+description: >-
+  Resolves a country name, native name, or common alias to its ISO 3166-1
+  alpha-2 code. Unicode-normalizing, accent- and case-insensitive matcher
+  over a curated corpus of 183 countries plus their multilingual aliases,
+  served entirely from memory. NOTE: iso3Code currently mirrors iso2Code
+  under the default CSV data source, which carries no alpha-3 column.
+owner:
+  name: "Florin"
+  contact: "baditaflorin@gmail.com"
+  github: "baditaflorin"
+api:
+  endpoint: /api/convert
+  method: GET
+  params:
+    - name: country
+      type: string
+      required: true
+      description: Country name, native name, or alias to resolve (e.g. "Germany", "Deutschland", "brd").
+health:
+  endpoint: /health
+  expected_status: 200
+test:
+  url: /api/convert?country=Germany
+  expected_status: 200
+deploy:
+  path: /opt/services/country-iso-matcher
+requires:
+  - docker
+build:
+  platform: linux/amd64
+  dockerfile: Dockerfile
+registry:
+  host: ghcr.io
+  org: baditaflorin
+  image: country-iso-matcher
+docker:
+  network: default
+  restart: unless-stopped
+  port: 18315
+server:
+  deploy_path: /opt/services/country-iso-matcher
+nginx:
+  subdomain: country-iso-matcher.0exec.com

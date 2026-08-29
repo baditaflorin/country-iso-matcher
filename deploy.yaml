@@ -1,0 +1,6 @@
+deploy:
+  path: /opt/services/country-iso-matcher
+server:
+  deploy_path: /opt/services/country-iso-matcher
+nginx:
+  subdomain: country-iso-matcher.0exec.com

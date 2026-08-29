@@ -21,7 +21,7 @@ func (m *mockRepository) FindByName(name string) (*domain.Country, error) {
 
 func (m *mockRepository) FindByCode(code string) (*domain.Country, error) {
 	for _, country := range m.countries {
-		if country.Code == code {
+		if country.ISO2 == code {
 			return country, nil
 		}
 	}
@@ -29,27 +29,28 @@ func (m *mockRepository) FindByCode(code string) (*domain.Country, error) {
 }
 
 func TestCountryService_LookupCountry(t *testing.T) {
-	// Setup
 	mockRepo := &mockRepository{
 		countries: map[string]*domain.Country{
-			"romania": {Code: "RO", Name: "Romania"},
-			"germany": {Code: "DE", Name: "Germany"},
+			"romania": {ISO2: "RO", ISO3: "ROU", Names: map[string]string{"en": "Romania"}},
+			"germany": {ISO2: "DE", ISO3: "DEU", Names: map[string]string{"en": "Germany"}},
 		},
 	}
 
-	service := service.NewCountryService(mockRepo)
+	svc := service.NewCountryService(mockRepo)
 
 	tests := []struct {
 		name          string
 		query         string
-		expectedCode  string
+		expectedISO2  string
+		expectedISO3  string
 		expectedName  string
 		expectedError bool
 	}{
 		{
 			name:         "valid country",
 			query:        "romania",
-			expectedCode: "RO",
+			expectedISO2: "RO",
+			expectedISO3: "ROU",
 			expectedName: "Romania",
 		},
 		{
@@ -71,7 +72,7 @@ func TestCountryService_LookupCountry(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result, err := service.LookupCountry(tt.query)
+			result, err := svc.LookupCountry(tt.query)
 
 			if tt.expectedError {
 				if err == nil {
@@ -85,8 +86,12 @@ func TestCountryService_LookupCountry(t *testing.T) {
 				return
 			}
 
-			if result.ISOCode != tt.expectedCode {
-				t.Errorf("expected ISO code %s, got %s", tt.expectedCode, result.ISOCode)
+			if result.ISO2Code != tt.expectedISO2 {
+				t.Errorf("expected ISO2 code %s, got %s", tt.expectedISO2, result.ISO2Code)
+			}
+
+			if result.ISO3Code != tt.expectedISO3 {
+				t.Errorf("expected ISO3 code %s, got %s", tt.expectedISO3, result.ISO3Code)
 			}
 
 			if result.OfficialName != tt.expectedName {

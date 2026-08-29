@@ -17,6 +17,7 @@ import (
 	"country-iso-matcher/src/internal/handler/middleware"
 	"country-iso-matcher/src/internal/metrics"
 	"country-iso-matcher/src/internal/service"
+	"country-iso-matcher/src/internal/version"
 )
 
 type httpServer struct {
@@ -31,6 +32,7 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, co
 	// API Routes
 	mux.HandleFunc("/api/convert", countryHandler.ConvertCountry)
 	mux.HandleFunc("/health", countryHandler.Health)
+	mux.HandleFunc("/version", countryHandler.Version)
 	mux.HandleFunc("/stats", countryHandler.GetStats)
 	mux.Handle("/metrics", promhttp.Handler()) // Prometheus metrics endpoint
 
@@ -93,7 +95,7 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, co
 	}
 
 	// Set build info
-	metrics.SetBuildInfo("1.0.0", runtime.Version(), runtime.GOOS, runtime.GOARCH)
+	metrics.SetBuildInfo(version.Version, runtime.Version(), runtime.GOOS, runtime.GOARCH)
 
 	// Start system metrics collection (only custom metrics, not conflicting ones)
 	metrics.StartSystemMetricsCollection()

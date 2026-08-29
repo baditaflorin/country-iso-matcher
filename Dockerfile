@@ -1,51 +1,36 @@
-# Dockerfile
-# ---- Builder Stage ----
-FROM golang:1.23-alpine AS builder
-
+# ---- Builder stage ----
+FROM golang:1.25-alpine AS builder
 WORKDIR /app
-
-# Install CA certificates for HTTPS requests
-RUN apk --no-cache add ca-certificates
-
-# Copy go.mod and go.sum first (to leverage Docker layer caching)
 COPY go.mod go.sum ./
 RUN go mod download
-
-# Copy the rest of the source code
 COPY . .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build -trimpath -ldflags="-s -w" -o /out/country-iso-matcher ./src/cmd/server
 
-# Build the Go application (note: using src/cmd/server path)
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /server ./src/cmd/server
-
-# ---- Final Stage ----
-FROM alpine:latest
-
-# Install ca-certificates for HTTPS
-RUN apk --no-cache add ca-certificates
-
+# ---- Final stage ----
+FROM alpine:3.20
+RUN apk add --no-cache ca-certificates wget tini \
+ && addgroup -S app && adduser -S -G app app
 WORKDIR /app
+COPY --from=builder /out/country-iso-matcher /app/country-iso-matcher
+COPY --from=builder /app/data     /app/data
+COPY --from=builder /app/configs  /app/configs
+COPY --from=builder /app/web      /app/web
+COPY --from=builder /app/service.yaml /app/service.yaml
+USER app
 
-# Copy binary from builder
-COPY --from=builder /server /app/server
+ENV PORT=18315 \
+    SERVER_HOST=0.0.0.0 \
+    SERVER_ENVIRONMENT=production \
+    DATA_SOURCE=csv \
+    DATA_COUNTRIES_FILE=data/countries.csv \
+    DATA_ALIASES_FILE=data/aliases.csv \
+    LOG_LEVEL=info \
+    LOG_FORMAT=json \
+    GUI_ENABLED=false
 
-# Copy data files (CSV/TSV)
-COPY --from=builder /app/data /app/data
-
-# Copy web GUI files
-COPY --from=builder /app/web /app/web
-
-# Copy example configuration
-COPY --from=builder /app/configs /app/configs
-
-# Expose service port
-EXPOSE 3030
-
-# Set environment variables for default CSV data source
-ENV DATA_SOURCE=csv
-ENV DATA_COUNTRIES_FILE=data/countries.csv
-ENV DATA_ALIASES_FILE=data/aliases.csv
-ENV GUI_ENABLED=true
-ENV GUI_PATH=/admin
-
-# Run app
-ENTRYPOINT ["/app/server"]
+EXPOSE 18315
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD wget -qO- http://127.0.0.1:${PORT:-18315}/health >/dev/null || exit 1
+ENTRYPOINT ["/sbin/tini","--"]
+CMD ["/app/country-iso-matcher"]

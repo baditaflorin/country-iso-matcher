@@ -7,5 +7,6 @@ import (
 type CountryHandler interface {
 	ConvertCountry(w http.ResponseWriter, r *http.Request)
 	Health(w http.ResponseWriter, r *http.Request)
+	Version(w http.ResponseWriter, r *http.Request)
 	GetStats(w http.ResponseWriter, r *http.Request)
 }
