@@ -1,184 +1,184 @@
-code,name
-AF,Afghanistan
-AL,Albania
-DZ,Algeria
-AD,Andorra
-AO,Angola
-AG,Antigua and Barbuda
-AR,Argentina
-AM,Armenia
-AU,Australia
-AT,Austria
-AZ,Azerbaijan
-BS,Bahamas
-BH,Bahrain
-BD,Bangladesh
-BB,Barbados
-BY,Belarus
-BE,Belgium
-BZ,Belize
-BJ,Benin
-BT,Bhutan
-BO,Bolivia (Plurinational State of)
-BA,Bosnia and Herzegovina
-BW,Botswana
-BR,Brazil
-BN,Brunei Darussalam
-BG,Bulgaria
-BF,Burkina Faso
-BI,Burundi
-CV,Cabo Verde
-KH,Cambodia
-CM,Cameroon
-CA,Canada
-CF,Central African Republic
-TD,Chad
-CL,Chile
-CN,China
-CO,Colombia
-KM,Comoros
-CG,Congo
-CD,Congo Democratic Republic of the
-CR,Costa Rica
-CI,Côte d'Ivoire
-HR,Croatia
-CU,Cuba
-CY,Cyprus
-CZ,Czechia
-DK,Denmark
-DJ,Djibouti
-DM,Dominica
-DO,Dominican Republic
-EC,Ecuador
-EG,Egypt
-SV,El Salvador
-GQ,Equatorial Guinea
-ER,Eritrea
-EE,Estonia
-SZ,Eswatini
-ET,Ethiopia
-FI,Finland
-FR,France
-GA,Gabon
-GM,Gambia
-GE,Georgia
-DE,Germany
-GH,Ghana
-GR,Greece
-GD,Grenada
-GT,Guatemala
-GN,Guinea
-GW,Guinea-Bissau
-GY,Guyana
-HT,Haiti
-HN,Honduras
-HU,Hungary
-IS,Iceland
-IN,India
-ID,Indonesia
-IR,Iran (Islamic Republic of)
-IQ,Iraq
-IE,Ireland
-IL,Israel
-IT,Italy
-JM,Jamaica
-JP,Japan
-JO,Jordan
-KZ,Kazakhstan
-KE,Kenya
-KW,Kuwait
-KG,Kyrgyzstan
-LA,Lao People's Democratic Republic
-LV,Latvia
-LB,Lebanon
-LS,Lesotho
-LR,Liberia
-LY,Libya
-LI,Liechtenstein
-LT,Lithuania
-LU,Luxembourg
-MG,Madagascar
-MW,Malawi
-MY,Malaysia
-MV,Maldives
-ML,Mali
-MT,Malta
-MR,Mauritania
-MU,Mauritius
-MX,Mexico
-MD,Moldova Republic of
-MC,Monaco
-MN,Mongolia
-ME,Montenegro
-MA,Morocco
-MZ,Mozambique
-MM,Myanmar
-NA,Namibia
-NP,Nepal
-NL,Netherlands
-NZ,New Zealand
-NI,Nicaragua
-NE,Niger
-NG,Nigeria
-KP,North Korea
-MK,North Macedonia
-NO,Norway
-OM,Oman
-PK,Pakistan
-PS,Palestine State of
-PA,Panama
-PY,Paraguay
-PE,Peru
-PH,Philippines
-PL,Poland
-PT,Portugal
-PR,Puerto Rico
-QA,Qatar
-RO,Romania
-RU,Russian Federation
-RW,Rwanda
-KN,Saint Kitts and Nevis
-LC,Saint Lucia
-VC,Saint Vincent and the Grenadines
-SM,San Marino
-ST,Sao Tome and Principe
-SA,Saudi Arabia
-SN,Senegal
-RS,Serbia
-SC,Seychelles
-SL,Sierra Leone
-SG,Singapore
-SK,Slovakia
-SI,Slovenia
-SO,Somalia
-ZA,South Africa
-KR,South Korea
-SS,South Sudan
-ES,Spain
-LK,Sri Lanka
-SD,Sudan
-SE,Sweden
-CH,Switzerland
-SY,Syrian Arab Republic
-TW,Taiwan Province of China
-TJ,Tajikistan
-TZ,Tanzania United Republic of
-TH,Thailand
-TG,Togo
-TT,Trinidad and Tobago
-TN,Tunisia
-TR,Turkey
-TM,Turkmenistan
-UG,Uganda
-UA,Ukraine
-AE,United Arab Emirates
-GB,United Kingdom of Great Britain and Northern Ireland
-US,United States of America
-UY,Uruguay
-UZ,Uzbekistan
-VE,Venezuela (Bolivarian Republic of)
-VN,Viet Nam
-EH,Western Sahara
-YE,Yemen
-ZM,Zambia
-ZW,Zimbabwe
+code,iso3,name
+AF,AFG,Afghanistan
+AL,ALB,Albania
+DZ,DZA,Algeria
+AD,AND,Andorra
+AO,AGO,Angola
+AG,ATG,Antigua and Barbuda
+AR,ARG,Argentina
+AM,ARM,Armenia
+AU,AUS,Australia
+AT,AUT,Austria
+AZ,AZE,Azerbaijan
+BS,BHS,Bahamas
+BH,BHR,Bahrain
+BD,BGD,Bangladesh
+BB,BRB,Barbados
+BY,BLR,Belarus
+BE,BEL,Belgium
+BZ,BLZ,Belize
+BJ,BEN,Benin
+BT,BTN,Bhutan
+BO,BOL,Bolivia (Plurinational State of)
+BA,BIH,Bosnia and Herzegovina
+BW,BWA,Botswana
+BR,BRA,Brazil
+BN,BRN,Brunei Darussalam
+BG,BGR,Bulgaria
+BF,BFA,Burkina Faso
+BI,BDI,Burundi
+CV,CPV,Cabo Verde
+KH,KHM,Cambodia
+CM,CMR,Cameroon
+CA,CAN,Canada
+CF,CAF,Central African Republic
+TD,TCD,Chad
+CL,CHL,Chile
+CN,CHN,China
+CO,COL,Colombia
+KM,COM,Comoros
+CG,COG,Congo
+CD,COD,Congo, Democratic Republic of the
+CR,CRI,Costa Rica
+CI,CIV,Côte d'Ivoire
+HR,HRV,Croatia
+CU,CUB,Cuba
+CY,CYP,Cyprus
+CZ,CZE,Czechia
+DK,DNK,Denmark
+DJ,DJI,Djibouti
+DM,DMA,Dominica
+DO,DOM,Dominican Republic
+EC,ECU,Ecuador
+EG,EGY,Egypt
+SV,SLV,El Salvador
+GQ,GNQ,Equatorial Guinea
+ER,ERI,Eritrea
+EE,EST,Estonia
+SZ,SWZ,Eswatini
+ET,ETH,Ethiopia
+FI,FIN,Finland
+FR,FRA,France
+GA,GAB,Gabon
+GM,GMB,Gambia
+GE,GEO,Georgia
+DE,DEU,Germany
+GH,GHA,Ghana
+GR,GRC,Greece
+GD,GRD,Grenada
+GT,GTM,Guatemala
+GN,GIN,Guinea
+GW,GNB,Guinea-Bissau
+GY,GUY,Guyana
+HT,HTI,Haiti
+HN,HND,Honduras
+HU,HUN,Hungary
+IS,ISL,Iceland
+IN,IND,India
+ID,IDN,Indonesia
+IR,IRN,Iran (Islamic Republic of)
+IQ,IRQ,Iraq
+IE,IRL,Ireland
+IL,ISR,Israel
+IT,ITA,Italy
+JM,JAM,Jamaica
+JP,JPN,Japan
+JO,JOR,Jordan
+KZ,KAZ,Kazakhstan
+KE,KEN,Kenya
+KW,KWT,Kuwait
+KG,KGZ,Kyrgyzstan
+LA,LAO,Lao People's Democratic Republic
+LV,LVA,Latvia
+LB,LBN,Lebanon
+LS,LSO,Lesotho
+LR,LBR,Liberia
+LY,LBY,Libya
+LI,LIE,Liechtenstein
+LT,LTU,Lithuania
+LU,LUX,Luxembourg
+MG,MDG,Madagascar
+MW,MWI,Malawi
+MY,MYS,Malaysia
+MV,MDV,Maldives
+ML,MLI,Mali
+MT,MLT,Malta
+MR,MRT,Mauritania
+MU,MUS,Mauritius
+MX,MEX,Mexico
+MD,MDA,Moldova, Republic of
+MC,MCO,Monaco
+MN,MNG,Mongolia
+ME,MNE,Montenegro
+MA,MAR,Morocco
+MZ,MOZ,Mozambique
+MM,MMR,Myanmar
+NA,NAM,Namibia
+NP,NPL,Nepal
+NL,NLD,Netherlands
+NZ,NZL,New Zealand
+NI,NIC,Nicaragua
+NE,NER,Niger
+NG,NGA,Nigeria
+KP,PRK,North Korea
+MK,MKD,North Macedonia
+NO,NOR,Norway
+OM,OMN,Oman
+PK,PAK,Pakistan
+PS,PSE,Palestine, State of
+PA,PAN,Panama
+PY,PRY,Paraguay
+PE,PER,Peru
+PH,PHL,Philippines
+PL,POL,Poland
+PT,PRT,Portugal
+PR,PRI,Puerto Rico
+QA,QAT,Qatar
+RO,ROU,Romania
+RU,RUS,Russian Federation
+RW,RWA,Rwanda
+KN,KNA,Saint Kitts and Nevis
+LC,LCA,Saint Lucia
+VC,VCT,Saint Vincent and the Grenadines
+SM,SMR,San Marino
+ST,STP,Sao Tome and Principe
+SA,SAU,Saudi Arabia
+SN,SEN,Senegal
+RS,SRB,Serbia
+SC,SYC,Seychelles
+SL,SLE,Sierra Leone
+SG,SGP,Singapore
+SK,SVK,Slovakia
+SI,SVN,Slovenia
+SO,SOM,Somalia
+ZA,ZAF,South Africa
+KR,KOR,South Korea
+SS,SSD,South Sudan
+ES,ESP,Spain
+LK,LKA,Sri Lanka
+SD,SDN,Sudan
+SE,SWE,Sweden
+CH,CHE,Switzerland
+SY,SYR,Syrian Arab Republic
+TW,TWN,Taiwan, Province of China
+TJ,TJK,Tajikistan
+TZ,TZA,Tanzania, United Republic of
+TH,THA,Thailand
+TG,TGO,Togo
+TT,TTO,Trinidad and Tobago
+TN,TUN,Tunisia
+TR,TUR,Turkey
+TM,TKM,Turkmenistan
+UG,UGA,Uganda
+UA,UKR,Ukraine
+AE,ARE,United Arab Emirates
+GB,GBR,United Kingdom of Great Britain and Northern Ireland
+US,USA,United States of America
+UY,URY,Uruguay
+UZ,UZB,Uzbekistan
+VE,VEN,Venezuela (Bolivarian Republic of)
+VN,VNM,Viet Nam
+EH,ESH,Western Sahara
+YE,YEM,Yemen
+ZM,ZMB,Zambia
+ZW,ZWE,Zimbabwe
