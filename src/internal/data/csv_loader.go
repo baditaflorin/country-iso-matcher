@@ -24,8 +24,9 @@ func NewCSVLoader(countriesFile, aliasesFile string) *CSVLoader {
 }
 
 // LoadCountries loads countries from a CSV file
-// Expected format: code,name
-// Example: US,United States
+// Expected format: code,iso3,name. The legacy code,name form remains
+// supported for callers that have not yet added ISO-3 data.
+// Example: US,USA,United States
 func (l *CSVLoader) LoadCountries() ([]domain.Country, error) {
 	file, err := os.Open(l.countriesFile)
 	if err != nil {
@@ -35,6 +36,8 @@ func (l *CSVLoader) LoadCountries() ([]domain.Country, error) {
 
 	reader := csv.NewReader(file)
 	reader.TrimLeadingSpace = true
+	// Allow legacy two-column rows alongside the current three-column form.
+	reader.FieldsPerRecord = -1
 
 	// Read all records
 	records, err := reader.ReadAll()
@@ -61,7 +64,13 @@ func (l *CSVLoader) LoadCountries() ([]domain.Country, error) {
 		}
 
 		code := strings.TrimSpace(record[0])
-		name := strings.TrimSpace(record[1])
+		iso3 := code
+		nameIndex := 1
+		if len(record) >= 3 && len(strings.TrimSpace(record[1])) == 3 {
+			iso3 = strings.ToUpper(strings.TrimSpace(record[1]))
+			nameIndex = 2
+		}
+		name := strings.TrimSpace(record[nameIndex])
 
 		if code == "" || name == "" {
 			continue // Skip empty entries
@@ -69,7 +78,7 @@ func (l *CSVLoader) LoadCountries() ([]domain.Country, error) {
 
 		countries = append(countries, domain.Country{
 			ISO2: code,
-			ISO3: code, // Fallback: use ISO2 if ISO3 not available
+			ISO3: iso3, // Legacy two-column data falls back to ISO2.
 			Names: map[string]string{
 				"en": name,
 			},

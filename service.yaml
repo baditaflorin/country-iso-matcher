@@ -1,7 +1,7 @@
 id: country-iso-matcher
 name: Country Iso Matcher
 category: geo
-version: "0.1.0"
+version: "0.1.1"
 port: 18315
 description: >-
   Resolves a country name, native name, or common alias to its ISO 3166-1

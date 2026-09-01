@@ -1,4 +1,11 @@
-## 0.1.0 — 2026-08-29
+## 0.1.1 - 2026-09-01
+
+- Fix CSV and TSV country sources to return their real ISO 3166-1 alpha-3
+  codes instead of incorrectly mirroring the alpha-2 code. The bundled
+  production CSV now carries the verified ISO-3 value for every country.
+- Preserve the legacy two-column source format as a compatibility fallback.
+
+## 0.1.0 - 2026-08-29
 
 First fleet-registered release. The service itself already existed; this
 version onboards it onto the `mesh-0exec` container fleet.

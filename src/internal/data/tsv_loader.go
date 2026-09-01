@@ -24,8 +24,9 @@ func NewTSVLoader(countriesFile, aliasesFile string) *TSVLoader {
 }
 
 // LoadCountries loads countries from a TSV file
-// Expected format: code\tname
-// Example: US\tUnited States
+// Expected format: code\tiso3\tname. The legacy code\tname form remains
+// supported for callers that have not yet added ISO-3 data.
+// Example: US\tUSA\tUnited States
 func (l *TSVLoader) LoadCountries() ([]domain.Country, error) {
 	file, err := os.Open(l.countriesFile)
 	if err != nil {
@@ -36,6 +37,8 @@ func (l *TSVLoader) LoadCountries() ([]domain.Country, error) {
 	reader := csv.NewReader(file)
 	reader.Comma = '\t' // Use tab as separator
 	reader.TrimLeadingSpace = true
+	// Allow legacy two-column rows alongside the current three-column form.
+	reader.FieldsPerRecord = -1
 
 	// Read all records
 	records, err := reader.ReadAll()
@@ -62,7 +65,13 @@ func (l *TSVLoader) LoadCountries() ([]domain.Country, error) {
 		}
 
 		code := strings.TrimSpace(record[0])
-		name := strings.TrimSpace(record[1])
+		iso3 := code
+		nameIndex := 1
+		if len(record) >= 3 && len(strings.TrimSpace(record[1])) == 3 {
+			iso3 = strings.ToUpper(strings.TrimSpace(record[1]))
+			nameIndex = 2
+		}
+		name := strings.TrimSpace(record[nameIndex])
 
 		if code == "" || name == "" {
 			continue // Skip empty entries
@@ -70,7 +79,7 @@ func (l *TSVLoader) LoadCountries() ([]domain.Country, error) {
 
 		countries = append(countries, domain.Country{
 			ISO2: code,
-			ISO3: code, // Fallback: use ISO2 if ISO3 not available
+			ISO3: iso3, // Legacy two-column data falls back to ISO2.
 			Names: map[string]string{
 				"en": name,
 			},
