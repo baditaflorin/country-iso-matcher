@@ -1,3 +1,18 @@
+## 0.1.3 - 2026-09-13
+
+- Add generated multilingual endonyms and official-name aliases for the
+  remaining global ISO-3166-1 entries, not just the original 59-country
+  alias subset. This improves recall for native-script and regional-name
+  inputs across Africa, Asia, the Americas, Oceania, and long-tail
+  territories. Add a regression invariant requiring every bundled country
+  to have at least one alias.
+
+## 0.1.2 - 2026-09-13
+
+- Expand the bundled country corpus from 183 to all 249 assigned ISO 3166-1
+  entries, including territories and long-tail country codes used by global
+  DomainScope traffic.
+
 ## 0.1.1 - 2026-09-01
 
 - Fix CSV and TSV country sources to return their real ISO 3166-1 alpha-3
@@ -58,8 +73,3 @@ version onboards it onto the `mesh-0exec` container fleet.
   alpha-3 codes and multilingual names, but only covers 11 countries, so
   CSV remains the deployed source. Fixing this needs an alpha-3 column
   backfilled into the CSV corpus.
-## 0.1.2 - 2026-09-13
-
-- Expand the bundled country corpus from 183 to all 249 assigned ISO 3166-1
-  entries, including territories and long-tail country codes used by global
-  DomainScope traffic.

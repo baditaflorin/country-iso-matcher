@@ -52,3 +52,20 @@ func TestBundledCSVProvidesISO3ForEveryCountry(t *testing.T) {
 		}
 	}
 }
+
+func TestBundledAliasesCoverEveryCountry(t *testing.T) {
+	loader := NewCSVLoader("../../../data/countries.csv", "../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	aliases, err := loader.LoadAliases()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, country := range countries {
+		if len(aliases[country.ISO2]) == 0 {
+			t.Errorf("%s has no multilingual/endonym aliases", country.ISO2)
+		}
+	}
+}
