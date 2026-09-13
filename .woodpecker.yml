@@ -1,4 +1,14 @@
 steps:
+  golden-country-data:
+    image: golang:1.25
+    commands:
+      - >-
+        go test ./src/internal/data
+        -run 'TestBundled(CSVProvidesISO3ForEveryCountry|AliasesCoverEveryCountry)$'
+        -count=1
+    when:
+      event: [push, pull_request]
+
   test:
     image: golang:1.25
     commands:
