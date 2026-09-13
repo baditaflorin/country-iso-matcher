@@ -34,12 +34,38 @@ func TestBundledCSVProvidesISO3ForEveryCountry(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(countries) != 183 {
-		t.Fatalf("bundled country count = %d, want 183", len(countries))
+	if len(countries) != 249 {
+		t.Fatalf("bundled country count = %d, want all 249 assigned ISO 3166-1 entries", len(countries))
 	}
 	for _, country := range countries {
 		if len(country.ISO3) != 3 {
 			t.Fatalf("%s ISO3 = %q, want three-letter alpha-3 code", country.ISO2, country.ISO3)
+		}
+	}
+	byCode := make(map[string]bool, len(countries))
+	for _, country := range countries {
+		byCode[country.ISO2] = true
+	}
+	for _, code := range []string{"AI", "AX", "BQ", "CW", "SJ", "VA", "YT"} {
+		if !byCode[code] {
+			t.Errorf("missing long-tail ISO2 code %s", code)
+		}
+	}
+}
+
+func TestBundledAliasesCoverEveryCountry(t *testing.T) {
+	loader := NewCSVLoader("../../../data/countries.csv", "../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	aliases, err := loader.LoadAliases()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, country := range countries {
+		if len(aliases[country.ISO2]) == 0 {
+			t.Errorf("%s has no multilingual/endonym aliases", country.ISO2)
 		}
 	}
 }

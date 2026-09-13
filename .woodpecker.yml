@@ -1,0 +1,9 @@
+steps:
+  test:
+    image: golang:1.25
+    commands:
+      - cd src
+      - go test ./...
+      - go build ./cmd/server
+    when:
+      event: [push, pull_request]
