@@ -58,3 +58,8 @@ version onboards it onto the `mesh-0exec` container fleet.
   alpha-3 codes and multilingual names, but only covers 11 countries, so
   CSV remains the deployed source. Fixing this needs an alpha-3 column
   backfilled into the CSV corpus.
+## 0.1.2 - 2026-09-13
+
+- Expand the bundled country corpus from 183 to all 249 assigned ISO 3166-1
+  entries, including territories and long-tail country codes used by global
+  DomainScope traffic.
