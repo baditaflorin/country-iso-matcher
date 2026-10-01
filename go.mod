@@ -3,7 +3,7 @@ module country-iso-matcher
 go 1.25.0
 
 require (
-	github.com/baditaflorin/go-common v0.102.11
+	github.com/baditaflorin/go-common v0.102.13
 	github.com/prometheus/client_golang v1.23.2
 	golang.org/x/text v0.41.0
 	gopkg.in/yaml.v3 v3.0.1
