@@ -1,3 +1,15 @@
+## 0.1.5 — 2026-10-01
+
+### Changed
+- chore(deps): upgrade go-common to v0.102.13
+- chore(deps): bump go-common to v0.102.11
+- feat(otel): instrument service with go-common (#11)
+- fix(deps): update vulnerable Go modules (#10)
+- ci: gate country corpus coverage in Woodpecker
+- feat: add global multilingual country aliases
+- Add Woodpecker validation workflow
+- Improve global geographic coverage
+
 ## 0.1.4 — 2026-10-01
 
 Add shared OpenTelemetry HTTP spans and flush telemetry on graceful shutdown.
