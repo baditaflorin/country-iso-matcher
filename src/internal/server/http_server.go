@@ -18,6 +18,8 @@ import (
 	"country-iso-matcher/src/internal/metrics"
 	"country-iso-matcher/src/internal/service"
 	"country-iso-matcher/src/internal/version"
+
+	"github.com/baditaflorin/go-common/telemetry"
 )
 
 type httpServer struct {
@@ -85,13 +87,15 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, co
 	httpHandler = middleware.PrometheusMetrics(httpHandler) // Add Prometheus metrics
 	httpHandler = middleware.Logging(logger)(httpHandler)
 	httpHandler = middleware.Recovery(logger)(httpHandler)
+	httpHandler = telemetry.HTTPMiddleware(httpHandler)
 
 	addr := cfg.Server.Host + ":" + cfg.Server.Port
 	server := &http.Server{
-		Addr:         addr,
-		Handler:      httpHandler,
-		ReadTimeout:  time.Duration(cfg.Server.ReadTimeout) * time.Second,
-		WriteTimeout: time.Duration(cfg.Server.WriteTimeout) * time.Second,
+		Addr:              addr,
+		Handler:           httpHandler,
+		ReadHeaderTimeout: 10 * time.Second,
+		ReadTimeout:       time.Duration(cfg.Server.ReadTimeout) * time.Second,
+		WriteTimeout:      time.Duration(cfg.Server.WriteTimeout) * time.Second,
 	}
 
 	// Set build info

@@ -1,7 +1,7 @@
 id: country-iso-matcher
 name: Country Iso Matcher
 category: geo
-version: "0.1.3"
+version: "0.1.4"
 port: 18315
 description: >-
   Resolves a country name, native name, or common alias to its ISO 3166-1
@@ -45,3 +45,9 @@ server:
   deploy_path: /opt/services/country-iso-matcher
 nginx:
   subdomain: country-iso-matcher.0exec.com
+
+auth:
+  reads_secrets:
+    - openobserve_otlp_ingestion_token
+  calls_services:
+    - go-fleet-secrets
