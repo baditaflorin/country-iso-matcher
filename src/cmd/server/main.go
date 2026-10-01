@@ -7,9 +7,13 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"country-iso-matcher/src/internal/config"
 	"country-iso-matcher/src/internal/factory"
+	"country-iso-matcher/src/internal/version"
+
+	"github.com/baditaflorin/go-common/telemetry"
 )
 
 func main() {
@@ -32,6 +36,14 @@ func main() {
 	// Setup structured logging based on configuration
 	logger := setupLogger(cfg)
 	slog.SetDefault(logger)
+	telemetryConfig := telemetry.Init("country-iso-matcher", version.Version)
+	defer func() {
+		shutdownCtx, cancel := context.WithTimeout(context.Background(), telemetry.ExporterTimeout)
+		defer cancel()
+		if err := telemetryConfig.Shutdown(shutdownCtx); err != nil {
+			logger.Error("OpenTelemetry shutdown failed", "error", err)
+		}
+	}()
 
 	logger.Info("Starting Country ISO Matcher",
 		"environment", cfg.Server.Environment,
@@ -63,7 +75,9 @@ func main() {
 		<-sigCh
 
 		logger.Info("shutting down server...")
-		if err := server.Shutdown(ctx); err != nil {
+		shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer shutdownCancel()
+		if err := server.Shutdown(shutdownCtx); err != nil {
 			logger.Error("server shutdown failed", "error", err)
 		}
 		cancel()
@@ -72,7 +86,7 @@ func main() {
 	logger.Info("server listening", "address", cfg.Server.Host+":"+cfg.Server.Port)
 	if err := server.Start(); err != nil {
 		logger.Error("server failed to start", "error", err)
-		os.Exit(1)
+		return
 	}
 
 	<-ctx.Done()
