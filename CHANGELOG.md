@@ -1,3 +1,9 @@
+## 0.1.7 — 2026-10-06
+
+### Changed
+- chore(deps): update go-common telemetry
+- fix(telemetry): mount 0own ingestion token for canary
+
 ## 0.1.6 — 2026-10-05
 
 Align runtime /version with service manifest and fix telemetry canary release check.
