@@ -62,3 +62,10 @@ secrets:
       gid: 101
     key_scope: fleet-secrets.0exec.com
     key_tier: service
+  - env: OPENOBSERVE_OTLP_INGESTION_TOKEN_FILE
+    vault_key: openobserve_otlp_ingestion_token
+    file:
+      source: .secrets/openobserve_otlp_ingestion_token
+      target: /run/secrets/openobserve_otlp_ingestion_token
+      uid: 100
+      gid: 101
