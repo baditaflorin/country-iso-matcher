@@ -37,3 +37,4 @@ go.work.sum
 *.exe
 bin/
 dist/
+.secrets/
