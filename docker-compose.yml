@@ -11,5 +11,7 @@ services:
       # config, database password included) and /api/config/save (writes
       # attacker-supplied config to disk). Keep it off on the fleet.
       - GUI_ENABLED=false
+    volumes:
+      - ./.secrets/fleet_secrets_api_key:/run/secrets/fleet_secrets_api_key:ro
     networks:
       - default
