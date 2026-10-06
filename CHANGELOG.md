@@ -1,3 +1,9 @@
+## 0.1.8 — 2026-10-06
+
+### Changed
+
+- Route telemetry through the stable OTLP ingress using Go Common v0.102.18.
+
 ## 0.1.7 — 2026-10-06
 
 ### Changed
