@@ -11,7 +11,6 @@ services:
       # config, database password included) and /api/config/save (writes
       # attacker-supplied config to disk). Keep it off on the fleet.
       - GUI_ENABLED=false
-      - FLEET_SECRETS_API_KEY_FILE=/run/secrets/fleet_secrets_api_key
       - OPENOBSERVE_OTLP_INGESTION_TOKEN_FILE=/run/secrets/openobserve_otlp_ingestion_token
     volumes:
       - ./.secrets/fleet_secrets_api_key:/run/secrets/fleet_secrets_api_key:ro
