@@ -1,5 +1,5 @@
-github.com/baditaflorin/go-common v0.102.33 h1:F3CAXQe6OJs88uGemKlU6kNuihFMiRz8m9OGrM9dgNM=
-github.com/baditaflorin/go-common v0.102.33/go.mod h1:YeNf0UpFH16lxvzHJwUuWLeelRSUvIHspFAeKRk6U4U=
+github.com/baditaflorin/go-common v0.102.34 h1:OqliPzolrqtGoAz2pjPMPlig1ddeyB9ohRDQ3DjJSQs=
+github.com/baditaflorin/go-common v0.102.34/go.mod h1:YeNf0UpFH16lxvzHJwUuWLeelRSUvIHspFAeKRk6U4U=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/cenkalti/backoff/v5 v5.0.3 h1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=
