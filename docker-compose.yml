@@ -3,8 +3,8 @@ services:
     image: ghcr.io/baditaflorin/country-iso-matcher:latest
     container_name: country-iso-matcher-app-1
     restart: always
-    ports:
-      - "18315:18315"
+    # Fleet Runner's generated override owns host-port publication, including
+    # the private bind address used by replica pools.
     environment:
       - PORT=18315
       # The bundled /admin GUI also mounts /api/config (dumps the whole
