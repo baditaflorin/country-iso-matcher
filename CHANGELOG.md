@@ -1,3 +1,8 @@
+## 0.1.10 — 2026-10-09
+
+### Changed
+- Delegate host-port publication to the Fleet Runner generated Compose override so private replica bindings do not duplicate public bindings.
+
 ## 0.1.9 — 2026-10-08
 
 ### Changed
