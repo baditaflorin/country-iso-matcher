@@ -13,8 +13,14 @@ services:
       - GUI_ENABLED=false
       - FLEET_SECRETS_API_KEY_FILE=/run/secrets/fleet_secrets_api_key
       - OPENOBSERVE_OTLP_INGESTION_TOKEN_FILE=/run/secrets/openobserve_otlp_ingestion_token
+      - PYROSCOPE_SERVER_ADDRESS=https://openobserve.0own.com/pyroscope
+      - PYROSCOPE_UPLOAD_RATE=30s
+      - PYROSCOPE_BASIC_AUTH_USER_FILE=/run/secrets/pyroscope_basic_auth_user
+      - PYROSCOPE_BASIC_AUTH_PASSWORD_FILE=/run/secrets/pyroscope_basic_auth_password
     volumes:
       - ./.secrets/fleet_secrets_api_key:/run/secrets/fleet_secrets_api_key:ro
       - ./.secrets/openobserve_otlp_ingestion_token:/run/secrets/openobserve_otlp_ingestion_token:ro
+      - ./.secrets/pyroscope_basic_auth_user:/run/secrets/pyroscope_basic_auth_user:ro
+      - ./.secrets/pyroscope_basic_auth_password:/run/secrets/pyroscope_basic_auth_password:ro
     networks:
       - default
