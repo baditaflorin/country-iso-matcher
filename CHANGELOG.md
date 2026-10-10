@@ -1,3 +1,9 @@
+## 0.1.11 — 2026-10-10
+
+### Added
+- Add opt-in Pyroscope profiling through Go Common with protected file credentials.
+- Upgrade Go Common to v0.102.41.
+
 ## 0.1.10 — 2026-10-09
 
 ### Changed

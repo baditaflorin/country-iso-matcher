@@ -13,6 +13,7 @@ import (
 	"country-iso-matcher/src/internal/factory"
 	"country-iso-matcher/src/internal/version"
 
+	"github.com/baditaflorin/go-common/profiling"
 	"github.com/baditaflorin/go-common/telemetry"
 )
 
@@ -37,6 +38,12 @@ func main() {
 	logger := setupLogger(cfg)
 	slog.SetDefault(logger)
 	telemetryConfig := telemetry.Init("country-iso-matcher", version.Version)
+	stopProfiling, err := profiling.StartFromEnv("country-iso-matcher")
+	if err != nil {
+		logger.Error("Pyroscope profiling startup failed", "error", err)
+	} else {
+		defer stopProfiling()
+	}
 	defer func() {
 		shutdownCtx, cancel := context.WithTimeout(context.Background(), telemetry.ExporterTimeout)
 		defer cancel()
