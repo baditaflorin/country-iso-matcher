@@ -1,3 +1,9 @@
+## 0.1.12 — 2026-10-14
+
+### Added
+- Wire the custom HTTP server through Go Common Fleet Graph middleware so inbound requests emit attributed graph events; initialize the canonical service identity and version.
+- Add a local-collector regression test for inbound event delivery and file-backed writer authentication.
+
 ## 0.1.11 — 2026-10-10
 
 ### Added
