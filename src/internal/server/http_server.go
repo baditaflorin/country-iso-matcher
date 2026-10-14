@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/baditaflorin/go-common/graph"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"country-iso-matcher/src/internal/config"
@@ -26,6 +27,11 @@ type httpServer struct {
 	server  *http.Server
 	handler handler.CountryHandler
 	logger  *slog.Logger
+}
+
+func fleetGraphMiddleware(next http.Handler) http.Handler {
+	graph.Init(version.ServiceID, version.Version)
+	return graph.Middleware(next)
 }
 
 func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, countryService service.CountryService, logger *slog.Logger) Server {
@@ -87,6 +93,7 @@ func NewHTTPServer(cfg *config.Config, countryHandler handler.CountryHandler, co
 	httpHandler = middleware.PrometheusMetrics(httpHandler) // Add Prometheus metrics
 	httpHandler = middleware.Logging(logger)(httpHandler)
 	httpHandler = middleware.Recovery(logger)(httpHandler)
+	httpHandler = fleetGraphMiddleware(httpHandler)
 	httpHandler = telemetry.HTTPMiddleware(httpHandler)
 
 	addr := cfg.Server.Host + ":" + cfg.Server.Port
