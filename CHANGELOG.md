@@ -1,3 +1,8 @@
+## 0.1.14 — 2026-10-16
+
+### Fixed
+- Add the common English country names “Syria” and “Venezuela” to the bundled alias corpus. Regression tests reproduce both names as not found on 0.1.13 and resolve to their assigned ISO alpha-2 codes on 0.1.14.
+
 ## 0.1.13 — 2026-10-16
 
 ### Fixed
