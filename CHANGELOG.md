@@ -1,3 +1,8 @@
+## 0.1.13 — 2026-10-16
+
+### Fixed
+- Preserve canonical ISO alpha-2 keys when loading aliases, preventing `SA` from resolving to South Africa and `SK` from resolving to South Korea. The same 20,000 production-derived office-country inputs replayed through the current local HTTP handler returned zero wrong codes after the fix (183 before); 17 inputs remain unresolved. This is a local handler replay, not direct production output coverage.
+
 ## 0.1.12 — 2026-10-14
 
 ### Added
