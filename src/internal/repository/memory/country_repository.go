@@ -86,6 +86,10 @@ func (r *countryRepository) loadCountries(loader data.Loader) error {
 	for isoCode, aliasNames := range aliases {
 		for _, alias := range aliasNames {
 			normalized := r.normalizer.Normalize(alias)
+			// An alias must not shadow a canonical country name or ISO code.
+			if _, exists := r.nameToCode[normalized]; exists {
+				continue
+			}
 			r.nameToCode[normalized] = isoCode
 		}
 	}

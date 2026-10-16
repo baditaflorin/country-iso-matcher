@@ -32,3 +32,29 @@ func TestBundledIraqAliasIsNotShadowedByIran(t *testing.T) {
 		}
 	}
 }
+
+func TestCanonicalISOCodesTakePrecedenceOverConflictingAliases(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load bundled country data: %v", err)
+	}
+
+	for _, tc := range []struct {
+		query string
+		want  string
+	}{
+		{query: "SA", want: "SA"}, // South Africa's short alias must not replace Saudi Arabia's ISO2 code.
+		{query: "SK", want: "SK"}, // South Korea's short alias must not replace Slovakia's ISO2 code.
+		{query: "South Africa", want: "ZA"},
+		{query: "South Korea", want: "KR"},
+	} {
+		country, err := repo.FindByName(tc.query)
+		if err != nil {
+			t.Fatalf("lookup %q: %v", tc.query, err)
+		}
+		if country.ISO2 != tc.want {
+			t.Errorf("lookup %q = %s, want %s", tc.query, country.ISO2, tc.want)
+		}
+	}
+}
