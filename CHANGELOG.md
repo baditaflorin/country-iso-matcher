@@ -1,3 +1,8 @@
+## 0.1.15 — 2026-10-17
+
+### Fixed
+- Quote comma-bearing country names in the bundled CSV so the loader preserves the full name, accepts the full input, and keeps “Congo” mapped to the Republic of the Congo (CG) rather than the Democratic Republic (CD). Local regression tests cover the five affected names.
+
 ## 0.1.14 — 2026-10-16
 
 ### Fixed
