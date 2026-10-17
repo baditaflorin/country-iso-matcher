@@ -38,7 +38,7 @@ CN,CHN,China
 CO,COL,Colombia
 KM,COM,Comoros
 CG,COG,Congo
-CD,COD,Congo, Democratic Republic of the
+CD,COD,"Congo, Democratic Republic of the"
 CR,CRI,Costa Rica
 CI,CIV,Côte d'Ivoire
 HR,HRV,Croatia
@@ -106,7 +106,7 @@ MT,MLT,Malta
 MR,MRT,Mauritania
 MU,MUS,Mauritius
 MX,MEX,Mexico
-MD,MDA,Moldova, Republic of
+MD,MDA,"Moldova, Republic of"
 MC,MCO,Monaco
 MN,MNG,Mongolia
 ME,MNE,Montenegro
@@ -125,7 +125,7 @@ MK,MKD,North Macedonia
 NO,NOR,Norway
 OM,OMN,Oman
 PK,PAK,Pakistan
-PS,PSE,Palestine, State of
+PS,PSE,"Palestine, State of"
 PA,PAN,Panama
 PY,PRY,Paraguay
 PE,PER,Peru
@@ -160,9 +160,9 @@ SD,SDN,Sudan
 SE,SWE,Sweden
 CH,CHE,Switzerland
 SY,SYR,Syrian Arab Republic
-TW,TWN,Taiwan, Province of China
+TW,TWN,"Taiwan, Province of China"
 TJ,TJK,Tajikistan
-TZ,TZA,Tanzania, United Republic of
+TZ,TZA,"Tanzania, United Republic of"
 TH,THA,Thailand
 TG,TGO,Togo
 TT,TTO,Trinidad and Tobago
