@@ -1,7 +1,7 @@
 ## Unreleased
 
 ### Fixed
-- Stop resolving historical multi-country states to a single successor: remove Czechoslovakia from Czechia and the Soviet Union / USSR aliases from Russia.
+- Stop resolving historical multi-country states to a single successor: remove Czechoslovakia from Czechia and the Soviet Union / USSR and ambiguous Swedish “Sovjet” aliases from Russia.
 
 ## 0.1.15 — 2026-10-17
 

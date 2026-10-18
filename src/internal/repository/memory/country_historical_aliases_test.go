@@ -19,6 +19,7 @@ func TestDefunctMultiCountryStatesDoNotResolveToOneSuccessor(t *testing.T) {
 		"Soviet Union",
 		"USSR",
 		"Union of Soviet Socialist Republics",
+		"Sovjet", // Swedish word for a Soviet citizen / Soviet institution, not a country.
 	} {
 		t.Run(name, func(t *testing.T) {
 			if got, err := repo.FindByName(name); err == nil {
