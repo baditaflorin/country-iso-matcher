@@ -158,7 +158,7 @@ func getAliasData() map[string][]string {
 		},
 		"KR": {
 			"south korea", "republic of korea", "korea south", "corée du sud",
-			"südkorea", "soth korea", "south koria", "hanguk", "rok", "sk", "korea",
+			"südkorea", "soth korea", "south koria", "hanguk", "rok", "sk",
 		},
 		"RU": {
 			"russia", "russie", "russland", "russian federation", "rossiya",
