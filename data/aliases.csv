@@ -2,9 +2,9 @@ code,alias1,alias2,alias3,alias4,alias5,alias6,alias7,alias8,alias9,alias10,alia
 US,usa,united states,america,états-unis,vereinigte staaten,'merica,murica,united statas,united stetes,united staes,united stets,united staates,untied states,estados unidos,amérique,us,u.s.a.
 GB,uk,united kingdom,britain,england,royaume-uni,vereinigtes königreich,great britain,u.k.,northern ireland,scotland,wales,écosse,angleterre
 BR,brasil,brazil,brasilz,braszil,brazyl
-CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china
-KR,south korea,republic of korea,korea south,corée du sud,südkorea,soth korea,south koria,hanguk,rok,sk,korea
-RU,russia,russie,russland,russian federation,rossiya,rossia,rusia,rusija,russa,russha,soviet union,ussr,union of soviet socialist republics,sovjet
+CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china,中国
+KR,south korea,republic of korea,korea south,corée du sud,südkorea,soth korea,south koria,hanguk,rok,sk,korea,한국
+RU,russia,russie,russland,russian federation,rossiya,rossia,rusia,rusija,russa,russha,soviet union,ussr,union of soviet socialist republics,sovjet,россия
 DE,germany,deutschland,allemagne,germania,alemania,deutchland,deutchlnd,deutcheland
 FR,france,frankreich,francia,francais,franse,franc,francz
 IT,italy,italia,italie,italien,it,itly,itali,italya
@@ -19,7 +19,7 @@ RO,romania,românia,roumanie,roumania,roumanía,roumaniya,rouminia,rumänien,rum
 HU,hungary,hunggary,hungry,magyarország,magyar-kok,hongrie,hongaria,hongarije,hongarye,hongria,hungaria,hungario,hungari,hungariá,hungarya,hungariya,hungriya
 CZ,czech republic,česká republika,république tchèque,tschechische republik,czechia,czechoslovakia,checz,chekia,česko
 SK,slovakia,slovensko,slovaquie,slowakei,slovak republic
-JP,japan,nippon,nihon,japon,jappan,japn
+JP,japan,nippon,nihon,japon,jappan,japn,日本
 IN,india,bharat,hindustan,indea,inida
 AF,afghanistan,afganistan,afganisthan,afgahnistan,aghanistan
 TR,turkey,türkiye,turkiye,turky,turkie
@@ -231,7 +231,7 @@ TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو
 TV,TV,توفالو,ツバル
 TW,TW,Táiwān,Republic of China
 TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania
-UA,UA,Ukrayina,أوكرانيا
+UA,UA,Ukrayina,أوكرانيا,Україна
 UG,UG,Republic of Uganda,Jamhuri ya Uganda
 UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet
 UY,UY,Oriental Republic of Uruguay,República Oriental del Uruguay
