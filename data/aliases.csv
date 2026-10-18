@@ -2,7 +2,7 @@ code,alias1,alias2,alias3,alias4,alias5,alias6,alias7,alias8,alias9,alias10,alia
 US,usa,united states,america,états-unis,vereinigte staaten,'merica,murica,united statas,united stetes,united staes,united stets,united staates,untied states,estados unidos,amérique,us,u.s.a.
 GB,uk,united kingdom,britain,england,royaume-uni,vereinigtes königreich,great britain,u.k.,northern ireland,scotland,wales,écosse,angleterre
 BR,brasil,brazil,brasilz,braszil,brazyl
-CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china
+CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china,CIN
 KR,south korea,republic of korea,korea south,corée du sud,südkorea,soth korea,south koria,hanguk,rok,sk
 RU,russia,russie,russland,russian federation,rossiya,rossia,rusia,rusija,russa,russha,soviet union,ussr,union of soviet socialist republics,sovjet
 DE,germany,deutschland,allemagne,germania,alemania,deutchland,deutchlnd,deutcheland
@@ -19,7 +19,7 @@ RO,romania,românia,roumanie,roumania,roumanía,roumaniya,rouminia,rumänien,rum
 HU,hungary,hunggary,hungry,magyarország,magyar-kok,hongrie,hongaria,hongarije,hongarye,hongria,hungaria,hungario,hungari,hungariá,hungarya,hungariya,hungriya
 CZ,czech republic,česká republika,république tchèque,tschechische republik,czechia,czechoslovakia,checz,chekia,česko
 SK,slovakia,slovensko,slovaquie,slowakei,slovak republic
-JP,japan,nippon,nihon,japon,jappan,japn
+JP,japan,nippon,nihon,japon,jappan,japn,日本
 IN,india,bharat,hindustan,indea,inida
 AF,afghanistan,afganistan,afganisthan,afgahnistan,aghanistan
 TR,turkey,türkiye,turkiye,turky,turkie
@@ -45,7 +45,7 @@ CI,côte d'ivoire,cote d'ivoire,ivory coast,ivore coast,ivri coast,ivorycoast
 AT,austria,österreich,autriche
 BG,bulgaria,българия,bulgarie,bulgarien
 HR,croatia,hrvatska,croatie,kroatien
-CY,cyprus,κύπρος,chypre,zypern
+CY,cyprus,κύπρος,chypre,zypern,SIP
 DK,denmark,danmark,danemark,dänemark
 EE,estonia,eesti,estonie,estland
 FI,finland,suomi,finlande,finnland
@@ -101,7 +101,7 @@ CW,CW,Curacao,Kòrsou
 CX,CX,Territory of Christmas Island,جزيرة كريسماس
 DJ,DJ,Jabuuti,Gabuuti
 DM,DM,Dominique,Wai‘tu kubuli
-DO,DO,جمهورية الدومينيكان,Republik Dominikan
+DO,DO,جمهورية الدومينيكان,Republik Dominikan,República Dominicana
 DZ,DZ,Dzayer,Algérie
 EC,EC,Republic of Ecuador,República del Ecuador
 EH,EH,Taneẓroft Tutrimt,الصحراء الغربية
@@ -140,7 +140,7 @@ JE,JE,Bailiwick of Jersey,Bailliage de Jersey
 JM,JM,جامايكا,Jamaika
 JO,JO,Hashemite Kingdom of Jordan,al-Mamlakah al-Urdunīyah al-Hāshimīyah
 KE,KE,Republic of Kenya,Jamhuri ya Kenya
-KG,KG,Киргизия,Kyrgyz Republic
+KG,KG,Киргизия,Kyrgyz Republic,Кыргызстан
 KH,KH,Kingdom of Cambodia,كمبودია
 KI,KI,Republic of Kiribati,Ribaberiki Kiribati
 KM,KM,Union of the Comoros,Union des Comores
@@ -157,7 +157,7 @@ LK,LK,ilaṅkai,Democratic Socialist Republic of Sri Lanka
 LR,LR,Republic of Liberia,ليبيريا
 LS,LS,Kingdom of Lesotho,Muso oa Lesotho
 LY,LY,State of Libya,Dawlat Libya
-MA,MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah
+MA,MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah,MAROC
 MC,MC,Principality of Monaco,Principauté de Monaco
 ME,ME,Crna Gora,الجبل الاسود
 MF,MF,Collectivity of Saint Martin,Collectivité de Saint-Martin
@@ -231,7 +231,7 @@ TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو
 TV,TV,توفالو,ツバル
 TW,TW,Táiwān,Republic of China
 TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania
-UA,UA,Ukrayina,أوكرانيا
+UA,UA,Ukrayina,أوكرانيا,Украина
 UG,UG,Republic of Uganda,Jamhuri ya Uganda
 UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet
 UY,UY,Oriental Republic of Uruguay,República Oriental del Uruguay

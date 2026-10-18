@@ -59,3 +59,35 @@ func TestBareKoreaIsAmbiguousButQualifiedNamesResolve(t *testing.T) {
 		})
 	}
 }
+
+func TestSampledLocalizedCountryAliasesResolve(t *testing.T) {
+	cases := []struct{ query, want string }{
+		{"CIN", "CN"},
+		{"SIP", "CY"},
+		{"República Dominicana", "DO"},
+		{"日本", "JP"},
+		{"Кыргызстан", "KG"},
+		{"MAROC", "MA"},
+		{"Украина", "UA"},
+	}
+	for _, loaderCase := range []struct {
+		name   string
+		loader data.Loader
+	}{
+		{name: "bundled CSV", loader: data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")},
+		{name: "memory", loader: data.NewMemoryLoader()},
+	} {
+		t.Run(loaderCase.name, func(t *testing.T) {
+			repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loaderCase.loader)
+			if err != nil {
+				t.Fatal(err)
+			}
+			for i, tc := range cases {
+				got, err := repo.FindByName(tc.query)
+				if err != nil || got.ISO2 != tc.want {
+					t.Errorf("localized alias case %d resolved to %v, err %v; want %s", i, got, err, tc.want)
+				}
+			}
+		})
+	}
+}
