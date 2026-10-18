@@ -155,10 +155,11 @@ func getAliasData() map[string][]string {
 		"CN": {
 			"china", "chine", "chaina", "chyna", "chinia", "chinna", "chinah",
 			"mainland china", "prc", "people's republic of china",
+			"Çin",
 		},
 		"KR": {
 			"south korea", "republic of korea", "korea south", "corée du sud",
-			"südkorea", "soth korea", "south koria", "hanguk", "rok", "sk", "korea",
+			"südkorea", "soth korea", "south koria", "hanguk", "rok", "sk",
 		},
 		"RU": {
 			"russia", "russie", "russland", "russian federation", "rossiya",
@@ -228,6 +229,7 @@ func getAliasData() map[string][]string {
 		},
 		"JP": {
 			"japan", "nippon", "nihon", "japon", "jappan", "japn",
+			"日本",
 		},
 		"IN": {
 			"india", "bharat", "hindustan", "indea", "inida",
@@ -300,7 +302,7 @@ func getAliasData() map[string][]string {
 		"AT": {"austria", "österreich", "autriche"},
 		"BG": {"bulgaria", "българия", "bulgarie", "bulgarien"},
 		"HR": {"croatia", "hrvatska", "croatie", "kroatien"},
-		"CY": {"cyprus", "κύπρος", "chypre", "zypern"},
+		"CY": {"cyprus", "κύπρος", "chypre", "zypern", "Síp"},
 		"DK": {"denmark", "danmark", "danemark", "dänemark"},
 		"EE": {"estonia", "eesti", "estonie", "estland"},
 		"FI": {"finland", "suomi", "finlande", "finnland"},
@@ -313,5 +315,9 @@ func getAliasData() map[string][]string {
 		"MK": {"north macedonia", "macedonia"},
 		"MD": {"moldova", "republic of moldova"},
 		"IE": {"ireland", "éire", "irlande", "irland", "éireann"},
+		"DO": {"República Dominicana"},
+		"KG": {"Кыргызстан"},
+		"MA": {"MAROC"},
+		"UA": {"Украина"},
 	}
 }

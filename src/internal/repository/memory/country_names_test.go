@@ -30,3 +30,64 @@ func TestCommaCountryNamesAndCongoDisambiguation(t *testing.T) {
 		}
 	}
 }
+
+func TestBareKoreaIsAmbiguousButQualifiedNamesResolve(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		loader data.Loader
+	}{
+		{name: "bundled CSV", loader: data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")},
+		{name: "memory", loader: data.NewMemoryLoader()},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), tc.loader)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if country, err := repo.FindByName("Korea"); err == nil {
+				t.Fatalf("ambiguous bare Korea resolved to %s; want not found", country.ISO2)
+			}
+			for _, want := range []struct{ query, code string }{
+				{"South Korea", "KR"},
+				{"North Korea", "KP"},
+			} {
+				country, err := repo.FindByName(want.query)
+				if err != nil || country.ISO2 != want.code {
+					t.Errorf("lookup %q = %v, %v; want %s", want.query, country, err, want.code)
+				}
+			}
+		})
+	}
+}
+
+func TestCLDRLocalizedCountryAliasesResolve(t *testing.T) {
+	cases := []struct{ query, want string }{
+		{"Çin", "CN"},
+		{"Síp", "CY"},
+		{"República Dominicana", "DO"},
+		{"日本", "JP"},
+		{"Кыргызстан", "KG"},
+		{"MAROC", "MA"},
+		{"Украина", "UA"},
+	}
+	for _, loaderCase := range []struct {
+		name   string
+		loader data.Loader
+	}{
+		{name: "bundled CSV", loader: data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")},
+		{name: "memory", loader: data.NewMemoryLoader()},
+	} {
+		t.Run(loaderCase.name, func(t *testing.T) {
+			repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loaderCase.loader)
+			if err != nil {
+				t.Fatal(err)
+			}
+			for i, tc := range cases {
+				got, err := repo.FindByName(tc.query)
+				if err != nil || got.ISO2 != tc.want {
+					t.Errorf("localized alias case %d resolved to %v, err %v; want %s", i, got, err, tc.want)
+				}
+			}
+		})
+	}
+}
