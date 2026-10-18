@@ -9,7 +9,7 @@ DE,germany,deutschland,allemagne,germania,alemania,deutchland,deutchlnd,deutchel
 FR,france,frankreich,francia,francais,franse,franc,francz
 IT,italy,italia,italie,italien,it,itly,itali,italya
 ES,spain,españa,espagne,spanien,spagna,espanya,espania,spane,spian
-PL,poland,polska,pologne,polen,polland,polan,p0land,polend,polad
+PL,poland,polska,pologne,polen,polland,polan,p0land,polend,polad,Polonia
 NL,netherlands,nederland,pays-bas,niederlande,holland,the netherlands,países bajos,netherland,neterlands
 CH,switzerland,suisse,schweiz,svizzera,helvetia,swizerland,switserland,ch
 NO,norway,norge,noreg,norwey,norvay
@@ -36,7 +36,7 @@ EG,egypt,misr,egpyt,egyt,eygpt
 NG,nigeria,nieria,nigeira,naija
 AR,argentina,argetina,argentia
 CO,colombia,columbia,colobia,collombia
-TH,thailand,siam,tailand,thialand,thiland
+TH,thailand,siam,tailand,thialand,thiland,ไทย
 VN,viet nam,vietnam,veitnam,vietnem
 ID,indonesia,indonisia,indonezia
 PT,portugal,portugol,portugual,portgual
@@ -79,7 +79,7 @@ BJ,BJ,Republic of Benin,République du Bénin
 BL,BL,St. Barthelemy,Collectivity of Saint Barthélemy
 BM,BM,The Islands of Bermuda,The Bermudas
 BN,BN,Brunei Darussalam,Nation of Brunei
-BO,BO,Buliwya,Wuliwya
+BO,BO,Buliwya,Wuliwya,Bolivia
 BQ,BES islands,Bonaire Sint Eustatius and Saba,الجزر الكاريبية الهولندية
 BS,BS,Commonwealth of the Bahamas,البهاما
 BT,BT,Kingdom of Bhutan,بوتان
@@ -225,18 +225,18 @@ TJ,TJ,Toçikiston,Republic of Tajikistan
 TK,TK,توكيلاو,Tokelau-szigetek
 TL,TL,East Timor,Timor
 TM,TM,تركمانستان,Turkmenistán
-TN,TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah
+TN,TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah,Túnez
 TO,TO,تونغا,トンガ
 TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو
 TV,TV,توفالو,ツバル
 TW,TW,Táiwān,Republic of China
-TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania
-UA,UA,Ukrayina,أوكرانيا
+TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania,Tanzania
+UA,UA,Ukrayina,أوكرانيا,Україна
 UG,UG,Republic of Uganda,Jamhuri ya Uganda
 UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet
 UY,UY,Oriental Republic of Uruguay,República Oriental del Uruguay
 UZ,UZ,Republic of Uzbekistan,O‘zbekiston Respublikasi
-VA,VA,Holy See (Vatican City State),Vatican City State
+VA,VA,Holy See (Vatican City State),Vatican City State,Vatican City
 VC,VC,سانت فينسنت والغرينادين,Sant-Visant hag ar Grenadinez
 VE,VE,Venezuela,Bolivarian Republic of Venezuela,"Venezuela, Bolivarian Republic of"
 VG,VG,"Virgin Islands, British",جزر العذراء
