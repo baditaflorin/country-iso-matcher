@@ -1,3 +1,8 @@
+## Unreleased
+
+### Fixed
+- Add the production country-reference and CLDR English display name for Bonaire, Sint Eustatius and Saba to the matcher aliases. A balanced replay of all 247 production country-reference labels found this single remaining CLDR-backed miss outside the existing open alias PRs.
+
 ## 0.1.15 — 2026-10-17
 
 ### Fixed

@@ -83,3 +83,19 @@ func TestCommonShortNamesResolveForSyriaAndVenezuela(t *testing.T) {
 		}
 	}
 }
+
+func TestCLDRCommonNameResolvesForBonaireSintEustatiusAndSaba(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load bundled country data: %v", err)
+	}
+
+	country, err := repo.FindByName("Caribbean Netherlands")
+	if err != nil {
+		t.Fatalf("lookup CLDR common name: %v", err)
+	}
+	if country.ISO2 != "BQ" {
+		t.Fatalf("lookup CLDR common name = %s, want BQ", country.ISO2)
+	}
+}
