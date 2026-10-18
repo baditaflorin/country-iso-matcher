@@ -83,3 +83,40 @@ func TestCommonShortNamesResolveForSyriaAndVenezuela(t *testing.T) {
 		}
 	}
 }
+
+func TestCommonEnglishCountryAliasesResolveWithoutPartialMatches(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load bundled country data: %v", err)
+	}
+
+	for _, tc := range []struct {
+		query string
+		want  string
+	}{
+		{query: "Bosnia & Herzegovina", want: "BA"},
+		{query: "Brunei", want: "BN"},
+		{query: "Bolivia", want: "BO"},
+		{query: "Cape Verde", want: "CV"},
+		{query: "Hong Kong", want: "HK"},
+		{query: "Laos", want: "LA"},
+		{query: "Palestine", want: "PS"},
+		{query: "Sint Maarten", want: "SX"},
+	} {
+		country, err := repo.FindByName(tc.query)
+		if err != nil {
+			t.Errorf("lookup %q: %v", tc.query, err)
+			continue
+		}
+		if country.ISO2 != tc.want {
+			t.Errorf("lookup %q = %s, want %s", tc.query, country.ISO2, tc.want)
+		}
+	}
+
+	for _, query := range []string{"Herzegovina", "Hong Kong Island", "Cape Verde Islands"} {
+		if _, err := repo.FindByName(query); err == nil {
+			t.Errorf("lookup %q unexpectedly matched a country", query)
+		}
+	}
+}
