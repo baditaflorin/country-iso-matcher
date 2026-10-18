@@ -1,3 +1,9 @@
+## 0.1.16 — 2026-10-19
+
+### Fixed
+- Recognize native-script country labels for Russia, Ukraine, China, Japan, and South Korea (#43). A bounded read-only production sample contained 87 office-location labels the prior matcher missed; discovery and holdout countries were disjoint.
+- `go test ./...`, `go vet ./...`, `go build ./...`, and `git diff --check` passed.
+
 ## 0.1.15 — 2026-10-17
 
 ### Fixed
