@@ -1,3 +1,8 @@
+## Unreleased
+
+### Fixed
+- Add 7 Unicode CLDR English territory names missed by a 1,041-alias DomainScope replay. Each added name matched both the production country locale reference and geo-country name for the same ISO alpha-2 code. Names are from [Unicode CLDR English territory data](https://github.com/unicode-org/cldr-json/tree/main/cldr-json/cldr-localenames-full/main/en).
+
 ## 0.1.15 — 2026-10-17
 
 ### Fixed
