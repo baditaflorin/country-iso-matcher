@@ -78,8 +78,8 @@ BI,BI,Republic of Burundi,Republika y'Uburundi
 BJ,BJ,Republic of Benin,République du Bénin
 BL,BL,St. Barthelemy,Collectivity of Saint Barthélemy
 BM,BM,The Islands of Bermuda,The Bermudas
-BN,BN,Brunei Darussalam,Nation of Brunei
-BO,BO,Buliwya,Wuliwya
+BN,BN,Brunei Darussalam,Nation of Brunei,Brunei
+BO,BO,Buliwya,Wuliwya,Bolivia
 BQ,BES islands,Bonaire Sint Eustatius and Saba,الجزر الكاريبية الهولندية
 BS,BS,Commonwealth of the Bahamas,البهاما
 BT,BT,Kingdom of Bhutan,بوتان
@@ -109,7 +109,7 @@ ER,ER,State of Eritrea,ሃገረ ኤርትራ
 ET,ET,ʾĪtyōṗṗyā,Federal Democratic Republic of Ethiopia
 FJ,FJ,Viti,Republic of Fiji
 FK,FK,Islas Malvinas,Falkland Islands (Malvinas)
-FM,FM,Federated States of Micronesia,"Micronesia, Federated States of"
+FM,FM,Federated States of Micronesia,"Micronesia, Federated States of",Micronesia
 FO,FO,Føroyar,Færøerne
 GA,GA,Gabonese Republic,République Gabonaise
 GD,GD,غرينادا,Grenade
@@ -149,7 +149,7 @@ KP,KP,Democratic People's Republic of Korea,DPRK
 KW,KW,State of Kuwait,Dawlat al-Kuwait
 KY,KY,جزر كايمان,Inizi Cayman
 KZ,KZ,Qazaqstan,Казахстан
-LA,LA,Lao,Lao People's Democratic Republic
+LA,LA,Lao,Lao People's Democratic Republic,Laos
 LB,LB,Lebanese Republic,Al-Jumhūrīyah Al-Libnānīyah
 LC,LC,سانت لوسيا,Santez-Lusia
 LI,LI,Principality of Liechtenstein,Fürstentum Liechtenstein
@@ -190,7 +190,7 @@ PF,PF,Polynésie française,Pōrīnetia Farāni
 PG,PG,Independent State of Papua New Guinea,Independen Stet bilong Papua Niugini
 PK,PK,Pākistān,Islamic Republic of Pakistan
 PM,PM,Collectivité territoriale de Saint-Pierre-et-Miquelon,سان بيير وميكلون
-PN,PN,Pitcairn,Pitcairn Henderson Ducie and Oeno Islands
+PN,PN,Pitcairn,Pitcairn Henderson Ducie and Oeno Islands,Pitcairn Islands
 PR,PR,Commonwealth of Puerto Rico,Estado Libre Asociado de Puerto Rico
 PS,PS,"Palestine, State of",State of Palestine
 PW,PW,Republic of Palau,Beluu er a Belau
@@ -214,7 +214,7 @@ SR,SR,Sarnam,Sranangron
 SS,SS,جنوب السودان,Soudan ar Su
 ST,ST,Democratic Republic of São Tomé and Príncipe,Sao Tome and Principe
 SV,SV,Republic of El Salvador,República de El Salvador
-SX,SX,Sint Maarten (Dutch part),سينت مارتن
+SX,SX,Sint Maarten (Dutch part),سينت مارتن,Sint Maarten
 SY,SY,Syria,Syrian Arab Republic,Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah
 SZ,SZ,Swaziland,weSwatini
 TC,TC,جزر توركس وكايكوس,Inizi Turks ha Caicos
@@ -230,7 +230,7 @@ TO,TO,تونغا,トンガ
 TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو
 TV,TV,توفالو,ツバル
 TW,TW,Táiwān,Republic of China
-TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania
+TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania,Tanzania
 UA,UA,Ukrayina,أوكرانيا
 UG,UG,Republic of Uganda,Jamhuri ya Uganda
 UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet
