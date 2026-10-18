@@ -60,10 +60,10 @@ func TestBareKoreaIsAmbiguousButQualifiedNamesResolve(t *testing.T) {
 	}
 }
 
-func TestSampledLocalizedCountryAliasesResolve(t *testing.T) {
+func TestCLDRLocalizedCountryAliasesResolve(t *testing.T) {
 	cases := []struct{ query, want string }{
-		{"CIN", "CN"},
-		{"SIP", "CY"},
+		{"Çin", "CN"},
+		{"Síp", "CY"},
 		{"República Dominicana", "DO"},
 		{"日本", "JP"},
 		{"Кыргызстан", "KG"},
