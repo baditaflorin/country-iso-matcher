@@ -34,8 +34,8 @@ func TestBundledCSVProvidesISO3ForEveryCountry(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(countries) != 249 {
-		t.Fatalf("bundled country count = %d, want all 249 assigned ISO 3166-1 entries", len(countries))
+	if len(countries) != 250 {
+		t.Fatalf("bundled country count = %d, want 249 assigned ISO 3166-1 entries plus the DomainScope XK extension", len(countries))
 	}
 	for _, country := range countries {
 		if len(country.ISO3) != 3 {
@@ -50,6 +50,9 @@ func TestBundledCSVProvidesISO3ForEveryCountry(t *testing.T) {
 		if !byCode[code] {
 			t.Errorf("missing long-tail ISO2 code %s", code)
 		}
+	}
+	if !byCode["XK"] {
+		t.Error("missing DomainScope Kosovo code XK")
 	}
 }
 
