@@ -126,6 +126,43 @@ func TestUNM49CountryLabelsStayDistinctAcrossLanguages(t *testing.T) {
 	}
 }
 
+func TestArabicM49LabelsUseValidNomenclature(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// The current M49 Arabic table contains malformed strings for NL, IO, TF,
+	// and UM. Keep the corrected/established Arabic labels resolvable and do not
+	// introduce the malformed source forms as aliases.
+	for _, tc := range []struct{ label, want string }{
+		{"مملكة هولندا", "NL"},
+		{"الإقليم البريطاني في المحيط الهندي", "IO"},
+		{"الأقاليم الجنوبية الفرنسية", "TF"},
+		{"جزر الولايات المتحدة النائية", "UM"},
+	} {
+		got, err := repo.FindByName(tc.label)
+		if err != nil {
+			t.Errorf("valid Arabic label %q: %v, want %s", tc.label, err, tc.want)
+			continue
+		}
+		if got.ISO2 != tc.want {
+			t.Errorf("valid Arabic label %q = %s, want %s", tc.label, got.ISO2, tc.want)
+		}
+	}
+
+	for _, label := range []string{
+		"هولندا (مملكة _)",
+		"المحيط الهندي الإقليم البريطاني في",
+		"الأراضي الفرنسية الجنوبية الجنوبية",
+		"نائية التابعة للولايات المتحدة",
+	} {
+		if got, err := repo.FindByName(label); err == nil {
+			t.Errorf("malformed Arabic M49 label %q unexpectedly resolved to %s", label, got.ISO2)
+		}
+	}
+}
+
 func TestEveryAliasResolvesWithoutCrossCountryAliasCollisions(t *testing.T) {
 	textNormalizer := normalizer.NewTextNormalizer()
 	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")

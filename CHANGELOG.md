@@ -1,7 +1,7 @@
 ## Unreleased
 
 ### Fixed
-- Add 238 previously unmapped UN M49 country or area labels across six languages, keyed by ISO alpha-2. The 248-code-per-language audit found no wrong-code matches or cross-country name collisions; regression tests cover Congo and Korea pairs and every bundled alias.
+- Add 234 valid previously unmapped UN M49 country or area labels across six languages. Of the 238 initially missing labels, four Arabic table strings were malformed: replace the Netherlands underscore placeholder with the UN Arabic member-state name `مملكة هولندا`, and omit the reversed British Indian Ocean Territory label, duplicated French Southern Territories label, and truncated United States Minor Outlying Islands label because valid aliases for those areas already exist. The 1,488-label audit resolves 1,484 raw M49 labels; the four malformed Arabic forms are covered by valid alternatives. No wrong-code matches or cross-country name collisions were found. Regression tests cover Congo/Korea homonyms, the Arabic corrections and omissions, and every bundled alias.
 
 ## 0.1.18 — 2026-10-19
 
