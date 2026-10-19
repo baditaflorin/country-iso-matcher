@@ -1,3 +1,10 @@
+## 0.1.17 — 2026-10-19
+
+### Fixed
+- Add CLDR 48.2.3 country and territory display names for 13 locales to the alias corpus. On 3,237 locale-country labels, the six-script holdout improved from 58/1,494 correct with 0 false positives to 1,494/1,494 correct with 0 false positives; the seven-locale discovery split improved from 763/1,743 correct with 1 false positive to 1,743/1,743 correct with 0 false positives.
+- Correct the Portuguese CLDR label “Guiana” to resolve to Guyana (GY), not French Guiana (GF).
+- `go test ./...`, `go vet ./...`, `go build ./...`, and `git diff --check` passed.
+
 ## 0.1.16 — 2026-10-19
 
 ### Fixed

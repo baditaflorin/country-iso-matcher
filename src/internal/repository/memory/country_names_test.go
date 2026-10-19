@@ -31,6 +31,53 @@ func TestCommaCountryNamesAndCongoDisambiguation(t *testing.T) {
 	}
 }
 
+func TestCLDRLocalizedTerritoryNamesResolveAcrossScripts(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Representative discovery and held-out labels from Unicode CLDR 48.2.3.
+	for _, tc := range []struct{ locale, label, want string }{
+		{"de", "Vereinigte Arabische Emirate", "AE"},
+		{"es", "Antigua y Barbuda", "AG"},
+		{"fr", "Émirats arabes unis", "AE"},
+		{"pt", "Emirados Árabes Unidos", "AE"},
+		{"tr", "Arnavutluk", "AL"},
+		{"ar", "أندورا", "AD"},
+		{"hi", "एंडोरा", "AD"},
+		{"ja", "アンドラ", "AD"},
+		{"ru", "Андорра", "AD"},
+		{"uk", "Обʼєднані Арабські Емірати", "AE"},
+		{"zh", "安道尔", "AD"},
+		{"it", "Emirati Arabi Uniti", "AE"},
+		{"nl", "Albanië", "AL"},
+	} {
+		got, err := repo.FindByName(tc.label)
+		if err != nil {
+			t.Errorf("CLDR %s label %q: %v, want %s", tc.locale, tc.label, err, tc.want)
+			continue
+		}
+		if got.ISO2 != tc.want {
+			t.Errorf("CLDR %s label %q = %s, want %s", tc.locale, tc.label, got.ISO2, tc.want)
+		}
+	}
+}
+
+func TestPortugueseGuianaResolvesToGuyana(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	got, err := repo.FindByName("Guiana")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.ISO2 != "GY" {
+		t.Fatalf("Portuguese CLDR label Guiana resolved to %s, want GY", got.ISO2)
+	}
+}
+
 func TestProductionOfficeCountryLabelsMatchAcrossLocales(t *testing.T) {
 	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
 	if err != nil {
