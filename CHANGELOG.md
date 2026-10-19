@@ -1,3 +1,8 @@
+## Unreleased
+
+### Fixed
+- Add 238 previously unmapped UN M49 country or area labels across six languages, keyed by ISO alpha-2. The 248-code-per-language audit found no wrong-code matches or cross-country name collisions; regression tests cover Congo and Korea pairs and every bundled alias.
+
 ## 0.1.18 — 2026-10-19
 
 ### Changed

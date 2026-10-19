@@ -78,6 +78,120 @@ func TestPortugueseGuianaResolvesToGuyana(t *testing.T) {
 	}
 }
 
+func TestUNM49CountryLabelsStayDistinctAcrossLanguages(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// UN M49 country/area labels found missing from the bundled catalog.
+	// Paired names ensure that shared Congo/Korea roots do not cross-map.
+	for _, tc := range []struct{ language, label, want string }{
+		{"en", "Democratic Republic of the Congo", "CD"},
+		{"en", "Congo", "CG"},
+		{"en", "Netherlands (Kingdom of the)", "NL"},
+		{"en", "Democratic People's Republic of Korea", "KP"},
+		{"en", "Republic of Korea", "KR"},
+		{"zh", "刚果民主共和国", "CD"},
+		{"zh", "刚果", "CG"},
+		{"zh", "大韩民国", "KR"},
+		{"zh", "朝鲜民主主义人民共和国", "KP"},
+		{"ru", "Демократическая Республика Конго", "CD"},
+		{"ru", "Конго", "CG"},
+		{"ru", "Республика Корея", "KR"},
+		{"ru", "Корейская Народно-Демократическая Республика", "KP"},
+		{"ru", "Южная Африка", "ZA"},
+		{"ru", "Южная Джорджия и Южные Сандвичевы острова", "GS"},
+		{"fr", "République démocratique du Congo", "CD"},
+		{"fr", "Congo", "CG"},
+		{"fr", "République de Corée", "KR"},
+		{"fr", "République populaire démocratique de Corée", "KP"},
+		{"es", "República Democrática del Congo", "CD"},
+		{"es", "Congo", "CG"},
+		{"es", "República de Corea", "KR"},
+		{"es", "República Popular Democrática de Corea", "KP"},
+		{"ar", "جمهورية الكونغو الديمقراطية", "CD"},
+		{"ar", "الكونغو", "CG"},
+		{"ar", "جمهورية كوريا", "KR"},
+		{"ar", "جمهورية كوريا الشعبية الديمقراطية", "KP"},
+	} {
+		got, err := repo.FindByName(tc.label)
+		if err != nil {
+			t.Errorf("UN M49 %s label %q: %v, want %s", tc.language, tc.label, err, tc.want)
+			continue
+		}
+		if got.ISO2 != tc.want {
+			t.Errorf("UN M49 %s label %q = %s, want %s", tc.language, tc.label, got.ISO2, tc.want)
+		}
+	}
+}
+
+func TestEveryAliasResolvesWithoutCrossCountryAliasCollisions(t *testing.T) {
+	textNormalizer := normalizer.NewTextNormalizer()
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	aliases, err := loader.LoadAliases()
+	if err != nil {
+		t.Fatal(err)
+	}
+	repo, err := NewCountryRepository(textNormalizer, loader)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	canonicalOwners := make(map[string]string)
+	for _, country := range countries {
+		for _, name := range country.Names {
+			canonicalOwners[textNormalizer.Normalize(name)] = country.ISO2
+		}
+		canonicalOwners[textNormalizer.Normalize(country.ISO2)] = country.ISO2
+		canonicalOwners[textNormalizer.Normalize(country.ISO3)] = country.ISO2
+	}
+
+	type aliasExample struct {
+		code  string
+		label string
+	}
+	owners := make(map[string]map[string]struct{})
+	examples := make(map[string]aliasExample)
+	for code, labels := range aliases {
+		for _, label := range labels {
+			key := textNormalizer.Normalize(label)
+			if owners[key] == nil {
+				owners[key] = make(map[string]struct{})
+			}
+			owners[key][code] = struct{}{}
+			examples[key] = aliasExample{code: code, label: label}
+		}
+	}
+
+	for key, aliasOwners := range owners {
+		canonicalOwner := canonicalOwners[key]
+		if len(aliasOwners) > 1 && canonicalOwner == "" {
+			t.Errorf("normalized alias %q is assigned to multiple countries without a canonical name/code", examples[key].label)
+			continue
+		}
+
+		want := canonicalOwner
+		if want == "" {
+			for code := range aliasOwners {
+				want = code
+			}
+		}
+		got, err := repo.FindByName(examples[key].label)
+		if err != nil {
+			t.Errorf("lookup alias %q: %v, want %s", examples[key].label, err, want)
+			continue
+		}
+		if got.ISO2 != want {
+			t.Errorf("alias %q resolved to %s, want %s", examples[key].label, got.ISO2, want)
+		}
+	}
+}
+
 func TestProductionOfficeCountryLabelsMatchAcrossLocales(t *testing.T) {
 	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
 	if err != nil {
