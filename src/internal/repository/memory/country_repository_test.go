@@ -5,7 +5,44 @@ import (
 
 	"country-iso-matcher/src/internal/data"
 	"country-iso-matcher/src/pkg/normalizer"
+	"golang.org/x/text/language"
+	"golang.org/x/text/language/display"
 )
+
+func TestAllCLDRKoreanCountryNamesResolve(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatalf("load bundled country data: %v", err)
+	}
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load country repository: %v", err)
+	}
+
+	koreanNames := display.Regions(language.Korean)
+	matched := 0
+	for _, country := range countries {
+		region, err := language.ParseRegion(country.ISO2)
+		if err != nil {
+			t.Fatalf("parse ISO2 country code %q: %v", country.ISO2, err)
+		}
+		query := koreanNames.Name(region)
+		got, err := repo.FindByName(query)
+		if err != nil {
+			t.Errorf("lookup Korean CLDR name for ISO2 %s: %v", country.ISO2, err)
+			continue
+		}
+		if got.ISO2 != country.ISO2 {
+			t.Errorf("Korean CLDR name for ISO2 %s resolved to %s", country.ISO2, got.ISO2)
+			continue
+		}
+		matched++
+	}
+	if matched != len(countries) {
+		t.Fatalf("resolved %d/%d Korean CLDR country names", matched, len(countries))
+	}
+}
 
 func TestBundledIraqAliasIsNotShadowedByIran(t *testing.T) {
 	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
