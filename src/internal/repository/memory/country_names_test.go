@@ -72,3 +72,43 @@ func TestProductionOfficeCountryLabelsMatchAcrossLocales(t *testing.T) {
 		}
 	}
 }
+
+func TestProductionAliasesResolveToDomainScopeCountryCodes(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	aliases, err := loader.LoadAliases()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, code := range []string{"HK", "XK"} {
+		country, err := repo.FindByCode(code)
+		if err != nil {
+			t.Fatalf("country code %s: %v", code, err)
+		}
+		if country == nil || country.ISO2 != code {
+			t.Fatalf("country code %s did not return its country record", code)
+		}
+		for _, alias := range aliases[code] {
+			got, err := repo.FindByName(alias)
+			if err != nil {
+				t.Errorf("alias for %s did not resolve: %v", code, err)
+				continue
+			}
+			if got == nil || got.ISO2 != code {
+				t.Errorf("alias for %s resolved to an unexpected country", code)
+			}
+		}
+	}
+
+	kosovo, err := repo.FindByName("Kosovo")
+	if err != nil {
+		t.Fatalf("Kosovo country name: %v", err)
+	}
+	if kosovo == nil || kosovo.ISO2 != "XK" || kosovo.ISO3 != "XKX" {
+		t.Fatalf("Kosovo country name did not resolve to the DomainScope XK country code")
+	}
+}
