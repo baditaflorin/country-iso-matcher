@@ -1,6 +1,6 @@
 steps:
   golden-country-data:
-    image: golang:1.25
+    image: golang:1.26
     commands:
       - >-
         go test ./src/internal/data
@@ -10,7 +10,7 @@ steps:
       event: [push, pull_request]
 
   test:
-    image: golang:1.25
+    image: golang:1.26
     commands:
       - cd src
       - go test ./...
