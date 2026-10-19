@@ -1,3 +1,12 @@
+## 0.1.18 — 2026-10-19
+
+### Changed
+- fix: resolve Korean localized country names
+- fix: add CLDR localized country names (#46)
+- chore: release country matcher 0.1.16 (#44)
+- fix: recognize native-script country labels (#43)
+- docs(claude): refresh CLAUDE.md from the services-registry canonical 9a62b0cad [skip ci]
+
 ## 0.1.17 — 2026-10-19
 
 ### Fixed
