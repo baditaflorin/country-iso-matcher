@@ -1,3 +1,7 @@
+## 0.1.22 — 2026-10-20
+
+- _No changes recorded since the previous version._
+
 ## 0.1.21 — 2026-10-20
 
 ### Changed
