@@ -1,3 +1,8 @@
+## 0.1.23 — 2026-10-20
+
+### Changed
+- fix: add Indonesian United States alias
+
 ## Unreleased
 
 ### Fixed
