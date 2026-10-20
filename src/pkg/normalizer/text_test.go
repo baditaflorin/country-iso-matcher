@@ -25,6 +25,16 @@ func TestTextNormalizer_Normalize(t *testing.T) {
 			expected: "cote d'ivoire",
 		},
 		{
+			name:     "fold full-width Latin characters",
+			input:    "ＵＳＡ",
+			expected: "usa",
+		},
+		{
+			name:     "fold half-width Japanese country names",
+			input:    "ｱﾒﾘｶ合衆国",
+			expected: "アメリカ合衆国",
+		},
+		{
 			name:     "trim whitespace",
 			input:    "  Germany  ",
 			expected: "germany",

@@ -78,6 +78,27 @@ func TestPortugueseGuianaResolvesToGuyana(t *testing.T) {
 	}
 }
 
+func TestJapaneseCountryAliasesResolveAcrossWidthVariants(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, query := range []string{"ＵＳＡ", "ｱﾒﾘｶ合衆国"} {
+		got, err := repo.FindByName(query)
+		if err != nil {
+			t.Errorf("lookup width variant %q: %v, want US", query, err)
+			continue
+		}
+		if got.ISO2 != "US" {
+			t.Errorf("lookup width variant %q = %s, want US", query, got.ISO2)
+		}
+	}
+	if _, err := repo.FindByName("ｱﾒﾘｶ"); err == nil {
+		t.Fatal("width folding should not turn a partial label into a country alias")
+	}
+}
+
 func TestUNM49CountryLabelsStayDistinctAcrossLanguages(t *testing.T) {
 	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
+	"golang.org/x/text/width"
 )
 
 type TextNormalizer interface {
@@ -19,7 +20,7 @@ type textNormalizer struct {
 
 func NewTextNormalizer() TextNormalizer {
 	return &textNormalizer{
-		transformer: transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC),
+		transformer: transform.Chain(width.Fold, norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC),
 	}
 }
 
