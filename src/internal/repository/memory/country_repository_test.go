@@ -44,6 +44,51 @@ func TestAllCLDRKoreanCountryNamesResolve(t *testing.T) {
 	}
 }
 
+func TestAllPinnedCLDRLocaleCountryNamesResolve(t *testing.T) {
+	if display.CLDRVersion != "32" {
+		t.Fatalf("update the legacy-locale alias corpus for CLDR %s", display.CLDRVersion)
+	}
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatalf("load bundled country data: %v", err)
+	}
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load country repository: %v", err)
+	}
+
+	// The aliases include CLDR 48.2.3 names and retain CLDR 32 display names
+	// from the pinned x/text dependency as legacy inputs used by older sources.
+	for _, locale := range []string{"ar", "de", "es", "fr", "hi", "it", "ja", "nl", "pt", "ru", "tr", "uk", "vi", "zh"} {
+		names := display.Regions(language.MustParse(locale))
+		checked := 0
+		for _, country := range countries {
+			region, err := language.ParseRegion(country.ISO2)
+			if err != nil {
+				t.Fatalf("parse ISO2 country code %q: %v", country.ISO2, err)
+			}
+			query := names.Name(region)
+			if query == "" || query == country.ISO2 {
+				continue
+			}
+			got, err := repo.FindByName(query)
+			if err != nil {
+				t.Errorf("lookup CLDR %s country label for ISO2 %s: %v", locale, country.ISO2, err)
+				continue
+			}
+			if got.ISO2 != country.ISO2 {
+				t.Errorf("CLDR %s country label for ISO2 %s resolved to %s", locale, country.ISO2, got.ISO2)
+				continue
+			}
+			checked++
+		}
+		if checked != len(countries) {
+			t.Errorf("resolved %d/%d CLDR %s country labels", checked, len(countries), locale)
+		}
+	}
+}
+
 func TestBundledIraqAliasIsNotShadowedByIran(t *testing.T) {
 	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
 	for attempt := 0; attempt < 20; attempt++ {

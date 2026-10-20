@@ -1,3 +1,8 @@
+## 0.1.26 — 2026-10-20
+
+### Fixed
+- Retain legacy CLDR 32 territory names exposed by the pinned `golang.org/x/text` locale data, mapping all 3,486 country labels across 14 locales to the current ISO alpha-2 codes. Add a regression matrix for every assigned country in those locales.
+
 ## 0.1.25 — 2026-10-20
 
 ### Fixed
