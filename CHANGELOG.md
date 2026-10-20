@@ -1,3 +1,8 @@
+## 0.1.21 — 2026-10-20
+
+### Changed
+- fix: fold Unicode width variants in country lookups (#52)
+
 ## 0.1.20 — 2026-10-20
 
 ### Fixed
