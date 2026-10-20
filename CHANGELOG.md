@@ -1,3 +1,8 @@
+## Unreleased
+
+### Fixed
+- Resolve the Indonesian CLDR 48.2.3 territory name `Amerika Serikat` to the United States (US) in both bundled and in-memory lookups. The alias was missing from both data sources on latest main.
+
 ## 0.1.22 — 2026-10-20
 
 - _No changes recorded since the previous version._

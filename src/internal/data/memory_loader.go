@@ -142,7 +142,7 @@ func getAliasData() map[string][]string {
 			"usa", "united states", "america", "états-unis", "vereinigte staaten",
 			"'merica", "murica", "united statas", "united stetes", "united staes",
 			"united stets", "united staates", "untied states", "estados unidos",
-			"amérique", "us", "u.s.a.", "u.s.a",
+			"amérique", "us", "u.s.a.", "u.s.a", "Amerika Serikat",
 		},
 		"GB": {
 			"uk", "united kingdom", "britain", "england", "royaume-uni",

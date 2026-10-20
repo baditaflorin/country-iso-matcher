@@ -291,3 +291,28 @@ func TestProductionOfficeCountryLabelsMatchAcrossLocales(t *testing.T) {
 		}
 	}
 }
+
+func TestIndonesianCLDRCountryNameResolves(t *testing.T) {
+	// CLDR 48.2.3 lists "Amerika Serikat" as the Indonesian territory name for US.
+	for _, tc := range []struct {
+		name   string
+		loader data.Loader
+	}{
+		{name: "bundled CSV", loader: data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")},
+		{name: "memory", loader: data.NewMemoryLoader()},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), tc.loader)
+			if err != nil {
+				t.Fatal(err)
+			}
+			got, err := repo.FindByName("Amerika Serikat")
+			if err != nil {
+				t.Fatalf("lookup Indonesian CLDR label: %v", err)
+			}
+			if got.ISO2 != "US" {
+				t.Fatalf("lookup Indonesian CLDR label = %s, want US", got.ISO2)
+			}
+		})
+	}
+}
