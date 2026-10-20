@@ -1,3 +1,9 @@
+## 0.1.25 — 2026-10-20
+
+### Fixed
+- Add the complete Vietnamese territory-name set from Unicode CLDR 48.2.3 for all 249 assigned ISO 3166-1 entries. A reproducible CLDR matrix now resolves every Vietnamese label to its expected alpha-2 code.
+- Resolve Vietnamese labels before accent-insensitive fallback when they would otherwise fold onto another country's ISO code. Preserve the ISO-code results for `AO`, `BI`, and `NGA`, while accepting the corresponding title-cased Vietnamese country names.
+
 ## 0.1.24 — 2026-10-20
 
 ### Changed
@@ -7,11 +13,6 @@
 
 ### Changed
 - fix: add Indonesian United States alias
-
-## Unreleased
-
-### Fixed
-- Resolve the Indonesian CLDR 48.2.3 territory name `Amerika Serikat` to the United States (US) in both bundled and in-memory lookups. The alias was missing from both data sources on latest main.
 
 ## 0.1.22 — 2026-10-20
 
