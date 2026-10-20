@@ -1,6 +1,9 @@
 package memory
 
 import (
+	"encoding/json"
+	"os"
+	"strings"
 	"testing"
 
 	"country-iso-matcher/src/internal/data"
@@ -209,12 +212,7 @@ func TestEveryAliasResolvesWithoutCrossCountryAliasCollisions(t *testing.T) {
 		canonicalOwners[textNormalizer.Normalize(country.ISO3)] = country.ISO2
 	}
 
-	type aliasExample struct {
-		code  string
-		label string
-	}
 	owners := make(map[string]map[string]struct{})
-	examples := make(map[string]aliasExample)
 	for code, labels := range aliases {
 		for _, label := range labels {
 			key := textNormalizer.Normalize(label)
@@ -222,30 +220,121 @@ func TestEveryAliasResolvesWithoutCrossCountryAliasCollisions(t *testing.T) {
 				owners[key] = make(map[string]struct{})
 			}
 			owners[key][code] = struct{}{}
-			examples[key] = aliasExample{code: code, label: label}
 		}
 	}
 
 	for key, aliasOwners := range owners {
-		canonicalOwner := canonicalOwners[key]
-		if len(aliasOwners) > 1 && canonicalOwner == "" {
-			t.Errorf("normalized alias %q is assigned to multiple countries without a canonical name/code", examples[key].label)
-			continue
+		if len(aliasOwners) > 1 && canonicalOwners[key] == "" {
+			t.Errorf("normalized alias key %q is assigned to multiple countries without a canonical name/code", key)
 		}
+	}
 
-		want := canonicalOwner
-		if want == "" {
-			for code := range aliasOwners {
+	for code, labels := range aliases {
+		for _, label := range labels {
+			key := textNormalizer.Normalize(label)
+			want := canonicalOwners[key]
+			if want == "" {
 				want = code
 			}
+			if exactCode, ok := repo.exactNameToCode[strings.TrimSpace(label)]; ok {
+				want = exactCode
+			} else if containsNonASCII(label) {
+				if exactCode, ok := repo.accentNameToCode[accentPreservingKey(label)]; ok {
+					want = exactCode
+				}
+			}
+			got, err := repo.FindByName(label)
+			if err != nil {
+				t.Errorf("lookup alias %q: %v, want %s", label, err, want)
+				continue
+			}
+			if got.ISO2 != want {
+				t.Errorf("alias %q resolved to %s, want %s", label, got.ISO2, want)
+			}
 		}
-		got, err := repo.FindByName(examples[key].label)
-		if err != nil {
-			t.Errorf("lookup alias %q: %v, want %s", examples[key].label, err, want)
+	}
+}
+
+func TestAllVietnameseCLDRTerritoryNamesResolve(t *testing.T) {
+	loader := data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv")
+	countries, err := loader.LoadCountries()
+	if err != nil {
+		t.Fatalf("load bundled countries: %v", err)
+	}
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), loader)
+	if err != nil {
+		t.Fatalf("load country repository: %v", err)
+	}
+
+	fixture, err := os.ReadFile("../../../../data/cldr/48.2.3/vi/territories.json")
+	if err != nil {
+		t.Fatalf("read pinned CLDR Vietnamese territory fixture: %v", err)
+	}
+	var source struct {
+		Main map[string]struct {
+			LocaleDisplayNames struct {
+				Territories map[string]string `json:"territories"`
+			} `json:"localeDisplayNames"`
+		} `json:"main"`
+	}
+	if err := json.Unmarshal(fixture, &source); err != nil {
+		t.Fatalf("parse pinned CLDR fixture: %v", err)
+	}
+	vi, ok := source.Main["vi"]
+	if !ok {
+		t.Fatal("pinned CLDR fixture has no vi locale")
+	}
+
+	assigned := make(map[string]struct{}, len(countries))
+	for _, country := range countries {
+		assigned[country.ISO2] = struct{}{}
+	}
+	checked := 0
+	for code, label := range vi.LocaleDisplayNames.Territories {
+		if _, ok := assigned[code]; !ok {
 			continue
 		}
-		if got.ISO2 != want {
-			t.Errorf("alias %q resolved to %s, want %s", examples[key].label, got.ISO2, want)
+		got, err := repo.FindByName(label)
+		if err != nil {
+			t.Errorf("CLDR vi label for %s: %v", code, err)
+			continue
+		}
+		if got.ISO2 != code {
+			t.Errorf("CLDR vi label for %s resolved to %s", code, got.ISO2)
+		}
+		checked++
+	}
+	if checked != len(countries) {
+		t.Fatalf("checked %d CLDR Vietnamese territory labels, want all %d assigned ISO alpha-2 entries", checked, len(countries))
+	}
+}
+
+func TestVietnameseNamesDoNotGetCapturedByISOCodeKeys(t *testing.T) {
+	repo, err := NewCountryRepository(normalizer.NewTextNormalizer(), data.NewCSVLoader("../../../../data/countries.csv", "../../../../data/aliases.csv"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range []struct{ query, want string }{
+		{"Áo", "AT"},
+		{"áo", "AT"},
+		{"A\u0301o", "AT"}, // decomposed accent form
+		{"Bỉ", "BE"},
+		{"bỈ", "BE"},
+		{"Nga", "RU"}, // CLDR's title-cased name shares an ASCII spelling with ISO3 NGA.
+		{"AO", "AO"},
+		{"ao", "AO"},
+		{"BI", "BI"},
+		{"bi", "BI"},
+		{"NGA", "NG"},
+		{"nga", "NG"},
+	} {
+		got, err := repo.FindByName(tc.query)
+		if err != nil {
+			t.Errorf("lookup %q: %v, want %s", tc.query, err, tc.want)
+			continue
+		}
+		if got.ISO2 != tc.want {
+			t.Errorf("lookup %q = %s, want %s", tc.query, got.ISO2, tc.want)
 		}
 	}
 }

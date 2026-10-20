@@ -6,7 +6,7 @@ A high-performance, highly configurable Go web service that converts country nam
 
 - **🚀 High Performance**: In-memory caching for sub-millisecond lookups
 - **🔍 Intelligent Matching**: Handles casing, accents, typos, and whitespace variations
-- **🌐 Multi-lingual**: Supports country names in 20+ languages with 3,000+ aliases, including CLDR names for 13 locales
+- **🌐 Multi-lingual**: Supports country names in 20+ languages with 3,000+ aliases, including CLDR names for 14 locales
 - **🗄️ Flexible Data Sources**: Choose between CSV, TSV, in-memory, or database
 - **🎨 Web GUI**: Modern configuration management interface at runtime
 - **⚙️ Configurable**: YAML configuration with environment variable overrides
@@ -38,6 +38,8 @@ docker-compose up
 ```
 
 The service starts on `http://localhost:3030` with the GUI at `http://localhost:3030/admin`.
+
+Exact country labels are checked before accent-insensitive matching. This keeps localized names distinct when accent folding would make a name look like another country's ISO code.
 
 ### Quick Test
 

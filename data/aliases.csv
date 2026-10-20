@@ -1,251 +1,251 @@
-code,alias1,alias2,alias3,alias4,alias5,alias6,alias7,alias8,alias9,alias10,alias11,alias12,alias13,alias14,alias15,alias16,alias17,alias18,alias19,alias20,alias21,alias22,alias23,alias24,alias25,alias26,alias27,alias28,alias29,alias30,alias31,alias32
+code,alias1,alias2,alias3,alias4,alias5,alias6,alias7,alias8,alias9,alias10,alias11,alias12,alias13,alias14,alias15,alias16,alias17,alias18,alias19,alias20,alias21,alias22,alias23,alias24,alias25,alias26,alias27,alias28,alias29,alias30,alias31,alias32,alias33,alias34
 # Unicode CLDR and UN M49 territory-name aliases; modified for this matcher.
-US,usa,united states,america,états-unis,vereinigte staaten,'merica,murica,united statas,united stetes,united staes,united stets,united staates,untied states,estados unidos,amérique,us,u.s.a.,الولايات المتحدة,संयुक्त राज्य,Stati Uniti,アメリカ合衆国,Verenigde Staten,Соединенные Штаты,Amerika Birleşik Devletleri,Сполучені Штати,美国,미국,美利坚合众国,Соединенные Штаты Америки,États-Unis d’Amérique,Estados Unidos de América,الولايات المتحدة الأمريكية,Amerika Serikat
-GB,uk,united kingdom,britain,england,royaume-uni,vereinigtes königreich,great britain,u.k.,northern ireland,scotland,wales,écosse,angleterre,المملكة المتحدة,Reino Unido,यूनाइटेड किंगडम,Regno Unito,イギリス,Verenigd Koninkrijk,Великобритания,Birleşik Krallık,Велика Британія,英国,영국,大不列颠及北爱尔兰联合王国,Соединенное Королевство Великобритании и Северной Ирландии,Royaume-Uni de Grande-Bretagne et d’Irlande du Nord,Reino Unido de Gran Bretaña e Irlanda del Norte,المملكة المتحدة لبريطانيا العظمى وآيرلندا الشمالية
-BR,brasil,brazil,brasilz,braszil,brazyl,البرازيل,Brasilien,Brésil,ब्राज़ील,Brasile,ブラジル,Brazilië,Бразилия,Brezilya,Бразилія,巴西,브라질
-CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china,中国,الصين,चीन,Cina,Китай,Çin,중국
-KR,south korea,republic of korea,korea south,corée du sud,südkorea,soth korea,south koria,hanguk,rok,sk,korea,한국,كوريا الجنوبية,Corea del Sur,दक्षिण कोरिया,Corea del Sud,韓国,Zuid-Korea,Coreia do Sul,Республика Корея,Güney Kore,Південна Корея,韩国,대한민국,大韩民国,République de Corée,República de Corea,جمهورية كوريا
-RU,russia,russie,russland,russian federation,rossiya,rossia,rusia,rusija,russa,russha,soviet union,ussr,union of soviet socialist republics,sovjet,россия,روسيا,रूस,ロシア,Rusland,Rusya,Росія,俄罗斯,러시아,俄罗斯联邦,Российская Федерация,Fédération de Russie,Federación de Rusia,الاتحاد الروسي
-DE,germany,deutschland,allemagne,germania,alemania,deutchland,deutchlnd,deutcheland,ألمانيا,जर्मनी,ドイツ,Duitsland,Alemanha,Германия,Almanya,Німеччина,德国,독일
-FR,france,frankreich,francia,francais,franse,franc,francz,فرنسا,फ़्रांस,フランス,Frankrijk,França,Франция,Fransa,Франція,法国,프랑스
-IT,italy,italia,italie,italien,it,itly,itali,italya,إيطاليا,इटली,イタリア,Италия,Італія,意大利,이탈리아
-ES,spain,españa,espagne,spanien,spagna,espanya,espania,spane,spian,إسبانيا,स्पेन,スペイン,Spanje,Espanha,Испания,İspanya,Іспанія,西班牙,스페인
-PL,poland,polska,pologne,polen,polland,polan,p0land,polend,polad,بولندا,Polonia,पोलैंड,ポーランド,Польша,Polonya,Польща,波兰,폴란드
-NL,netherlands,nederland,pays-bas,niederlande,holland,the netherlands,países bajos,netherland,neterlands,هولندا,नीदरलैंड,Paesi Bassi,オランダ,Países Baixos,Нидерланды,Hollanda,Нідерланди,荷兰,네덜란드,Netherlands (Kingdom of the),荷兰王国,Нидерланды (Королевство),Pays-Bas (Royaume des),Países Bajos (Reino de los),مملكة هولندا
-CH,switzerland,suisse,schweiz,svizzera,helvetia,swizerland,switserland,ch,سويسرا,Suiza,स्विट्ज़रलैंड,スイス,Zwitserland,Suíça,Швейцария,İsviçre,Швейцарія,瑞士,스위스
-NO,norway,norge,noreg,norwey,norvay,النرويج,Norwegen,Noruega,Norvège,नॉर्वे,Norvegia,ノルウェー,Noorwegen,Норвегия,Norveç,Норвегія,挪威,노르웨이
-SE,sweden,sverige,suède,schweden,swden,sweeden,السويد,Suecia,स्वीडन,Svezia,スウェーデン,Zweden,Швеция,İsveç,Швеція,瑞典,스웨덴
-GR,greece,ελλάδα,grèce,griechenland,grecia,hellas,ellada,grece,greese,اليونان,यूनान,ギリシャ,Griekenland,Греция,Yunanistan,Греція,希腊,그리스
-RO,romania,românia,roumanie,roumania,roumanía,roumaniya,rouminia,rumänien,rumænien,rumunia,rumunija,rumänia,rumānija,rumānīyā,rumunska,rumunsko,rumunjska,rumyniya,رومانيا,रोमानिया,ルーマニア,Roemenië,Romênia,Румыния,Romanya,Румунія,罗马尼亚,루마니아
-HU,hungary,hunggary,hungry,magyarország,magyar-kok,hongrie,hongaria,hongarije,hongarye,hongria,hungaria,hungario,hungari,hungariá,hungarya,hungariya,hungriya,هنغاريا,Ungarn,Hungría,हंगरी,Ungheria,ハンガリー,Венгрия,Macaristan,Угорщина,匈牙利,헝가리
-CZ,czech republic,česká republika,république tchèque,tschechische republik,czechia,czechoslovakia,checz,chekia,česko,التشيك,Tschechien,Chequia,Tchéquie,चेकिया,Cechia,チェコ,Tsjechië,Tchéquia,Чехия,Çekya,Чехія,捷克,체코,تشيكيا
-SK,slovakia,slovensko,slovaquie,slowakei,slovak republic,سلوفاكيا,Eslovaquia,स्लोवाकिया,Slovacchia,スロバキア,Slowakije,Словакия,Slovakya,Словаччина,斯洛伐克,슬로바키아
-JP,japan,nippon,nihon,japon,jappan,japn,日本,اليابان,जापान,Giappone,Japão,Япония,Japonya,Японія,일본
-IN,india,bharat,hindustan,indea,inida,الهند,Indien,Inde,भारत,インド,Индия,Hindistan,Індія,印度,인도
-AF,afghanistan,afganistan,afganisthan,afgahnistan,aghanistan,أفغانستان,अफ़गानिस्तान,アフガニスタン,Afeganistão,Афганистан,Афганістан,阿富汗,아프가니스탄
-TR,turkey,türkiye,turkiye,turky,turkie,تركيا,Türkei,Turquía,Turquie,तुर्किये,Turchia,トルコ,Turkije,Турция,Туреччина,土耳其,터키
-PH,philippines,philipines,philipinnes,phillippines,the phillipines,pilipinas,pinoyland,الفلبين,Philippinen,Filipinas,फ़िलिपींस,Filippine,フィリピン,Filipijnen,Филиппины,Filipinler,Філіппіни,菲律宾,필리핀
-IR,iran,persia,iraan,irun,irá,إيران,ईरान,イラン,Иран,Іран,伊朗,이란,伊朗伊斯兰共和国,Иран (Исламская Республика),Iran (République islamique d’),Irán (República Islámica del),إيران (جمهورية - الإسلامية)
-IQ,iraq,irak,irac,irack,العراق,इराक,イラク,Iraque,Ирак,Ірак,伊拉克,이라크
-ZA,south africa,south afrika,soth africa,azania,sa,za,جنوب أفريقيا,Südafrika,Sudáfrica,Afrique du Sud,दक्षिण अफ़्रीका,南アフリカ,Zuid-Afrika,África do Sul,Южно-Африканская Республика,Güney Afrika,Південно-Африканська Республіка,南非,남아프리카,Южная Африка
-AU,australia,aussie,oz,straya,down under,austraila,austalia,أستراليا,Australien,Australie,ऑस्ट्रेलिया,オーストラリア,Австралия,Avustralya,Австралія,澳大利亚,오스트레일리아
-CA,canada,canda,cannada,canadia,the great white north,كندا,Kanada,कनाडा,カナダ,Канада,加拿大,캐나다
-NZ,new zealand,new zeeland,new zeland,nz,kiwiland,aotearoa,نيوزيلندا,Neuseeland,Nueva Zelanda,Nouvelle-Zélande,न्यूज़ीलैंड,Nuova Zelanda,ニュージーランド,Nieuw-Zeeland,Nova Zelândia,Новая Зеландия,Yeni Zelanda,Нова Зеландія,新西兰,뉴질랜드,Nueva Zelandia
-MM,myanmar,burma,mianmar,myanmer,mayanmar,myannmar,ميانمار (بورما),Myanmar (Birmania),Myanmar (Birmanie),म्यांमार (बर्मा),ミャンマー (ビルマ),Myanmar (Birma),Mianmar (Birmânia),Мьянма (Бирма),Myanmar (Burma),Мʼянма (Бірма),缅甸,미얀마,Мьянма,ميانمار
-MX,mexico,méxico,méjico,mexcio,mecsico,المكسيك,Mexiko,Mexique,मैक्सिको,Messico,メキシコ,Мексика,Meksika,墨西哥,멕시코
-EG,egypt,misr,egpyt,egyt,eygpt,مصر,Ägypten,Egipto,Égypte,मिस्र,Egitto,エジプト,Egito,Египет,Mısır,Єгипет,埃及,이집트
-NG,nigeria,nieria,nigeira,naija,نيجيريا,नाइजीरिया,ナイジェリア,Нигерия,Nijerya,Нігерія,尼日利亚,나이지리아
-AR,argentina,argetina,argentia,الأرجنتين,Argentinien,Argentine,अर्जेंटीना,アルゼンチン,Argentinië,Аргентина,Arjantin,阿根廷,아르헨티나
-CO,colombia,columbia,colobia,collombia,كولومبيا,Kolumbien,Colombie,कोलंबिया,コロンビア,Колумбия,Kolombiya,Колумбія,哥伦比亚,콜롬비아
-TH,thailand,siam,tailand,thialand,thiland,تايلاند,Tailandia,Thaïlande,थाईलैंड,Thailandia,タイ,Таиланд,Tayland,Таїланд,泰国,태국,تايلند
-VN,viet nam,vietnam,veitnam,vietnem,فيتنام,वियतनाम,ベトナム,Vietnã,Вьетнам,Вʼєтнам,越南,베트남,فييت نام
-ID,indonesia,indonisia,indonezia,إندونيسيا,Indonesien,Indonésie,इंडोनेशिया,インドネシア,Индонезия,Endonezya,Індонезія,印度尼西亚,인도네시아
-PT,portugal,portugol,portugual,portgual,البرتغال,पुर्तगाल,Portogallo,ポルトガル,Португалия,Portekiz,Португалія,葡萄牙,포르투갈
-BE,belgium,belgique,belgië,belgien,belguim,beljum,بلجيكا,Bélgica,बेल्जियम,Belgio,ベルギー,Бельгия,Belçika,Бельгія,比利时,벨기에
+US,usa,united states,america,états-unis,vereinigte staaten,'merica,murica,united statas,united stetes,united staes,united stets,united staates,untied states,estados unidos,amérique,us,u.s.a.,الولايات المتحدة,संयुक्त राज्य,Stati Uniti,アメリカ合衆国,Verenigde Staten,Соединенные Штаты,Amerika Birleşik Devletleri,Сполучені Штати,美国,미국,美利坚合众国,Соединенные Штаты Америки,États-Unis d’Amérique,Estados Unidos de América,الولايات المتحدة الأمريكية,Amerika Serikat,Hoa Kỳ
+GB,uk,united kingdom,britain,england,royaume-uni,vereinigtes königreich,great britain,u.k.,northern ireland,scotland,wales,écosse,angleterre,المملكة المتحدة,Reino Unido,यूनाइटेड किंगडम,Regno Unito,イギリス,Verenigd Koninkrijk,Великобритания,Birleşik Krallık,Велика Британія,英国,영국,大不列颠及北爱尔兰联合王国,Соединенное Королевство Великобритании и Северной Ирландии,Royaume-Uni de Grande-Bretagne et d’Irlande du Nord,Reino Unido de Gran Bretaña e Irlanda del Norte,المملكة المتحدة لبريطانيا العظمى وآيرلندا الشمالية,Vương quốc Anh
+BR,brasil,brazil,brasilz,braszil,brazyl,البرازيل,Brasilien,Brésil,ब्राज़ील,Brasile,ブラジル,Brazilië,Бразилия,Brezilya,Бразилія,巴西,브라질,Brazil
+CN,china,chine,chaina,chyna,chinia,chinna,chinah,mainland china,prc,people's republic of china,中国,الصين,चीन,Cina,Китай,Çin,중국,Trung Quốc
+KR,south korea,republic of korea,korea south,corée du sud,südkorea,soth korea,south koria,hanguk,rok,sk,korea,한국,كوريا الجنوبية,Corea del Sur,दक्षिण कोरिया,Corea del Sud,韓国,Zuid-Korea,Coreia do Sul,Республика Корея,Güney Kore,Південна Корея,韩国,대한민국,大韩民国,République de Corée,República de Corea,جمهورية كوريا,Hàn Quốc
+RU,russia,russie,russland,russian federation,rossiya,rossia,rusia,rusija,russa,russha,soviet union,ussr,union of soviet socialist republics,sovjet,россия,روسيا,रूस,ロシア,Rusland,Rusya,Росія,俄罗斯,러시아,俄罗斯联邦,Российская Федерация,Fédération de Russie,Federación de Rusia,الاتحاد الروسي,Nga
+DE,germany,deutschland,allemagne,germania,alemania,deutchland,deutchlnd,deutcheland,ألمانيا,जर्मनी,ドイツ,Duitsland,Alemanha,Германия,Almanya,Німеччина,德国,독일,Đức
+FR,france,frankreich,francia,francais,franse,franc,francz,فرنسا,फ़्रांस,フランス,Frankrijk,França,Франция,Fransa,Франція,法国,프랑스,Pháp
+IT,italy,italia,italie,italien,it,itly,itali,italya,إيطاليا,इटली,イタリア,Италия,Італія,意大利,이탈리아,Italy
+ES,spain,españa,espagne,spanien,spagna,espanya,espania,spane,spian,إسبانيا,स्पेन,スペイン,Spanje,Espanha,Испания,İspanya,Іспанія,西班牙,스페인,Tây Ban Nha
+PL,poland,polska,pologne,polen,polland,polan,p0land,polend,polad,بولندا,Polonia,पोलैंड,ポーランド,Польша,Polonya,Польща,波兰,폴란드,Ba Lan
+NL,netherlands,nederland,pays-bas,niederlande,holland,the netherlands,países bajos,netherland,neterlands,هولندا,नीदरलैंड,Paesi Bassi,オランダ,Países Baixos,Нидерланды,Hollanda,Нідерланди,荷兰,네덜란드,Netherlands (Kingdom of the),荷兰王国,Нидерланды (Королевство),Pays-Bas (Royaume des),Países Bajos (Reino de los),مملكة هولندا,Hà Lan
+CH,switzerland,suisse,schweiz,svizzera,helvetia,swizerland,switserland,ch,سويسرا,Suiza,स्विट्ज़रलैंड,スイス,Zwitserland,Suíça,Швейцария,İsviçre,Швейцарія,瑞士,스위스,Thụy Sĩ
+NO,norway,norge,noreg,norwey,norvay,النرويج,Norwegen,Noruega,Norvège,नॉर्वे,Norvegia,ノルウェー,Noorwegen,Норвегия,Norveç,Норвегія,挪威,노르웨이,Na Uy
+SE,sweden,sverige,suède,schweden,swden,sweeden,السويد,Suecia,स्वीडन,Svezia,スウェーデン,Zweden,Швеция,İsveç,Швеція,瑞典,스웨덴,Thụy Điển
+GR,greece,ελλάδα,grèce,griechenland,grecia,hellas,ellada,grece,greese,اليونان,यूनान,ギリシャ,Griekenland,Греция,Yunanistan,Греція,希腊,그리스,Hy Lạp
+RO,romania,românia,roumanie,roumania,roumanía,roumaniya,rouminia,rumänien,rumænien,rumunia,rumunija,rumänia,rumānija,rumānīyā,rumunska,rumunsko,rumunjska,rumyniya,رومانيا,रोमानिया,ルーマニア,Roemenië,Romênia,Румыния,Romanya,Румунія,罗马尼亚,루마니아,Romania
+HU,hungary,hunggary,hungry,magyarország,magyar-kok,hongrie,hongaria,hongarije,hongarye,hongria,hungaria,hungario,hungari,hungariá,hungarya,hungariya,hungriya,هنغاريا,Ungarn,Hungría,हंगरी,Ungheria,ハンガリー,Венгрия,Macaristan,Угорщина,匈牙利,헝가리,Hungary
+CZ,czech republic,česká republika,république tchèque,tschechische republik,czechia,czechoslovakia,checz,chekia,česko,التشيك,Tschechien,Chequia,Tchéquie,चेकिया,Cechia,チェコ,Tsjechië,Tchéquia,Чехия,Çekya,Чехія,捷克,체코,تشيكيا,Séc
+SK,slovakia,slovensko,slovaquie,slowakei,slovak republic,سلوفاكيا,Eslovaquia,स्लोवाकिया,Slovacchia,スロバキア,Slowakije,Словакия,Slovakya,Словаччина,斯洛伐克,슬로바키아,Slovakia
+JP,japan,nippon,nihon,japon,jappan,japn,日本,اليابان,जापान,Giappone,Japão,Япония,Japonya,Японія,일본,Nhật Bản
+IN,india,bharat,hindustan,indea,inida,الهند,Indien,Inde,भारत,インド,Индия,Hindistan,Індія,印度,인도,Ấn Độ
+AF,afghanistan,afganistan,afganisthan,afgahnistan,aghanistan,أفغانستان,अफ़गानिस्तान,アフガニスタン,Afeganistão,Афганистан,Афганістан,阿富汗,아프가니스탄,Afghanistan
+TR,turkey,türkiye,turkiye,turky,turkie,تركيا,Türkei,Turquía,Turquie,तुर्किये,Turchia,トルコ,Turkije,Турция,Туреччина,土耳其,터키,Thổ Nhĩ Kỳ
+PH,philippines,philipines,philipinnes,phillippines,the phillipines,pilipinas,pinoyland,الفلبين,Philippinen,Filipinas,फ़िलिपींस,Filippine,フィリピン,Filipijnen,Филиппины,Filipinler,Філіппіни,菲律宾,필리핀,Philippines
+IR,iran,persia,iraan,irun,irá,إيران,ईरान,イラン,Иран,Іран,伊朗,이란,伊朗伊斯兰共和国,Иран (Исламская Республика),Iran (République islamique d’),Irán (República Islámica del),إيران (جمهورية - الإسلامية),Iran
+IQ,iraq,irak,irac,irack,العراق,इराक,イラク,Iraque,Ирак,Ірак,伊拉克,이라크,Iraq
+ZA,south africa,south afrika,soth africa,azania,sa,za,جنوب أفريقيا,Südafrika,Sudáfrica,Afrique du Sud,दक्षिण अफ़्रीका,南アフリカ,Zuid-Afrika,África do Sul,Южно-Африканская Республика,Güney Afrika,Південно-Африканська Республіка,南非,남아프리카,Южная Африка,Nam Phi
+AU,australia,aussie,oz,straya,down under,austraila,austalia,أستراليا,Australien,Australie,ऑस्ट्रेलिया,オーストラリア,Австралия,Avustralya,Австралія,澳大利亚,오스트레일리아,Úc
+CA,canada,canda,cannada,canadia,the great white north,كندا,Kanada,कनाडा,カナダ,Канада,加拿大,캐나다,Canada
+NZ,new zealand,new zeeland,new zeland,nz,kiwiland,aotearoa,نيوزيلندا,Neuseeland,Nueva Zelanda,Nouvelle-Zélande,न्यूज़ीलैंड,Nuova Zelanda,ニュージーランド,Nieuw-Zeeland,Nova Zelândia,Новая Зеландия,Yeni Zelanda,Нова Зеландія,新西兰,뉴질랜드,Nueva Zelandia,New Zealand
+MM,myanmar,burma,mianmar,myanmer,mayanmar,myannmar,ميانمار (بورما),Myanmar (Birmania),Myanmar (Birmanie),म्यांमार (बर्मा),ミャンマー (ビルマ),Myanmar (Birma),Mianmar (Birmânia),Мьянма (Бирма),Myanmar (Burma),Мʼянма (Бірма),缅甸,미얀마,Мьянма,ميانمار,Myanmar (Miến Điện)
+MX,mexico,méxico,méjico,mexcio,mecsico,المكسيك,Mexiko,Mexique,मैक्सिको,Messico,メキシコ,Мексика,Meksika,墨西哥,멕시코,Mexico
+EG,egypt,misr,egpyt,egyt,eygpt,مصر,Ägypten,Egipto,Égypte,मिस्र,Egitto,エジプト,Egito,Египет,Mısır,Єгипет,埃及,이집트,Ai Cập
+NG,nigeria,nieria,nigeira,naija,نيجيريا,नाइजीरिया,ナイジェリア,Нигерия,Nijerya,Нігерія,尼日利亚,나이지리아,Nigeria
+AR,argentina,argetina,argentia,الأرجنتين,Argentinien,Argentine,अर्जेंटीना,アルゼンチン,Argentinië,Аргентина,Arjantin,阿根廷,아르헨티나,Argentina
+CO,colombia,columbia,colobia,collombia,كولومبيا,Kolumbien,Colombie,कोलंबिया,コロンビア,Колумбия,Kolombiya,Колумбія,哥伦比亚,콜롬비아,Colombia
+TH,thailand,siam,tailand,thialand,thiland,تايلاند,Tailandia,Thaïlande,थाईलैंड,Thailandia,タイ,Таиланд,Tayland,Таїланд,泰国,태국,تايلند,Thái Lan
+VN,viet nam,vietnam,veitnam,vietnem,فيتنام,वियतनाम,ベトナム,Vietnã,Вьетнам,Вʼєтнам,越南,베트남,فييت نام,Việt Nam
+ID,indonesia,indonisia,indonezia,إندونيسيا,Indonesien,Indonésie,इंडोनेशिया,インドネシア,Индонезия,Endonezya,Індонезія,印度尼西亚,인도네시아,Indonesia
+PT,portugal,portugol,portugual,portgual,البرتغال,पुर्तगाल,Portogallo,ポルトガル,Португалия,Portekiz,Португалія,葡萄牙,포르투갈,Bồ Đào Nha
+BE,belgium,belgique,belgië,belgien,belguim,beljum,بلجيكا,Bélgica,बेल्जियम,Belgio,ベルギー,Бельгия,Belçika,Бельгія,比利时,벨기에,Bỉ
 CI,côte d'ivoire,cote d'ivoire,ivory coast,ivore coast,ivri coast,ivorycoast,ساحل العاج,Côte d’Ivoire,कोत दिवुआर,Costa d’Avorio,コートジボワール,Ivoorkust,Costa do Marfim,Кот-д’Ивуар,Кот-дʼІвуар,科特迪瓦,코트디부아르,Кот-д'Ивуар,كوت ديفوار
-AT,austria,österreich,autriche,النمسا,ऑस्ट्रिया,オーストリア,Oostenrijk,Австрия,Avusturya,Австрія,奥地利,오스트리아
-BG,bulgaria,българия,bulgarie,bulgarien,بلغاريا,बुल्गारिया,ブルガリア,Bulgarije,Болгария,Bulgaristan,Болгарія,保加利亚,불가리아
-HR,croatia,hrvatska,croatie,kroatien,كرواتيا,Croacia,क्रोएशिया,Croazia,クロアチア,Kroatië,Хорватия,Hırvatistan,Хорватія,克罗地亚,크로아티아
-CY,cyprus,κύπρος,chypre,zypern,قبرص,Chipre,साइप्रस,Cipro,キプロス,Кипр,Kıbrıs,Кіпр,塞浦路斯,키프로스
-DK,denmark,danmark,danemark,dänemark,الدانمرك,Dinamarca,डेनमार्क,Danimarca,デンマーク,Denemarken,Дания,Danimarka,Данія,丹麦,덴마크
-EE,estonia,eesti,estonie,estland,إستونيا,एस्टोनिया,エストニア,Эстония,Estonya,Естонія,爱沙尼亚,에스토니아
-FI,finland,suomi,finlande,finnland,فنلندا,Finlandia,फ़िनलैंड,フィンランド,Финляндия,Finlandiya,Фінляндія,芬兰,핀란드
-LV,latvia,latvija,lettonie,lettland,لاتفيا,Letonia,लातविया,Lettonia,ラトビア,Letland,Латвия,Letonya,Латвія,拉脱维亚,라트비아
-LT,lithuania,lietuva,lituanie,litauen,ليتوانيا,Lituania,लिथुआनिया,リトアニア,Litouwen,Литва,Litvanya,立陶宛,리투아니아
-LU,luxembourg,luxemburg,لوكسمبورغ,Luxemburgo,लग्ज़मबर्ग,Lussemburgo,ルクセンブルク,Люксембург,Lüksemburg,卢森堡,룩셈부르크,لكسمبرغ
-MT,malta,malte,مالطا,माल्टा,マルタ,Мальта,马耳他,몰타,مالطة
-SI,slovenia,slovenija,slovénie,slowenien,سلوفينيا,Eslovenia,स्लोवेनिया,スロベニア,Словения,Slovenya,Словенія,斯洛文尼亚,슬로베니아
-BA,bosnia,bosnia and herzegovina,البوسنة والهرسك,Bosnien und Herzegowina,Bosnia y Herzegovina,Bosnie-Herzégovine,बोस्निया और हर्ज़ेगोविना,Bosnia ed Erzegovina,ボスニア・ヘルツェゴビナ,Bosnië en Herzegovina,Bósnia e Herzegovina,Босния и Герцеговина,Bosna-Hersek,Боснія і Герцеговина,波斯尼亚和黑塞哥维那,보스니아 헤르체고비나
-MK,north macedonia,macedonia,مقدونيا الشمالية,Nordmazedonien,Macedonia del Norte,Macédoine du Nord,उत्तरी मकदूनिया,Macedonia del Nord,北マケドニア,Noord-Macedonië,Macedônia do Norte,Северная Македония,Kuzey Makedonya,Північна Македонія,北马其顿,마케도니아
-MD,moldova,republic of moldova,مولدوفا,Republik Moldau,Moldavia,Moldavie,मॉल्डोवा,モルドバ,Молдова,摩尔多瓦,몰도바,摩尔多瓦共和国,Республика Молдова,République de Moldova,República de Moldova,جمهورية مولدوفا
-IE,ireland,éire,irlande,irland,éireann,أيرلندا,Irlanda,आयरलैंड,アイルランド,Ierland,Ирландия,Ірландія,爱尔兰,아일랜드
-AD,AD,Principality of Andorra,Principat d'Andorra,أندورا,Andorre,एंडोरा,アンドラ,Андорра,安道尔,안도라
-AE,AE,UAE,Emirates,الإمارات العربية المتحدة,Vereinigte Arabische Emirate,Emiratos Árabes Unidos,Émirats arabes unis,संयुक्त अरब अमीरात,Emirati Arabi Uniti,アラブ首長国連邦,Verenigde Arabische Emiraten,Emirados Árabes Unidos,ОАЭ,Birleşik Arap Emirlikleri,Обʼєднані Арабські Емірати,阿拉伯联合酋长国,아랍에미리트,Объединенные Арабские Эмираты
-AG,AG,أنتيغوا وباربودا,Antigua ha Barbuda,أنتيغوا وبربودا,Antigua und Barbuda,Antigua y Barbuda,Antigua-et-Barbuda,एंटिगुआ और बरबुडा,Antigua e Barbuda,アンティグア・バーブーダ,Antigua en Barbuda,Антигуа и Барбуда,Antigua ve Barbuda,Антигуа і Барбуда,安提瓜和巴布达,앤티가 바부다
-AI,AI,أنغويلا,Angvila,Anguila,एंग्विला,アンギラ,Ангилья,Ангілья,安圭拉,앵귈라
-AL,AL,Shqipëri,Shqipëria,ألبانيا,Albanien,Albanie,अल्बानिया,アルバニア,Албания,Arnavutluk,Албанія,阿尔巴尼亚,알바니아
-AM,AM,Hayastan,Republic of Armenia,أرمينيا,Armenien,Arménie,आर्मेनिया,アルメニア,Армения,Ermenistan,Вірменія,亚美尼亚,아르메니아
-AO,AO,República de Angola,ʁɛpublika de an'ɡɔla,أنغولا,अंगोला,アンゴラ,Ангола,安哥拉,앙골라
-AQ,AQ,أنتارتيكا,Antarktika,أنتاركتيكا,Antarktis,Antártida,Antarctique,अंटार्कटिका,Antartide,南極,Антарктида,Антарктика,南极洲,남극 대륙,Антарктике
-AS,AS,Amerika Sāmoa,Amelika Sāmoa,ساموا الأمريكية,Amerikanisch-Samoa,Samoa Americana,Samoa américaines,अमेरिकी समोआ,Samoa Americane,米領サモア,Amerikaans-Samoa,Американское Самоа,Amerikan Samoası,Американське Самоа,美属萨摩亚,아메리칸 사모아
-AW,AW,أروبا,アルバ,अरूबा,Аруба,阿鲁巴,아루바
-AX,AX,Aaland,Aland,جزر آلاند,Ålandinseln,Islas Aland,Îles Åland,एलैंड द्वीपसमूह,Isole Åland,オーランド諸島,Ilhas Aland,Аландские о-ва,Åland Adaları,Аландські Острови,奥兰群岛,올란드 제도,Аландских островов,Îles d’Åland
-AZ,AZ,Republic of Azerbaijan,Azərbaycan Respublikası,أذربيجان,Aserbaidschan,Azerbaiyán,Azerbaïdjan,अज़रबैजान,Azerbaigian,アゼルバイジャン,Azerbeidzjan,Azerbaijão,Азербайджан,Azerbaycan,阿塞拜疆,아제르바이잔
-BB,BB,باربادوس,Barbade,بربادوس,बारबाडोस,バルバドス,Барбадос,巴巴多斯,바베이도스
-BD,BD,People's Republic of Bangladesh,Gônôprôjatôntri Bangladesh,بنغلاديش,Bangladesch,Bangladés,बांग्लादेश,バングラデシュ,Бангладеш,孟加拉国,방글라데시
-BF,BF,بوركينا فاسو,Burkina,बुर्किना फ़ासो,ブルキナファソ,Burquina Faso,Буркина-Фасо,Буркіна-Фасо,布基纳法索,부르키나파소
-BH,BH,Kingdom of Bahrain,Mamlakat al-Baḥrayn,البحرين,Baréin,Bahreïn,बहरीन,バーレーン,Бахрейн,Bahreyn,巴林,바레인
-BI,BI,Republic of Burundi,Republika y'Uburundi,بوروندي,बुरुंडी,ブルンジ,Бурунди,Бурунді,布隆迪,부룬디
-BJ,BJ,Republic of Benin,République du Bénin,بنين,बेनिन,ベナン,Бенин,Бенін,贝宁,베냉,بنن
-BL,BL,St. Barthelemy,Collectivity of Saint Barthélemy,سان بارتليمي,San Bartolomé,Saint-Barthélemy,सेंट बार्थेलेमी,サン・バルテルミー,São Bartolomeu,Сен-Бартелеми,Сен-Бартелемі,圣巴泰勒米,생바르텔레미,San Barthélemy
-BM,BM,The Islands of Bermuda,The Bermudas,برمودا,Bermudas,Bermudes,बरमूडा,バミューダ,Бермудские о-ва,Бермудські Острови,百慕大,버뮤다,Бермудские острова
-BN,BN,Brunei Darussalam,Nation of Brunei,بروناي,Brunéi,ब्रूनेई,ブルネイ,Бруней,文莱,브루나이,文莱达鲁萨兰国,Бруней-Даруссалам,بروني دار السلام
+AT,austria,österreich,autriche,النمسا,ऑस्ट्रिया,オーストリア,Oostenrijk,Австрия,Avusturya,Австрія,奥地利,오스트리아,Áo
+BG,bulgaria,българия,bulgarie,bulgarien,بلغاريا,बुल्गारिया,ブルガリア,Bulgarije,Болгария,Bulgaristan,Болгарія,保加利亚,불가리아,Bulgaria
+HR,croatia,hrvatska,croatie,kroatien,كرواتيا,Croacia,क्रोएशिया,Croazia,クロアチア,Kroatië,Хорватия,Hırvatistan,Хорватія,克罗地亚,크로아티아,Croatia
+CY,cyprus,κύπρος,chypre,zypern,قبرص,Chipre,साइप्रस,Cipro,キプロス,Кипр,Kıbrıs,Кіпр,塞浦路斯,키프로스,Síp
+DK,denmark,danmark,danemark,dänemark,الدانمرك,Dinamarca,डेनमार्क,Danimarca,デンマーク,Denemarken,Дания,Danimarka,Данія,丹麦,덴마크,Đan Mạch
+EE,estonia,eesti,estonie,estland,إستونيا,एस्टोनिया,エストニア,Эстония,Estonya,Естонія,爱沙尼亚,에스토니아,Estonia
+FI,finland,suomi,finlande,finnland,فنلندا,Finlandia,फ़िनलैंड,フィンランド,Финляндия,Finlandiya,Фінляндія,芬兰,핀란드,Phần Lan
+LV,latvia,latvija,lettonie,lettland,لاتفيا,Letonia,लातविया,Lettonia,ラトビア,Letland,Латвия,Letonya,Латвія,拉脱维亚,라트비아,Latvia
+LT,lithuania,lietuva,lituanie,litauen,ليتوانيا,Lituania,लिथुआनिया,リトアニア,Litouwen,Литва,Litvanya,立陶宛,리투아니아,Litva
+LU,luxembourg,luxemburg,لوكسمبورغ,Luxemburgo,लग्ज़मबर्ग,Lussemburgo,ルクセンブルク,Люксембург,Lüksemburg,卢森堡,룩셈부르크,لكسمبرغ,Luxembourg
+MT,malta,malte,مالطا,माल्टा,マルタ,Мальта,马耳他,몰타,مالطة,Malta
+SI,slovenia,slovenija,slovénie,slowenien,سلوفينيا,Eslovenia,स्लोवेनिया,スロベニア,Словения,Slovenya,Словенія,斯洛文尼亚,슬로베니아,Slovenia
+BA,bosnia,bosnia and herzegovina,البوسنة والهرسك,Bosnien und Herzegowina,Bosnia y Herzegovina,Bosnie-Herzégovine,बोस्निया और हर्ज़ेगोविना,Bosnia ed Erzegovina,ボスニア・ヘルツェゴビナ,Bosnië en Herzegovina,Bósnia e Herzegovina,Босния и Герцеговина,Bosna-Hersek,Боснія і Герцеговина,波斯尼亚和黑塞哥维那,보스니아 헤르체고비나,Bosnia và Herzegovina
+MK,north macedonia,macedonia,مقدونيا الشمالية,Nordmazedonien,Macedonia del Norte,Macédoine du Nord,उत्तरी मकदूनिया,Macedonia del Nord,北マケドニア,Noord-Macedonië,Macedônia do Norte,Северная Македония,Kuzey Makedonya,Північна Македонія,北马其顿,마케도니아,Bắc Macedonia
+MD,moldova,republic of moldova,مولدوفا,Republik Moldau,Moldavia,Moldavie,मॉल्डोवा,モルドバ,Молдова,摩尔多瓦,몰도바,摩尔多瓦共和国,Республика Молдова,République de Moldova,República de Moldova,جمهورية مولدوفا,Moldova
+IE,ireland,éire,irlande,irland,éireann,أيرلندا,Irlanda,आयरलैंड,アイルランド,Ierland,Ирландия,Ірландія,爱尔兰,아일랜드,Ireland
+AD,AD,Principality of Andorra,Principat d'Andorra,أندورا,Andorre,एंडोरा,アンドラ,Андорра,安道尔,안도라,Andorra
+AE,AE,UAE,Emirates,الإمارات العربية المتحدة,Vereinigte Arabische Emirate,Emiratos Árabes Unidos,Émirats arabes unis,संयुक्त अरब अमीरात,Emirati Arabi Uniti,アラブ首長国連邦,Verenigde Arabische Emiraten,Emirados Árabes Unidos,ОАЭ,Birleşik Arap Emirlikleri,Обʼєднані Арабські Емірати,阿拉伯联合酋长国,아랍에미리트,Объединенные Арабские Эмираты,Các Tiểu Vương quốc Ả Rập Thống nhất
+AG,AG,أنتيغوا وباربودا,Antigua ha Barbuda,أنتيغوا وبربودا,Antigua und Barbuda,Antigua y Barbuda,Antigua-et-Barbuda,एंटिगुआ और बरबुडा,Antigua e Barbuda,アンティグア・バーブーダ,Antigua en Barbuda,Антигуа и Барбуда,Antigua ve Barbuda,Антигуа і Барбуда,安提瓜和巴布达,앤티가 바부다,Antigua và Barbuda
+AI,AI,أنغويلا,Angvila,Anguila,एंग्विला,アンギラ,Ангилья,Ангілья,安圭拉,앵귈라,Anguilla
+AL,AL,Shqipëri,Shqipëria,ألبانيا,Albanien,Albanie,अल्बानिया,アルバニア,Албания,Arnavutluk,Албанія,阿尔巴尼亚,알바니아,Albania
+AM,AM,Hayastan,Republic of Armenia,أرمينيا,Armenien,Arménie,आर्मेनिया,アルメニア,Армения,Ermenistan,Вірменія,亚美尼亚,아르메니아,Armenia
+AO,AO,República de Angola,ʁɛpublika de an'ɡɔla,أنغولا,अंगोला,アンゴラ,Ангола,安哥拉,앙골라,Angola
+AQ,AQ,أنتارتيكا,Antarktika,أنتاركتيكا,Antarktis,Antártida,Antarctique,अंटार्कटिका,Antartide,南極,Антарктида,Антарктика,南极洲,남극 대륙,Антарктике,Nam Cực
+AS,AS,Amerika Sāmoa,Amelika Sāmoa,ساموا الأمريكية,Amerikanisch-Samoa,Samoa Americana,Samoa américaines,अमेरिकी समोआ,Samoa Americane,米領サモア,Amerikaans-Samoa,Американское Самоа,Amerikan Samoası,Американське Самоа,美属萨摩亚,아메리칸 사모아,Samoa thuộc Mỹ
+AW,AW,أروبا,アルバ,अरूबा,Аруба,阿鲁巴,아루바,Aruba
+AX,AX,Aaland,Aland,جزر آلاند,Ålandinseln,Islas Aland,Îles Åland,एलैंड द्वीपसमूह,Isole Åland,オーランド諸島,Ilhas Aland,Аландские о-ва,Åland Adaları,Аландські Острови,奥兰群岛,올란드 제도,Аландских островов,Îles d’Åland,Quần đảo Åland
+AZ,AZ,Republic of Azerbaijan,Azərbaycan Respublikası,أذربيجان,Aserbaidschan,Azerbaiyán,Azerbaïdjan,अज़रबैजान,Azerbaigian,アゼルバイジャン,Azerbeidzjan,Azerbaijão,Азербайджан,Azerbaycan,阿塞拜疆,아제르바이잔,Azerbaijan
+BB,BB,باربادوس,Barbade,بربادوس,बारबाडोस,バルバドス,Барбадос,巴巴多斯,바베이도스,Barbados
+BD,BD,People's Republic of Bangladesh,Gônôprôjatôntri Bangladesh,بنغلاديش,Bangladesch,Bangladés,बांग्लादेश,バングラデシュ,Бангладеш,孟加拉国,방글라데시,Bangladesh
+BF,BF,بوركينا فاسو,Burkina,बुर्किना फ़ासो,ブルキナファソ,Burquina Faso,Буркина-Фасо,Буркіна-Фасо,布基纳法索,부르키나파소,Burkina Faso
+BH,BH,Kingdom of Bahrain,Mamlakat al-Baḥrayn,البحرين,Baréin,Bahreïn,बहरीन,バーレーン,Бахрейн,Bahreyn,巴林,바레인,Bahrain
+BI,BI,Republic of Burundi,Republika y'Uburundi,بوروندي,बुरुंडी,ブルンジ,Бурунди,Бурунді,布隆迪,부룬디,Burundi
+BJ,BJ,Republic of Benin,République du Bénin,بنين,बेनिन,ベナン,Бенин,Бенін,贝宁,베냉,بنن,Benin
+BL,BL,St. Barthelemy,Collectivity of Saint Barthélemy,سان بارتليمي,San Bartolomé,Saint-Barthélemy,सेंट बार्थेलेमी,サン・バルテルミー,São Bartolomeu,Сен-Бартелеми,Сен-Бартелемі,圣巴泰勒米,생바르텔레미,San Barthélemy,St. Barthélemy
+BM,BM,The Islands of Bermuda,The Bermudas,برمودا,Bermudas,Bermudes,बरमूडा,バミューダ,Бермудские о-ва,Бермудські Острови,百慕大,버뮤다,Бермудские острова,Bermuda
+BN,BN,Brunei Darussalam,Nation of Brunei,بروناي,Brunéi,ब्रूनेई,ブルネイ,Бруней,文莱,브루나이,文莱达鲁萨兰国,Бруней-Даруссалам,بروني دار السلام,Brunei
 BO,BO,Buliwya,Wuliwya,بوليفيا,Bolivien,Bolivia,Bolivie,बोलीविया,ボリビア,Боливия,Bolivya,Болівія,玻利维亚,볼리비아,多民族玻利维亚国,Боливия (Многонациональное Государство),Bolivie (État plurinational de),Bolivia (Estado Plurinacional de),بوليفيا (دولة - المتعددة القوميات)
-BQ,BES islands,Bonaire Sint Eustatius and Saba,الجزر الكاريبية الهولندية,هولندا الكاريبية,Karibische Niederlande,Caribe neerlandés,Pays-Bas caribéens,कैरिबियन नीदरलैंड,Caraibi Olandesi,オランダ領カリブ,Caribisch Nederland,Países Baixos Caribenhos,"Бонэйр, Синт-Эстатиус и Саба",Karayip Hollandası,Карибські Нідерланди,荷属加勒比区,네덜란드령 카리브,博纳尔，圣俄斯塔休斯和萨巴,"Бонайре, Синт-Эстатиус и Саба","Bonaire, Saint-Eustache et Saba","Bonaire, San Eustaquio y Saba",بونير وسانت يوستاشيوس وسابا
-BS,BS,Commonwealth of the Bahamas,البهاما,جزر البهاما,बहामास,バハマ,Bahama’s,Багамы,Bahamalar,Багамські Острови,巴哈马,바하마,Багамские Острова
-BT,BT,Kingdom of Bhutan,بوتان,Bután,Bhoutan,भूटान,ブータン,Butão,Бутан,不丹,부탄
-BV,BV,Bouvetøya,Bouvet-øya,جزيرة بوفيه,Bouvetinsel,Isla Bouvet,Île Bouvet,बोवेत द्वीप,Isola Bouvet,ブーベ島,Bouveteiland,Ilha Bouvet,о-в Буве,Bouvet Adası,Острів Буве,布韦岛,부베섬,布维岛,Остров Буве,جزيرة بوفيت
-BW,BW,Republic of Botswana,Lefatshe la Botswana,بوتسوانا,Botsuana,बोत्स्वाना,ボツワナ,Ботсвана,Botsvana,博茨瓦纳,보츠와나
-BY,BY,Bielaruś,Republic of Belarus,بيلاروس,Bielorrusia,Biélorussie,बेलारूस,Bielorussia,ベラルーシ,Bielorrússia,Беларусь,Білорусь,白俄罗斯,벨라루스
-BZ,BZ,بليز,ベリーズ,Belice,बेलीज़,Белиз,Беліз,伯利兹,벨리즈
-CC,CC,Keeling Islands,Cocos Islands,جزر كوكوس (كيلينغ),Kokosinseln,Islas Cocos,Îles Cocos,कोकोस (कीलिंग) द्वीपसमूह,Isole Cocos (Keeling),ココス(キーリング)諸島,Cocoseilanden,Ilhas Cocos (Keeling),Кокосовые о-ва,Cocos (Keeling) Adaları,Кокосові (Кілінг) Острови,科科斯（基林）群岛,코코스 제도,Кокосовых (Килинг) островов,Îles des Cocos (Keeling),Islas Cocos (Keeling),جزر كوكس (كيلينغ)
+BQ,BES islands,Bonaire Sint Eustatius and Saba,الجزر الكاريبية الهولندية,هولندا الكاريبية,Karibische Niederlande,Caribe neerlandés,Pays-Bas caribéens,कैरिबियन नीदरलैंड,Caraibi Olandesi,オランダ領カリブ,Caribisch Nederland,Países Baixos Caribenhos,"Бонэйр, Синт-Эстатиус и Саба",Karayip Hollandası,Карибські Нідерланди,荷属加勒比区,네덜란드령 카리브,博纳尔，圣俄斯塔休斯和萨巴,"Бонайре, Синт-Эстатиус и Саба","Bonaire, Saint-Eustache et Saba","Bonaire, San Eustaquio y Saba",بونير وسانت يوستاشيوس وسابا,Ca-ri-bê Hà Lan
+BS,BS,Commonwealth of the Bahamas,البهاما,جزر البهاما,बहामास,バハマ,Bahama’s,Багамы,Bahamalar,Багамські Острови,巴哈马,바하마,Багамские Острова,Bahamas
+BT,BT,Kingdom of Bhutan,بوتان,Bután,Bhoutan,भूटान,ブータン,Butão,Бутан,不丹,부탄,Bhutan
+BV,BV,Bouvetøya,Bouvet-øya,جزيرة بوفيه,Bouvetinsel,Isla Bouvet,Île Bouvet,बोवेत द्वीप,Isola Bouvet,ブーベ島,Bouveteiland,Ilha Bouvet,о-в Буве,Bouvet Adası,Острів Буве,布韦岛,부베섬,布维岛,Остров Буве,جزيرة بوفيت,Đảo Bouvet
+BW,BW,Republic of Botswana,Lefatshe la Botswana,بوتسوانا,Botsuana,बोत्स्वाना,ボツワナ,Ботсвана,Botsvana,博茨瓦纳,보츠와나,Botswana
+BY,BY,Bielaruś,Republic of Belarus,بيلاروس,Bielorrusia,Biélorussie,बेलारूस,Bielorussia,ベラルーシ,Bielorrússia,Беларусь,Білорусь,白俄罗斯,벨라루스,Belarus
+BZ,BZ,بليز,ベリーズ,Belice,बेलीज़,Белиз,Беліз,伯利兹,벨리즈,Belize
+CC,CC,Keeling Islands,Cocos Islands,جزر كوكوس (كيلينغ),Kokosinseln,Islas Cocos,Îles Cocos,कोकोस (कीलिंग) द्वीपसमूह,Isole Cocos (Keeling),ココス(キーリング)諸島,Cocoseilanden,Ilhas Cocos (Keeling),Кокосовые о-ва,Cocos (Keeling) Adaları,Кокосові (Кілінг) Острови,科科斯（基林）群岛,코코스 제도,Кокосовых (Килинг) островов,Îles des Cocos (Keeling),Islas Cocos (Keeling),جزر كوكس (كيلينغ),Quần đảo Cocos (Keeling)
 CD,CD,Congo-Kinshasa,"Congo, the Democratic Republic of the",الكونغو - كينشاسا,Kongo-Kinshasa,República Democrática del Congo,कांगो - किंशासा,Congo - Kinshasa,コンゴ民主共和国(キンシャサ),Конго - Киншаса,Kongo - Kinşasa,Конго – Кіншаса,刚果（金）,콩고-킨샤사,Democratic Republic of the Congo,刚果民主共和国,Демократическая Республика Конго,République démocratique du Congo,جمهورية الكونغو الديمقراطية
-CF,CF,République centrafricaine,جمهورية أفريقيا الوسطى,Zentralafrikanische Republik,República Centroafricana,मध्य अफ़्रीकी गणराज्य,Repubblica Centrafricana,中央アフリカ共和国,Centraal-Afrikaanse Republiek,República Centro-Africana,Центрально-Африканская Республика,Orta Afrika Cumhuriyeti,Центральноафриканська Республіка,中非共和国,중앙 아프리카 공화국,Центральноафриканская Республика
-CG,CG,Congo-Brazzaville,جمهورية الكونغو,الكونغو - برازافيل,Kongo-Brazzaville,कांगो – ब्राज़ाविल,コンゴ共和国(ブラザビル),República do Congo,Конго - Браззавиль,Kongo - Brazavil,Конго – Браззавіль,刚果（布）,콩고-브라자빌,刚果,Конго,الكونغو
-CK,CK,Kūki 'Āirani,جزر كوك,Cookinseln,Islas Cook,Îles Cook,कुक द्वीपसमूह,Isole Cook,クック諸島,Cookeilanden,Ilhas Cook,о-ва Кука,Cook Adaları,Острови Кука,库克群岛,쿡 제도,Острова Кука
-CL,CL,Republic of Chile,República de Chile,تشيلي,Chili,चिली,Cile,チリ,Чили,Şili,Чилі,智利,칠레,شيلي
-CM,CM,Republic of Cameroon,République du Cameroun,الكاميرون,Kamerun,Camerún,Cameroun,कैमरून,カメルーン,Kameroen,Camarões,Камерун,喀麦隆,카메룬
-CR,CR,Republic of Costa Rica,República de Costa Rica,كوستاريكا,कोस्टारिका,コスタリカ,Коста-Рика,Kosta Rika,哥斯达黎加,코스타리카
-CU,CU,Republic of Cuba,República de Cuba,كوبا,Kuba,क्यूबा,キューバ,Куба,古巴,쿠바
-CV,CV,Republic of Cabo Verde,República de Cabo Verde,الرأس الأخضر,Cap-Vert,केप वर्ड,Capo Verde,カーボベルデ,Kaapverdië,Кабо-Верде,佛得角,카보베르데,كابو فيردي
-CW,CW,Curacao,Kòrsou,كوراساو,Curazao,कुरासाओ,キュラソー,Кюрасао,库拉索,퀴라소
-CX,CX,Territory of Christmas Island,جزيرة كريسماس,Weihnachtsinsel,Isla de Navidad,Île Christmas,क्रिसमस द्वीप,Isola Christmas,クリスマス島,Christmaseiland,Ilha Christmas,о-в Рождества,Christmas Adası,Острів Різдва,圣诞岛,크리스마스섬,остров Рождества,Isla Christmas,جزيرة عيد الميلاد
-DJ,DJ,Jabuuti,Gabuuti,جيبوتي,Dschibuti,Yibuti,जिबूती,Gibuti,ジブチ,Djibuti,Джибути,Cibuti,Джибуті,吉布提,지부티
-DM,DM,Dominique,Wai‘tu kubuli,دومينيكا,डोमिनिका,ドミニカ国,Доминика,Dominika,Домініка,多米尼克,도미니카
-DO,DO,جمهورية الدومينيكان,Republik Dominikan,Dominikanische Republik,República Dominicana,République dominicaine,डोमिनिकन गणराज्य,Repubblica Dominicana,ドミニカ共和国,Dominicaanse Republiek,Доминиканская Республика,Dominik Cumhuriyeti,Домініканська Республіка,多米尼加共和国,도미니카 공화국,多米尼加,الجمهورية الدومينيكية
-DZ,DZ,Dzayer,Algérie,الجزائر,Algerien,Argelia,अल्जीरिया,アルジェリア,Algerije,Алжир,Cezayir,阿尔及利亚,알제리
-EC,EC,Republic of Ecuador,República del Ecuador,الإكوادور,Équateur,इक्वाडोर,エクアドル,Equador,Эквадор,Ekvador,Еквадор,厄瓜多尔,에콰도르,إكوادور
-EH,EH,Taneẓroft Tutrimt,الصحراء الغربية,Westsahara,Sáhara Occidental,पश्चिमी सहारा,Sahara Occidentale,西サハラ,Westelijke Sahara,Saara Ocidental,Западная Сахара,Batı Sahra,Західна Сахара,西撒哈拉,서사하라
-ER,ER,State of Eritrea,ሃገረ ኤርትራ,إريتريا,Érythrée,इरिट्रिया,エリトリア,Eritreia,Эритрея,Eritre,Еритрея,厄立特里亚,에리트리아
-ET,ET,ʾĪtyōṗṗyā,Federal Democratic Republic of Ethiopia,إثيوبيا,Äthiopien,Etiopía,Éthiopie,इथियोपिया,エチオピア,Эфиопия,Etiyopya,Ефіопія,埃塞俄比亚,에티오피아
-FJ,FJ,Viti,Republic of Fiji,فيجي,Fidschi,Fiyi,Fidji,फ़िजी,Figi,フィジー,Фиджи,Фіджі,斐济,피지
-FK,FK,Islas Malvinas,Falkland Islands (Malvinas),جزر فوكلاند,Falklandinseln,Îles Malouines,फ़ॉकलैंड द्वीपसमूह,Isole Falkland,フォークランド諸島,Falklandeilanden,Ilhas Malvinas,Фолклендские о-ва,Falkland Adaları,Фолклендські Острови,福克兰群岛,포클랜드 제도,福克兰群岛（马尔维纳斯）,Фолклендские (Мальвинские) острова,Îles Falkland (Malvinas),Islas Malvinas (Falkland),جزر فوكلاند (مالفيناس)
+CF,CF,République centrafricaine,جمهورية أفريقيا الوسطى,Zentralafrikanische Republik,República Centroafricana,मध्य अफ़्रीकी गणराज्य,Repubblica Centrafricana,中央アフリカ共和国,Centraal-Afrikaanse Republiek,República Centro-Africana,Центрально-Африканская Республика,Orta Afrika Cumhuriyeti,Центральноафриканська Республіка,中非共和国,중앙 아프리카 공화국,Центральноафриканская Республика,Cộng hòa Trung Phi
+CG,CG,Congo-Brazzaville,جمهورية الكونغو,الكونغو - برازافيل,Kongo-Brazzaville,कांगो – ब्राज़ाविल,コンゴ共和国(ブラザビル),República do Congo,Конго - Браззавиль,Kongo - Brazavil,Конго – Браззавіль,刚果（布）,콩고-브라자빌,刚果,Конго,الكونغو,Congo - Brazzaville
+CK,CK,Kūki 'Āirani,جزر كوك,Cookinseln,Islas Cook,Îles Cook,कुक द्वीपसमूह,Isole Cook,クック諸島,Cookeilanden,Ilhas Cook,о-ва Кука,Cook Adaları,Острови Кука,库克群岛,쿡 제도,Острова Кука,Quần đảo Cook
+CL,CL,Republic of Chile,República de Chile,تشيلي,Chili,चिली,Cile,チリ,Чили,Şili,Чилі,智利,칠레,شيلي,Chile
+CM,CM,Republic of Cameroon,République du Cameroun,الكاميرون,Kamerun,Camerún,Cameroun,कैमरून,カメルーン,Kameroen,Camarões,Камерун,喀麦隆,카메룬,Cameroon
+CR,CR,Republic of Costa Rica,República de Costa Rica,كوستاريكا,कोस्टारिका,コスタリカ,Коста-Рика,Kosta Rika,哥斯达黎加,코스타리카,Costa Rica
+CU,CU,Republic of Cuba,República de Cuba,كوبا,Kuba,क्यूबा,キューバ,Куба,古巴,쿠바,Cuba
+CV,CV,Republic of Cabo Verde,República de Cabo Verde,الرأس الأخضر,Cap-Vert,केप वर्ड,Capo Verde,カーボベルデ,Kaapverdië,Кабо-Верде,佛得角,카보베르데,كابو فيردي,Cape Verde
+CW,CW,Curacao,Kòrsou,كوراساو,Curazao,कुरासाओ,キュラソー,Кюрасао,库拉索,퀴라소,Curaçao
+CX,CX,Territory of Christmas Island,جزيرة كريسماس,Weihnachtsinsel,Isla de Navidad,Île Christmas,क्रिसमस द्वीप,Isola Christmas,クリスマス島,Christmaseiland,Ilha Christmas,о-в Рождества,Christmas Adası,Острів Різдва,圣诞岛,크리스마스섬,остров Рождества,Isla Christmas,جزيرة عيد الميلاد,Đảo Giáng Sinh
+DJ,DJ,Jabuuti,Gabuuti,جيبوتي,Dschibuti,Yibuti,जिबूती,Gibuti,ジブチ,Djibuti,Джибути,Cibuti,Джибуті,吉布提,지부티,Djibouti
+DM,DM,Dominique,Wai‘tu kubuli,دومينيكا,डोमिनिका,ドミニカ国,Доминика,Dominika,Домініка,多米尼克,도미니카,Dominica
+DO,DO,جمهورية الدومينيكان,Republik Dominikan,Dominikanische Republik,República Dominicana,République dominicaine,डोमिनिकन गणराज्य,Repubblica Dominicana,ドミニカ共和国,Dominicaanse Republiek,Доминиканская Республика,Dominik Cumhuriyeti,Домініканська Республіка,多米尼加共和国,도미니카 공화국,多米尼加,الجمهورية الدومينيكية,Cộng hòa Dominica
+DZ,DZ,Dzayer,Algérie,الجزائر,Algerien,Argelia,अल्जीरिया,アルジェリア,Algerije,Алжир,Cezayir,阿尔及利亚,알제리,Algeria
+EC,EC,Republic of Ecuador,República del Ecuador,الإكوادور,Équateur,इक्वाडोर,エクアドル,Equador,Эквадор,Ekvador,Еквадор,厄瓜多尔,에콰도르,إكوادور,Ecuador
+EH,EH,Taneẓroft Tutrimt,الصحراء الغربية,Westsahara,Sáhara Occidental,पश्चिमी सहारा,Sahara Occidentale,西サハラ,Westelijke Sahara,Saara Ocidental,Западная Сахара,Batı Sahra,Західна Сахара,西撒哈拉,서사하라,Tây Sahara
+ER,ER,State of Eritrea,ሃገረ ኤርትራ,إريتريا,Érythrée,इरिट्रिया,エリトリア,Eritreia,Эритрея,Eritre,Еритрея,厄立特里亚,에리트리아,Eritrea
+ET,ET,ʾĪtyōṗṗyā,Federal Democratic Republic of Ethiopia,إثيوبيا,Äthiopien,Etiopía,Éthiopie,इथियोपिया,エチオピア,Эфиопия,Etiyopya,Ефіопія,埃塞俄比亚,에티오피아,Ethiopia
+FJ,FJ,Viti,Republic of Fiji,فيجي,Fidschi,Fiyi,Fidji,फ़िजी,Figi,フィジー,Фиджи,Фіджі,斐济,피지,Fiji
+FK,FK,Islas Malvinas,Falkland Islands (Malvinas),جزر فوكلاند,Falklandinseln,Îles Malouines,फ़ॉकलैंड द्वीपसमूह,Isole Falkland,フォークランド諸島,Falklandeilanden,Ilhas Malvinas,Фолклендские о-ва,Falkland Adaları,Фолклендські Острови,福克兰群岛,포클랜드 제도,福克兰群岛（马尔维纳斯）,Фолклендские (Мальвинские) острова,Îles Falkland (Malvinas),Islas Malvinas (Falkland),جزر فوكلاند (مالفيناس),Quần đảo Falkland
 FM,FM,Federated States of Micronesia,"Micronesia, Federated States of",ميكرونيزيا,Mikronesien,Micronesia,Micronésie,माइक्रोनेशिया,ミクロネシア連邦,Федеративные Штаты Микронезии,Mikronezya,Мікронезія,密克罗尼西亚,미크로네시아,密克罗尼西亚联邦,Микронезия (Федеративные Штаты),Micronésie (États fédérés de),Micronesia (Estados Federados de),ميكرونيزيا (ولايات - الموحدة)
-FO,FO,Føroyar,Færøerne,جزر فارو,Färöer,Islas Feroe,Îles Féroé,फ़ेरो द्वीपसमूह,Isole Fær Øer,フェロー諸島,Faeröer,Ilhas Faroé,Фарерские о-ва,Faroe Adaları,Фарерські Острови,法罗群岛,페로 제도,Фарерские острова,جزر فايرو
-GA,GA,Gabonese Republic,République Gabonaise,الغابون,Gabun,गैबॉन,ガボン,Gabão,Габон,加蓬,가봉,غابون
-GD,GD,غرينادا,Grenade,Granada,ग्रेनाडा,グレナダ,Гренада,格林纳达,그레나다
-GE,GE,Sakartvelo,جورجيا,Georgien,Géorgie,जॉर्जिया,ジョージア,Грузия,Gürcistan,Грузія,格鲁吉亚,조지아
-GF,GF,Guyane,غويانا الفرنسية,Französisch-Guayana,Guayana Francesa,Guyane française,फ़्रेंच गुयाना,Guyana Francese,仏領ギアナ,Frans-Guyana,Guiana Francesa,Французская Гвиана,Fransız Guyanası,Французька Гвіана,法属圭亚那,프랑스령 기아나,غيانا الفرنسية
-GG,GG,Bailiwick of Guernsey,Bailliage de Guernesey,غيرنزي,Guernesey,गर्नसी,ガーンジー,Гернси,Гернсі,根西岛,건지,格恩西,غيرنسي
-GH,GH,غانا,Gana,घाना,ガーナ,Гана,加纳,가나
-GI,GI,جبل طارق,Jibraltar,जिब्राल्टर,Gibilterra,ジブラルタル,Гибралтар,Cebelitarık,Гібралтар,直布罗陀,지브롤터
-GL,GL,Grønland,جرينلاند,غرينلاند,Grönland,Groenlandia,Groenland,ग्रीनलैंड,グリーンランド,Гренландия,Гренландія,格陵兰,그린란드,غرينلند
-GM,GM,Republic of the Gambia,غامبيا,Gambie,गाम्बिया,ガンビア,Гамбия,Gambiya,Гамбія,冈比亚,감비아
-GN,GN,Republic of Guinea,République de Guinée,غينيا,Guinée,गिनी,ギニア,Guiné,Гвинея,Gine,Гвінея,几内亚,기니
-GP,GP,Gwadloup,غوادلوب,Guadalupe,ग्वाडेलूप,Guadalupa,グアドループ,Гваделупа,瓜德罗普,과들루프
-GQ,GQ,Republic of Equatorial Guinea,República de Guinea Ecuatorial,غينيا الاستوائية,Äquatorialguinea,Guinea Ecuatorial,Guinée équatoriale,इक्वेटोरियल गिनी,Guinea Equatoriale,赤道ギニア,Equatoriaal-Guinea,Guiné Equatorial,Экваториальная Гвинея,Ekvator Ginesi,Екваторіальна Гвінея,赤道几内亚,적도 기니
-GS,GS,South Georgia and the South Sandwich Islands,جورجيا الجنوبية,جورجيا الجنوبية وجزر ساندويتش الجنوبية,Südgeorgien und die Südlichen Sandwichinseln,Islas Georgia del Sur y Sandwich del Sur,Géorgie du Sud-et-les Îles Sandwich du Sud,दक्षिण जॉर्जिया और दक्षिण सैंडविच द्वीपसमूह,Georgia del Sud e Sandwich Australi,サウスジョージア・サウスサンドウィッチ諸島,Zuid-Georgia en Zuidelijke Sandwicheilanden,Ilhas Geórgia do Sul e Sandwich do Sul,Южная Георгия и Южные Сандвичевы о-ва,Güney Georgia ve Güney Sandwich Adaları,Південна Джорджія та Південні Сандвічеві Острови,南乔治亚和南桑威奇群岛,사우스조지아 사우스샌드위치 제도,南乔治亚岛和南桑德韦奇岛,Южная Джорджия и Южные Сандвичевы острова,Georgia del Sur y las Islas Sandwich del Sur
-GT,GT,غواتيمالا,Gvatemala,ग्वाटेमाला,グアテマラ,Гватемала,危地马拉,과테말라
-GU,GU,Guåhån,غوام,गुआम,グアム,Гуам,关岛,괌
-GW,GW,Republic of Guinea-Bissau,República da Guiné-Bissau,غينيا بيساو,Guinea-Bisáu,Guinée-Bissau,गिनी-बिसाउ,ギニアビサウ,Guiné-Bissau,Гвинея-Бисау,Gine-Bissau,Гвінея-Бісау,几内亚比绍,기니비사우,غينيا - بيساو
-GY,GY,Co-operative Republic of Guyana,غيانا,गुयाना,ガイアナ,Guiana,Гайана,Гаяна,圭亚那,가이아나
-HK,HK,هونغ كونغ,Hongkong,هونغ كونغ الصينية (منطقة إدارية خاصة),Sonderverwaltungsregion Hongkong,RAE de Hong Kong (China),R.A.S. chinoise de Hong Kong,हाँग काँग (चीन विशेष प्रशासनिक क्षेत्र),RAS di Hong Kong,中華人民共和国香港特別行政区,Hongkong SAR van China,"Hong Kong, RAE da China",Гонконг (САР),Çin Hong Kong ÖİB,"Гонконг, ОАР Китаю",中国香港特别行政区,홍콩(중국 특별행정구),"Китай, Специальный административный район Гонконг","Chine, région administrative spéciale de Hong Kong","China, región administrativa especial de Hong Kong",الصين، منطقة هونغ كونغ الإدارية الخاصة
-HM,HM,جزيرة هيرد وجزر ماكدونالد,Inizi Heard ha McDonald,Heard und McDonaldinseln,Islas Heard y McDonald,Îles Heard-et-MacDonald,हर्ड द्वीप और मैकडोनॉल्ड द्वीपसमूह,Isole Heard e McDonald,ハード島・マクドナルド諸島,Heard en McDonaldeilanden,Ilhas Heard e McDonald,о-ва Херд и Макдональд,Heard Adası ve McDonald Adaları,Острови Герд і Макдоналд,赫德岛和麦克唐纳群岛,허드 맥도널드 제도,赫德岛和麦克唐纳岛,Остров Херд и острова Макдональд,Île Heard-et-Îles MacDonald
-HN,HN,Republic of Honduras,República de Honduras,هندوراس,होंडूरास,ホンジュラス,Гондурас,洪都拉斯,온두라스
-HT,HT,Republic of Haiti,République d'Haïti,هايتي,हैती,ハイチ,Гаити,Гаїті,海地,아이티
-IL,IL,State of Israel,Medīnat Yisrā'el,إسرائيل,इज़राइल,Israele,イスラエル,Израиль,İsrail,Ізраїль,以色列,이스라엘
-IM,IM,Ellan Vannin,Mann,جزيرة مان,Isla de Man,Île de Man,आइल ऑफ़ मैन,Isola di Man,マン島,Ilha de Man,о-в Мэн,Man Adası,Острів Мен,马恩岛,맨 섬,Остров Мэн
-IO,IO,إقليم المحيط الهندي البريطاني,Tiriad breizhveurat Meurvor Indez,الإقليم البريطاني في المحيط الهندي,Britisches Territorium im Indischen Ozean,Territorio Británico del Océano Índico,Territoire britannique de l’océan Indien,ब्रिटिश हिंद महासागरीय क्षेत्र,Territorio Britannico dell’Oceano Indiano,英領インド洋地域,Brits Indische Oceaanterritorium,Território Britânico do Oceano Índico,Британская территория в Индийском океане,Britanya Hint Okyanusu Toprakları,Британська територія в Індійському океані,英属印度洋领地,영국령 인도양 식민지,英属印度洋领土,Territoire britannique de l'océan Indien
-IS,IS,Island,Republic of Iceland,آيسلندا,Islandia,Islande,आइसलैंड,Islanda,アイスランド,IJsland,Исландия,İzlanda,Ісландія,冰岛,아이슬란드
-JE,JE,Bailiwick of Jersey,Bailliage de Jersey,جيرسي,जर्सी,ジャージー,Джерси,Джерсі,泽西岛,저지,泽西
-JM,JM,جامايكا,Jamaika,Jamaïque,जमैका,Giamaica,ジャマイカ,Ямайка,牙买加,자메이카
-JO,JO,Hashemite Kingdom of Jordan,al-Mamlakah al-Urdunīyah al-Hāshimīyah,الأردن,Jordanien,Jordania,Jordanie,जॉर्डन,Giordania,ヨルダン,Иордания,Ürdün,Йорданія,约旦,요르단
-KE,KE,Republic of Kenya,Jamhuri ya Kenya,كينيا,Kenia,केन्या,ケニア,Quênia,Кения,Кенія,肯尼亚,케냐
-KG,KG,Киргизия,Kyrgyz Republic,قيرغيزستان,Kirgisistan,Kirguistán,Kirghizstan,किर्गिज़स्तान,Kirghizistan,キルギス,Kirgizië,Quirguistão,Kırgızistan,Киргизстан,吉尔吉斯斯坦,키르기스스탄,Кыргызстан
-KH,KH,Kingdom of Cambodia,كمبودია,كمبوديا,Kambodscha,Camboya,Cambodge,कंबोडिया,Cambogia,カンボジア,Cambodja,Camboja,Камбоджа,Kamboçya,柬埔寨,캄보디아
-KI,KI,Republic of Kiribati,Ribaberiki Kiribati,كيريباتي,किरिबाती,キリバス,Quiribati,Кирибати,Кірибаті,基里巴斯,키리바시,كيريباس
-KM,KM,Union of the Comoros,Union des Comores,جزر القمر,Komoren,Comoras,Comores,कोमोरोस,Comore,コモロ,Comoren,Коморы,Komorlar,Комори,科摩罗,코모로,Коморские Острова
-KN,KN,Federation of Saint Christopher and Nevis,سانت كيتس ونيفيس,St. Kitts und Nevis,San Cristóbal y Nieves,Saint-Christophe-et-Niévès,सेंट किट्स और नेविस,Saint Kitts e Nevis,セントクリストファー・ネーヴィス,Saint Kitts en Nevis,São Cristóvão e Névis,Сент-Китс и Невис,Saint Kitts ve Nevis,Сент-Кітс і Невіс,圣基茨和尼维斯,세인트키츠 네비스,Saint-Kitts-et-Nevis,Saint Kitts y Nevis,سانت كيتس ونيفس
-KP,KP,Democratic People's Republic of Korea,DPRK,كوريا الشمالية,Nordkorea,Corea del Norte,Corée du Nord,उत्तर कोरिया,Corea del Nord,北朝鮮,Noord-Korea,Coreia do Norte,КНДР,Kuzey Kore,Північна Корея,朝鲜,북한,朝鲜民主主义人民共和国,Корейская Народно-Демократическая Республика,République populaire démocratique de Corée,República Popular Democrática de Corea,جمهورية كوريا الشعبية الديمقراطية
-KW,KW,State of Kuwait,Dawlat al-Kuwait,الكويت,Koweït,कुवैत,クウェート,Koeweit,Кувейт,Kuveyt,科威特,쿠웨이트
-KY,KY,جزر كايمان,Inizi Cayman,Kaimaninseln,Islas Caimán,Îles Caïmans,कैमेन द्वीपसमूह,Isole Cayman,ケイマン諸島,Kaaimaneilanden,Ilhas Cayman,о-ва Кайман,Cayman Adaları,Кайманові Острови,开曼群岛,케이맨 제도,Кайман острова,Îles Caïmanes
-KZ,KZ,Qazaqstan,Казахстан,كازاخستان,Kasachstan,Kazajistán,कज़ाखस्तान,Kazakistan,カザフスタン,Kazachstan,Cazaquistão,哈萨克斯坦,카자흐스탄,Kazajstán
-LA,LA,Lao,Lao People's Democratic Republic,لاوس,Laos,लाओस,ラオス,Лаос,老挝,라오스,老挝人民民主共和国,Лаосская Народно-Демократическая Республика,République démocratique populaire lao,República Democrática Popular Lao,جمهورية لاو الديمقراطية الشعبية
-LB,LB,Lebanese Republic,Al-Jumhūrīyah Al-Libnānīyah,لبنان,Libanon,Líbano,Liban,लेबनान,レバノン,Ливан,Lübnan,Ліван,黎巴嫩,레바논
+FO,FO,Føroyar,Færøerne,جزر فارو,Färöer,Islas Feroe,Îles Féroé,फ़ेरो द्वीपसमूह,Isole Fær Øer,フェロー諸島,Faeröer,Ilhas Faroé,Фарерские о-ва,Faroe Adaları,Фарерські Острови,法罗群岛,페로 제도,Фарерские острова,جزر فايرو,Quần đảo Faroe
+GA,GA,Gabonese Republic,République Gabonaise,الغابون,Gabun,गैबॉन,ガボン,Gabão,Габон,加蓬,가봉,غابون,Gabon
+GD,GD,غرينادا,Grenade,Granada,ग्रेनाडा,グレナダ,Гренада,格林纳达,그레나다,Grenada
+GE,GE,Sakartvelo,جورجيا,Georgien,Géorgie,जॉर्जिया,ジョージア,Грузия,Gürcistan,Грузія,格鲁吉亚,조지아,Georgia
+GF,GF,Guyane,غويانا الفرنسية,Französisch-Guayana,Guayana Francesa,Guyane française,फ़्रेंच गुयाना,Guyana Francese,仏領ギアナ,Frans-Guyana,Guiana Francesa,Французская Гвиана,Fransız Guyanası,Французька Гвіана,法属圭亚那,프랑스령 기아나,غيانا الفرنسية,Guiana thuộc Pháp
+GG,GG,Bailiwick of Guernsey,Bailliage de Guernesey,غيرنزي,Guernesey,गर्नसी,ガーンジー,Гернси,Гернсі,根西岛,건지,格恩西,غيرنسي,Guernsey
+GH,GH,غانا,Gana,घाना,ガーナ,Гана,加纳,가나,Ghana
+GI,GI,جبل طارق,Jibraltar,जिब्राल्टर,Gibilterra,ジブラルタル,Гибралтар,Cebelitarık,Гібралтар,直布罗陀,지브롤터,Gibraltar
+GL,GL,Grønland,جرينلاند,غرينلاند,Grönland,Groenlandia,Groenland,ग्रीनलैंड,グリーンランド,Гренландия,Гренландія,格陵兰,그린란드,غرينلند,Greenland
+GM,GM,Republic of the Gambia,غامبيا,Gambie,गाम्बिया,ガンビア,Гамбия,Gambiya,Гамбія,冈比亚,감비아,Gambia
+GN,GN,Republic of Guinea,République de Guinée,غينيا,Guinée,गिनी,ギニア,Guiné,Гвинея,Gine,Гвінея,几内亚,기니,Guinea
+GP,GP,Gwadloup,غوادلوب,Guadalupe,ग्वाडेलूप,Guadalupa,グアドループ,Гваделупа,瓜德罗普,과들루프,Guadeloupe
+GQ,GQ,Republic of Equatorial Guinea,República de Guinea Ecuatorial,غينيا الاستوائية,Äquatorialguinea,Guinea Ecuatorial,Guinée équatoriale,इक्वेटोरियल गिनी,Guinea Equatoriale,赤道ギニア,Equatoriaal-Guinea,Guiné Equatorial,Экваториальная Гвинея,Ekvator Ginesi,Екваторіальна Гвінея,赤道几内亚,적도 기니,Guinea Xích Đạo
+GS,GS,South Georgia and the South Sandwich Islands,جورجيا الجنوبية,جورجيا الجنوبية وجزر ساندويتش الجنوبية,Südgeorgien und die Südlichen Sandwichinseln,Islas Georgia del Sur y Sandwich del Sur,Géorgie du Sud-et-les Îles Sandwich du Sud,दक्षिण जॉर्जिया और दक्षिण सैंडविच द्वीपसमूह,Georgia del Sud e Sandwich Australi,サウスジョージア・サウスサンドウィッチ諸島,Zuid-Georgia en Zuidelijke Sandwicheilanden,Ilhas Geórgia do Sul e Sandwich do Sul,Южная Георгия и Южные Сандвичевы о-ва,Güney Georgia ve Güney Sandwich Adaları,Південна Джорджія та Південні Сандвічеві Острови,南乔治亚和南桑威奇群岛,사우스조지아 사우스샌드위치 제도,南乔治亚岛和南桑德韦奇岛,Южная Джорджия и Южные Сандвичевы острова,Georgia del Sur y las Islas Sandwich del Sur,Nam Georgia & Quần đảo Nam Sandwich
+GT,GT,غواتيمالا,Gvatemala,ग्वाटेमाला,グアテマラ,Гватемала,危地马拉,과테말라,Guatemala
+GU,GU,Guåhån,غوام,गुआम,グアム,Гуам,关岛,괌,Guam
+GW,GW,Republic of Guinea-Bissau,República da Guiné-Bissau,غينيا بيساو,Guinea-Bisáu,Guinée-Bissau,गिनी-बिसाउ,ギニアビサウ,Guiné-Bissau,Гвинея-Бисау,Gine-Bissau,Гвінея-Бісау,几内亚比绍,기니비사우,غينيا - بيساو,Guinea-Bissau
+GY,GY,Co-operative Republic of Guyana,غيانا,गुयाना,ガイアナ,Guiana,Гайана,Гаяна,圭亚那,가이아나,Guyana
+HK,HK,هونغ كونغ,Hongkong,هونغ كونغ الصينية (منطقة إدارية خاصة),Sonderverwaltungsregion Hongkong,RAE de Hong Kong (China),R.A.S. chinoise de Hong Kong,हाँग काँग (चीन विशेष प्रशासनिक क्षेत्र),RAS di Hong Kong,中華人民共和国香港特別行政区,Hongkong SAR van China,"Hong Kong, RAE da China",Гонконг (САР),Çin Hong Kong ÖİB,"Гонконг, ОАР Китаю",中国香港特别行政区,홍콩(중국 특별행정구),"Китай, Специальный административный район Гонконг","Chine, région administrative spéciale de Hong Kong","China, región administrativa especial de Hong Kong",الصين، منطقة هونغ كونغ الإدارية الخاصة,"Đặc khu Hành chính Hồng Kông, Trung Quốc"
+HM,HM,جزيرة هيرد وجزر ماكدونالد,Inizi Heard ha McDonald,Heard und McDonaldinseln,Islas Heard y McDonald,Îles Heard-et-MacDonald,हर्ड द्वीप और मैकडोनॉल्ड द्वीपसमूह,Isole Heard e McDonald,ハード島・マクドナルド諸島,Heard en McDonaldeilanden,Ilhas Heard e McDonald,о-ва Херд и Макдональд,Heard Adası ve McDonald Adaları,Острови Герд і Макдоналд,赫德岛和麦克唐纳群岛,허드 맥도널드 제도,赫德岛和麦克唐纳岛,Остров Херд и острова Макдональд,Île Heard-et-Îles MacDonald,Quần đảo Heard và McDonald
+HN,HN,Republic of Honduras,República de Honduras,هندوراس,होंडूरास,ホンジュラス,Гондурас,洪都拉斯,온두라스,Honduras
+HT,HT,Republic of Haiti,République d'Haïti,هايتي,हैती,ハイチ,Гаити,Гаїті,海地,아이티,Haiti
+IL,IL,State of Israel,Medīnat Yisrā'el,إسرائيل,इज़राइल,Israele,イスラエル,Израиль,İsrail,Ізраїль,以色列,이스라엘,Israel
+IM,IM,Ellan Vannin,Mann,جزيرة مان,Isla de Man,Île de Man,आइल ऑफ़ मैन,Isola di Man,マン島,Ilha de Man,о-в Мэн,Man Adası,Острів Мен,马恩岛,맨 섬,Остров Мэн,Đảo Man
+IO,IO,إقليم المحيط الهندي البريطاني,Tiriad breizhveurat Meurvor Indez,الإقليم البريطاني في المحيط الهندي,Britisches Territorium im Indischen Ozean,Territorio Británico del Océano Índico,Territoire britannique de l’océan Indien,ब्रिटिश हिंद महासागरीय क्षेत्र,Territorio Britannico dell’Oceano Indiano,英領インド洋地域,Brits Indische Oceaanterritorium,Território Britânico do Oceano Índico,Британская территория в Индийском океане,Britanya Hint Okyanusu Toprakları,Британська територія в Індійському океані,英属印度洋领地,영국령 인도양 식민지,英属印度洋领土,Territoire britannique de l'océan Indien,Lãnh thổ Ấn Độ Dương thuộc Anh
+IS,IS,Island,Republic of Iceland,آيسلندا,Islandia,Islande,आइसलैंड,Islanda,アイスランド,IJsland,Исландия,İzlanda,Ісландія,冰岛,아이슬란드,Iceland
+JE,JE,Bailiwick of Jersey,Bailliage de Jersey,جيرسي,जर्सी,ジャージー,Джерси,Джерсі,泽西岛,저지,泽西,Jersey
+JM,JM,جامايكا,Jamaika,Jamaïque,जमैका,Giamaica,ジャマイカ,Ямайка,牙买加,자메이카,Jamaica
+JO,JO,Hashemite Kingdom of Jordan,al-Mamlakah al-Urdunīyah al-Hāshimīyah,الأردن,Jordanien,Jordania,Jordanie,जॉर्डन,Giordania,ヨルダン,Иордания,Ürdün,Йорданія,约旦,요르단,Jordan
+KE,KE,Republic of Kenya,Jamhuri ya Kenya,كينيا,Kenia,केन्या,ケニア,Quênia,Кения,Кенія,肯尼亚,케냐,Kenya
+KG,KG,Киргизия,Kyrgyz Republic,قيرغيزستان,Kirgisistan,Kirguistán,Kirghizstan,किर्गिज़स्तान,Kirghizistan,キルギス,Kirgizië,Quirguistão,Kırgızistan,Киргизстан,吉尔吉斯斯坦,키르기스스탄,Кыргызстан,Kyrgyzstan
+KH,KH,Kingdom of Cambodia,كمبودია,كمبوديا,Kambodscha,Camboya,Cambodge,कंबोडिया,Cambogia,カンボジア,Cambodja,Camboja,Камбоджа,Kamboçya,柬埔寨,캄보디아,Campuchia
+KI,KI,Republic of Kiribati,Ribaberiki Kiribati,كيريباتي,किरिबाती,キリバス,Quiribati,Кирибати,Кірибаті,基里巴斯,키리바시,كيريباس,Kiribati
+KM,KM,Union of the Comoros,Union des Comores,جزر القمر,Komoren,Comoras,Comores,कोमोरोस,Comore,コモロ,Comoren,Коморы,Komorlar,Комори,科摩罗,코모로,Коморские Острова,Comoros
+KN,KN,Federation of Saint Christopher and Nevis,سانت كيتس ونيفيس,St. Kitts und Nevis,San Cristóbal y Nieves,Saint-Christophe-et-Niévès,सेंट किट्स और नेविस,Saint Kitts e Nevis,セントクリストファー・ネーヴィス,Saint Kitts en Nevis,São Cristóvão e Névis,Сент-Китс и Невис,Saint Kitts ve Nevis,Сент-Кітс і Невіс,圣基茨和尼维斯,세인트키츠 네비스,Saint-Kitts-et-Nevis,Saint Kitts y Nevis,سانت كيتس ونيفس,St. Kitts và Nevis
+KP,KP,Democratic People's Republic of Korea,DPRK,كوريا الشمالية,Nordkorea,Corea del Norte,Corée du Nord,उत्तर कोरिया,Corea del Nord,北朝鮮,Noord-Korea,Coreia do Norte,КНДР,Kuzey Kore,Північна Корея,朝鲜,북한,朝鲜民主主义人民共和国,Корейская Народно-Демократическая Республика,République populaire démocratique de Corée,República Popular Democrática de Corea,جمهورية كوريا الشعبية الديمقراطية,Triều Tiên
+KW,KW,State of Kuwait,Dawlat al-Kuwait,الكويت,Koweït,कुवैत,クウェート,Koeweit,Кувейт,Kuveyt,科威特,쿠웨이트,Kuwait
+KY,KY,جزر كايمان,Inizi Cayman,Kaimaninseln,Islas Caimán,Îles Caïmans,कैमेन द्वीपसमूह,Isole Cayman,ケイマン諸島,Kaaimaneilanden,Ilhas Cayman,о-ва Кайман,Cayman Adaları,Кайманові Острови,开曼群岛,케이맨 제도,Кайман острова,Îles Caïmanes,Quần đảo Cayman
+KZ,KZ,Qazaqstan,Казахстан,كازاخستان,Kasachstan,Kazajistán,कज़ाखस्तान,Kazakistan,カザフスタン,Kazachstan,Cazaquistão,哈萨克斯坦,카자흐스탄,Kazajstán,Kazakhstan
+LA,LA,Lao,Lao People's Democratic Republic,لاوس,Laos,लाओस,ラオス,Лаос,老挝,라오스,老挝人民民主共和国,Лаосская Народно-Демократическая Республика,République démocratique populaire lao,República Democrática Popular Lao,جمهورية لاو الديمقراطية الشعبية,Lào
+LB,LB,Lebanese Republic,Al-Jumhūrīyah Al-Libnānīyah,لبنان,Libanon,Líbano,Liban,लेबनान,レバノン,Ливан,Lübnan,Ліван,黎巴嫩,레바논,Li-băng
 LC,LC,سانت لوسيا,Santez-Lusia,St. Lucia,Santa Lucía,Sainte-Lucie,सेंट लूसिया,セントルシア,Сент-Люсия,Сент-Люсія,圣卢西亚,세인트루시아
-LI,LI,Principality of Liechtenstein,Fürstentum Liechtenstein,ليختنشتاين,लिचेंस्टीन,リヒテンシュタイン,Лихтенштейн,Ліхтенштейн,列支敦士登,리히텐슈타인
-LK,LK,ilaṅkai,Democratic Socialist Republic of Sri Lanka,سريلانكا,श्रीलंका,スリランカ,Шри-Ланка,Шрі-Ланка,斯里兰卡,스리랑카,سري لانكا
-LR,LR,Republic of Liberia,ليبيريا,लाइबेरिया,リベリア,Либерия,Liberya,Ліберія,利比里亚,라이베리아,ليبريا
-LS,LS,Kingdom of Lesotho,Muso oa Lesotho,ليسوتو,Lesoto,लेसोथो,レソト,Лесото,莱索托,레소토
-LY,LY,State of Libya,Dawlat Libya,ليبيا,Libyen,Libia,Libye,लीबिया,リビア,Libië,Ливия,Лівія,利比亚,리비아
-MA,MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah,المغرب,Marokko,Marruecos,Maroc,मोरक्को,Marocco,モロッコ,Marrocos,Марокко,Fas,摩洛哥,모로코
-MC,MC,Principality of Monaco,Principauté de Monaco,موناكو,मोनाको,モナコ,Монако,Monako,摩纳哥,모나코
-ME,ME,Crna Gora,الجبل الاسود,मोंटेनेग्रो,モンテネグロ,Черногория,Karadağ,Чорногорія,黑山,몬테네그로
+LI,LI,Principality of Liechtenstein,Fürstentum Liechtenstein,ليختنشتاين,लिचेंस्टीन,リヒテンシュタイン,Лихтенштейн,Ліхтенштейн,列支敦士登,리히텐슈타인,Liechtenstein
+LK,LK,ilaṅkai,Democratic Socialist Republic of Sri Lanka,سريلانكا,श्रीलंका,スリランカ,Шри-Ланка,Шрі-Ланка,斯里兰卡,스리랑카,سري لانكا,Sri Lanka
+LR,LR,Republic of Liberia,ليبيريا,लाइबेरिया,リベリア,Либерия,Liberya,Ліберія,利比里亚,라이베리아,ليبريا,Liberia
+LS,LS,Kingdom of Lesotho,Muso oa Lesotho,ليسوتو,Lesoto,लेसोथो,レソト,Лесото,莱索托,레소토,Lesotho
+LY,LY,State of Libya,Dawlat Libya,ليبيا,Libyen,Libia,Libye,लीबिया,リビア,Libië,Ливия,Лівія,利比亚,리비아,Libya
+MA,MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah,المغرب,Marokko,Marruecos,Maroc,मोरक्को,Marocco,モロッコ,Marrocos,Марокко,Fas,摩洛哥,모로코,Ma-rốc
+MC,MC,Principality of Monaco,Principauté de Monaco,موناكو,मोनाको,モナコ,Монако,Monako,摩纳哥,모나코,Monaco
+ME,ME,Crna Gora,الجبل الاسود,मोंटेनेग्रो,モンテネグロ,Черногория,Karadağ,Чорногорія,黑山,몬테네그로,Montenegro
 MF,MF,Collectivity of Saint Martin,Collectivité de Saint-Martin,سان مارتن,St. Martin,San Martín,Saint-Martin,सेंट मार्टिन,Saint Martin,サン・マルタン,São Martinho,Сен-Мартен,法属圣马丁,생마르탱,圣马丁（法属）,Сен-Мартен (французская часть),Saint-Martin (partie française),San Martín (parte francesa),سانت مارتن (الجزء الفرنسي)
-MG,MG,Republic of Madagascar,Repoblikan'i Madagasikara,مدغشقر,Madagaskar,मेडागास्कर,マダガスカル,Мадагаскар,马达加斯加,마다가스카르
-MH,MH,Republic of the Marshall Islands,Aolepān Aorōkin M̧ajeļ,جزر مارشال,Marshallinseln,Islas Marshall,Îles Marshall,मार्शल द्वीपसमूह,Isole Marshall,マーシャル諸島,Marshalleilanden,Ilhas Marshall,Маршалловы о-ва,Marshall Adaları,Маршаллові Острови,马绍尔群岛,마셜 제도,Маршалловы Острова
-ML,ML,Republic of Mali,République du Mali,مالي,माली,マリ,Мали,Малі,马里,말리
-MN,MN,منغوليا,Mongolsko,Mongolei,Mongolie,मंगोलिया,モンゴル,Монголия,Moğolistan,Монголія,蒙古,몽골
-MO,MO,澳门,Macao,منطقة ماكاو الإدارية الخاصة,Sonderverwaltungsregion Macau,RAE de Macao (China),R.A.S. chinoise de Macao,मकाऊ (विशेष प्रशासनिक क्षेत्र चीन),RAS di Macao,中華人民共和国マカオ特別行政区,Macau SAR van China,"Macau, RAE da China",Макао (САР),Çin Makao ÖİB,"Макао, ОАР Китаю",中国澳门特别行政区,마카오(중국 특별행정구),"Китай, Специальный административный район Макао","Chine, région administrative spéciale de Macao","China, región administrativa especial de Macao",الصين، منطقة ماكاو الإدارية الخاصة
-MP,MP,Commonwealth of the Northern Mariana Islands,Sankattan Siha Na Islas Mariånas,جزر ماريانا الشمالية,Nördliche Marianen,Islas Marianas del Norte,Îles Mariannes du Nord,उत्तरी मारियाना द्वीपसमूह,Isole Marianne Settentrionali,北マリアナ諸島,Noordelijke Marianen,Ilhas Marianas do Norte,Северные Марианские о-ва,Kuzey Mariana Adaları,Північні Маріанські Острови,北马里亚纳群岛,북마리아나제도,Северные Марианские острова,Islas Marianas Septentrionales
-MQ,MQ,مارتينيك,Martinik,جزر المارتينيك,Martinica,मार्टीनिक,マルティニーク,Мартиника,Мартиніка,马提尼克,마르티니크
-MR,MR,Islamic Republic of Mauritania,al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah,موريتانيا,Mauretanien,Mauritanie,मॉरिटानिया,モーリタニア,Мавритания,Moritanya,Мавританія,毛里塔尼亚,모리타니
-MS,MS,مونتسرات,モントセラト,मोंटसेरात,Монтсеррат,蒙特塞拉特,몬트세라트,مونتسيرات
-MU,MU,Republic of Mauritius,République de Maurice,موريشيوس,Mauricio,Maurice,मॉरीशस,モーリシャス,Маврикий,Маврикій,毛里求斯,모리셔스
-MV,MV,Maldive Islands,Republic of the Maldives,جزر المالديف,Malediven,Maldivas,मालदीव,Maldive,モルディブ,Maldiven,Мальдивы,Maldivler,Мальдіви,马尔代夫,몰디브,Мальдивские Острова,ملديف
-MW,MW,Republic of Malawi,مالاوي,ملاوي,Malaui,मलावी,マラウイ,Малави,Malavi,Малаві,马拉维,말라위
-MY,MY,ماليزيا,Malajsie,Malasia,Malaisie,मलेशिया,マレーシア,Maleisië,Малайзия,Malezya,Малайзія,马来西亚,말레이시아
-MZ,MZ,Republic of Mozambique,República de Moçambique,موزمبيق,Mosambik,मोज़ांबिक,Mozambico,モザンビーク,Moçambique,Мозамбик,Mozambik,Мозамбік,莫桑比克,모잠비크,موزامبيق
-NA,NA,Namibië,Republic of Namibia,ناميبيا,नामीबिया,ナミビア,Намибия,Namibya,Намібія,纳米比亚,나미비아
-NC,NC,كاليدونيا الجديدة,Kaledonia-Nevez,Neukaledonien,Nueva Caledonia,Nouvelle-Calédonie,न्यू कैलेडोनिया,Nuova Caledonia,ニューカレドニア,Nieuw-Caledonië,Nova Caledônia,Новая Каледония,Yeni Kaledonya,Нова Каледонія,新喀里多尼亚,뉴칼레도니아
-NE,NE,Nijar,النيجر,नाइजर,ニジェール,Нигер,Nijer,Нігер,尼日尔,니제르
-NF,NF,Territory of Norfolk Island,Teratri of Norf'k Ailen,جزيرة نورفولك,Norfolkinsel,Isla Norfolk,Île Norfolk,नॉरफ़ॉक द्वीप,Isola Norfolk,ノーフォーク島,Norfolk,Ilha Norfolk,о-в Норфолк,Norfolk Adası,Острів Норфолк,诺福克岛,노퍽섬,Остров Норфолк
-NI,NI,Republic of Nicaragua,República de Nicaragua,نيكاراغوا,निकारागुआ,ニカラグア,Никарагуа,Nikaragua,Нікарагуа,尼加拉瓜,니카라과
-NP,NP,Federal Democratic Republic of Nepal,Loktāntrik Ganatantra Nepāl,نيبال,नेपाल,ネパール,Непал,尼泊尔,네팔
-NR,NR,Naoero,Pleasant Island,ناورو,नाउरु,ナウル,Науру,瑙鲁,나우루,Наоэро,ناويرو
-NU,NU,نييوي,ニウエ,نيوي,नीयू,Ниуэ,Ніуе,纽埃,니우에,Nioué
-OM,OM,Sultanate of Oman,Salṭanat ʻUmān,عُمان,ओमान,オマーン,Omã,Оман,Umman,阿曼,오만
-PA,PA,Republic of Panama,República de Panamá,بنما,पनामा,パナマ,Панама,巴拿马,파나마
-PE,PE,Republic of Peru,República del Perú,بيرو,Pérou,पेरू,ペルー,Перу,秘鲁,페루
-PF,PF,Polynésie française,Pōrīnetia Farāni,بولينيزيا الفرنسية,Französisch-Polynesien,Polinesia Francesa,फ़्रेंच पोलिनेशिया,Polinesia Francese,仏領ポリネシア,Frans-Polynesië,Французская Полинезия,Fransız Polinezyası,Французька Полінезія,法属波利尼西亚,프랑스령 폴리네시아
-PG,PG,Independent State of Papua New Guinea,Independen Stet bilong Papua Niugini,بابوا غينيا الجديدة,Papua-Neuguinea,Papúa Nueva Guinea,Papouasie-Nouvelle-Guinée,पापुआ न्यू गिनी,Papua Nuova Guinea,パプアニューギニア,Papoea-Nieuw-Guinea,Papua-Nova Guiné,Папуа — Новая Гвинея,Papua Yeni Gine,Папуа-Нова Гвінея,巴布亚新几内亚,파푸아뉴기니,Папуа-Новая Гвинея
-PK,PK,Pākistān,Islamic Republic of Pakistan,باكستان,पाकिस्तान,パキスタン,Paquistão,Пакистан,巴基斯坦,파키스탄
-PM,PM,Collectivité territoriale de Saint-Pierre-et-Miquelon,سان بيير وميكلون,سان بيير ومكويلون,St. Pierre und Miquelon,San Pedro y Miquelón,Saint-Pierre-et-Miquelon,सेंट पिएरे और मिक्वेलान,Saint-Pierre e Miquelon,サンピエール島・ミクロン島,Saint-Pierre en Miquelon,São Pedro e Miquelão,Сен-Пьер и Микелон,Saint Pierre ve Miquelon,Сен-Пʼєр і Мікелон,圣皮埃尔和密克隆群岛,생피에르 미클롱,圣皮埃尔和密克隆
-PN,PN,Pitcairn,Pitcairn Henderson Ducie and Oeno Islands,جزر بيتكيرن,Pitcairninseln,Islas Pitcairn,Îles Pitcairn,पिटकैर्न द्वीपसमूह,Isole Pitcairn,ピトケアン諸島,Pitcairneilanden,Ilhas Pitcairn,о-ва Питкэрн,Pitcairn Adaları,Острови Піткерн,皮特凯恩群岛,핏케언 섬,皮特凯恩,Питкэрн,بيتكرن
-PR,PR,Commonwealth of Puerto Rico,Estado Libre Asociado de Puerto Rico,بورتوريكو,Porto Rico,पोर्टो रिको,Portorico,プエルトリコ,Пуэрто-Рико,Porto Riko,Пуерто-Рико,波多黎各,푸에르토리코
-PS,PS,"Palestine, State of",State of Palestine,الأراضي الفلسطينية,Palästinensische Autonomiegebiete,Territorios Palestinos,Territoires palestiniens,फ़िलिस्तीनी क्षेत्र,Territori Palestinesi,パレスチナ自治区,Palestijnse gebieden,Палестинские территории,Filistin Bölgeleri,Палестинські території,巴勒斯坦领土,팔레스타인 지구,巴勒斯坦国,Государство Палестина,État de Palestine,Estado de Palestina,دولة فلسطين
-PW,PW,Republic of Palau,Beluu er a Belau,بالاو,Palaos,पलाऊ,パラオ,Палау,帕劳,팔라우
-PY,PY,Republic of Paraguay,República del Paraguay,باراغواي,पराग्वे,パラグアイ,Paraguai,Парагвай,巴拉圭,파라과이
-QA,QA,State of Qatar,Dawlat Qaṭar,قطر,Katar,Catar,क़तर,カタール,Катар,卡塔尔,카타르
-RE,RE,Reunion,لا ريونيون,روينيون,La Réunion,रियूनियन,Riunione,レユニオン,Reunião,Реюньон,Реюньйон,留尼汪,리유니온,ريونيون
-RS,RS,Srbija,Republika Srbija,صربيا,Serbien,Serbie,सर्बिया,セルビア,Servië,Sérvia,Сербия,Sırbistan,Сербія,塞尔维亚,세르비아
-RW,RW,Republic of Rwanda,Repubulika y'u Rwanda,رواندا,Ruanda,रवांडा,ルワンダ,Руанда,卢旺达,르완다
-SA,Saudi,SA,Kingdom of Saudi Arabia,المملكة العربية السعودية,Saudi-Arabien,Arabia Saudí,Arabie saoudite,सऊदी अरब,Arabia Saudita,サウジアラビア,Saoedi-Arabië,Саудовская Аравия,Suudi Arabistan,Саудівська Аравія,沙特阿拉伯,사우디아라비아
-SB,SB,جزر سليمان,Inizi Salomon,Salomonen,Islas Salomón,Îles Salomon,सोलोमन द्वीपसमूह,Isole Salomone,ソロモン諸島,Salomonseilanden,Ilhas Salomão,Соломоновы о-ва,Solomon Adaları,Соломонові Острови,所罗门群岛,솔로몬 제도,Соломоновы Острова
-SC,SC,Republic of Seychelles,Repiblik Sesel,سيشل,Seychellen,सेशेल्स,セーシェル,Seicheles,Сейшельские о-ва,Seyşeller,Сейшельські Острови,塞舌尔,세이셸,Сейшельские Острова,سيشيل
-SD,SD,Republic of the Sudan,Jumhūrīyat as-Sūdān,السودان,Soudan,सूडान,スーダン,Soedan,Sudão,Судан,苏丹,수단
-SG,SG,Singapura,Republik Singapura,سنغافورة,Singapur,Singapour,सिंगापुर,シンガポール,Сингапур,Сінгапур,新加坡,싱가포르
+MG,MG,Republic of Madagascar,Repoblikan'i Madagasikara,مدغشقر,Madagaskar,मेडागास्कर,マダガスカル,Мадагаскар,马达加斯加,마다가스카르,Madagascar
+MH,MH,Republic of the Marshall Islands,Aolepān Aorōkin M̧ajeļ,جزر مارشال,Marshallinseln,Islas Marshall,Îles Marshall,मार्शल द्वीपसमूह,Isole Marshall,マーシャル諸島,Marshalleilanden,Ilhas Marshall,Маршалловы о-ва,Marshall Adaları,Маршаллові Острови,马绍尔群岛,마셜 제도,Маршалловы Острова,Quần đảo Marshall
+ML,ML,Republic of Mali,République du Mali,مالي,माली,マリ,Мали,Малі,马里,말리,Mali
+MN,MN,منغوليا,Mongolsko,Mongolei,Mongolie,मंगोलिया,モンゴル,Монголия,Moğolistan,Монголія,蒙古,몽골,Mông Cổ
+MO,MO,澳门,Macao,منطقة ماكاو الإدارية الخاصة,Sonderverwaltungsregion Macau,RAE de Macao (China),R.A.S. chinoise de Macao,मकाऊ (विशेष प्रशासनिक क्षेत्र चीन),RAS di Macao,中華人民共和国マカオ特別行政区,Macau SAR van China,"Macau, RAE da China",Макао (САР),Çin Makao ÖİB,"Макао, ОАР Китаю",中国澳门特别行政区,마카오(중국 특별행정구),"Китай, Специальный административный район Макао","Chine, région administrative spéciale de Macao","China, región administrativa especial de Macao",الصين، منطقة ماكاو الإدارية الخاصة,"Đặc khu Hành chính Macao, Trung Quốc"
+MP,MP,Commonwealth of the Northern Mariana Islands,Sankattan Siha Na Islas Mariånas,جزر ماريانا الشمالية,Nördliche Marianen,Islas Marianas del Norte,Îles Mariannes du Nord,उत्तरी मारियाना द्वीपसमूह,Isole Marianne Settentrionali,北マリアナ諸島,Noordelijke Marianen,Ilhas Marianas do Norte,Северные Марианские о-ва,Kuzey Mariana Adaları,Північні Маріанські Острови,北马里亚纳群岛,북마리아나제도,Северные Марианские острова,Islas Marianas Septentrionales,Quần đảo Bắc Mariana
+MQ,MQ,مارتينيك,Martinik,جزر المارتينيك,Martinica,मार्टीनिक,マルティニーク,Мартиника,Мартиніка,马提尼克,마르티니크,Martinique
+MR,MR,Islamic Republic of Mauritania,al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah,موريتانيا,Mauretanien,Mauritanie,मॉरिटानिया,モーリタニア,Мавритания,Moritanya,Мавританія,毛里塔尼亚,모리타니,Mauritania
+MS,MS,مونتسرات,モントセラト,मोंटसेरात,Монтсеррат,蒙特塞拉特,몬트세라트,مونتسيرات,Montserrat
+MU,MU,Republic of Mauritius,République de Maurice,موريشيوس,Mauricio,Maurice,मॉरीशस,モーリシャス,Маврикий,Маврикій,毛里求斯,모리셔스,Mauritius
+MV,MV,Maldive Islands,Republic of the Maldives,جزر المالديف,Malediven,Maldivas,मालदीव,Maldive,モルディブ,Maldiven,Мальдивы,Maldivler,Мальдіви,马尔代夫,몰디브,Мальдивские Острова,ملديف,Maldives
+MW,MW,Republic of Malawi,مالاوي,ملاوي,Malaui,मलावी,マラウイ,Малави,Malavi,Малаві,马拉维,말라위,Malawi
+MY,MY,ماليزيا,Malajsie,Malasia,Malaisie,मलेशिया,マレーシア,Maleisië,Малайзия,Malezya,Малайзія,马来西亚,말레이시아,Malaysia
+MZ,MZ,Republic of Mozambique,República de Moçambique,موزمبيق,Mosambik,मोज़ांबिक,Mozambico,モザンビーク,Moçambique,Мозамбик,Mozambik,Мозамбік,莫桑比克,모잠비크,موزامبيق,Mozambique
+NA,NA,Namibië,Republic of Namibia,ناميبيا,नामीबिया,ナミビア,Намибия,Namibya,Намібія,纳米比亚,나미비아,Namibia
+NC,NC,كاليدونيا الجديدة,Kaledonia-Nevez,Neukaledonien,Nueva Caledonia,Nouvelle-Calédonie,न्यू कैलेडोनिया,Nuova Caledonia,ニューカレドニア,Nieuw-Caledonië,Nova Caledônia,Новая Каледония,Yeni Kaledonya,Нова Каледонія,新喀里多尼亚,뉴칼레도니아,New Caledonia
+NE,NE,Nijar,النيجر,नाइजर,ニジェール,Нигер,Nijer,Нігер,尼日尔,니제르,Niger
+NF,NF,Territory of Norfolk Island,Teratri of Norf'k Ailen,جزيرة نورفولك,Norfolkinsel,Isla Norfolk,Île Norfolk,नॉरफ़ॉक द्वीप,Isola Norfolk,ノーフォーク島,Norfolk,Ilha Norfolk,о-в Норфолк,Norfolk Adası,Острів Норфолк,诺福克岛,노퍽섬,Остров Норфолк,Đảo Norfolk
+NI,NI,Republic of Nicaragua,República de Nicaragua,نيكاراغوا,निकारागुआ,ニカラグア,Никарагуа,Nikaragua,Нікарагуа,尼加拉瓜,니카라과,Nicaragua
+NP,NP,Federal Democratic Republic of Nepal,Loktāntrik Ganatantra Nepāl,نيبال,नेपाल,ネパール,Непал,尼泊尔,네팔,Nepal
+NR,NR,Naoero,Pleasant Island,ناورو,नाउरु,ナウル,Науру,瑙鲁,나우루,Наоэро,ناويرو,Nauru
+NU,NU,نييوي,ニウエ,نيوي,नीयू,Ниуэ,Ніуе,纽埃,니우에,Nioué,Niue
+OM,OM,Sultanate of Oman,Salṭanat ʻUmān,عُمان,ओमान,オマーン,Omã,Оман,Umman,阿曼,오만,Oman
+PA,PA,Republic of Panama,República de Panamá,بنما,पनामा,パナマ,Панама,巴拿马,파나마,Panama
+PE,PE,Republic of Peru,República del Perú,بيرو,Pérou,पेरू,ペルー,Перу,秘鲁,페루,Peru
+PF,PF,Polynésie française,Pōrīnetia Farāni,بولينيزيا الفرنسية,Französisch-Polynesien,Polinesia Francesa,फ़्रेंच पोलिनेशिया,Polinesia Francese,仏領ポリネシア,Frans-Polynesië,Французская Полинезия,Fransız Polinezyası,Французька Полінезія,法属波利尼西亚,프랑스령 폴리네시아,Polynesia thuộc Pháp
+PG,PG,Independent State of Papua New Guinea,Independen Stet bilong Papua Niugini,بابوا غينيا الجديدة,Papua-Neuguinea,Papúa Nueva Guinea,Papouasie-Nouvelle-Guinée,पापुआ न्यू गिनी,Papua Nuova Guinea,パプアニューギニア,Papoea-Nieuw-Guinea,Papua-Nova Guiné,Папуа — Новая Гвинея,Papua Yeni Gine,Папуа-Нова Гвінея,巴布亚新几内亚,파푸아뉴기니,Папуа-Новая Гвинея,Papua New Guinea
+PK,PK,Pākistān,Islamic Republic of Pakistan,باكستان,पाकिस्तान,パキスタン,Paquistão,Пакистан,巴基斯坦,파키스탄,Pakistan
+PM,PM,Collectivité territoriale de Saint-Pierre-et-Miquelon,سان بيير وميكلون,سان بيير ومكويلون,St. Pierre und Miquelon,San Pedro y Miquelón,Saint-Pierre-et-Miquelon,सेंट पिएरे और मिक्वेलान,Saint-Pierre e Miquelon,サンピエール島・ミクロン島,Saint-Pierre en Miquelon,São Pedro e Miquelão,Сен-Пьер и Микелон,Saint Pierre ve Miquelon,Сен-Пʼєр і Мікелон,圣皮埃尔和密克隆群岛,생피에르 미클롱,圣皮埃尔和密克隆,Saint Pierre và Miquelon
+PN,PN,Pitcairn,Pitcairn Henderson Ducie and Oeno Islands,جزر بيتكيرن,Pitcairninseln,Islas Pitcairn,Îles Pitcairn,पिटकैर्न द्वीपसमूह,Isole Pitcairn,ピトケアン諸島,Pitcairneilanden,Ilhas Pitcairn,о-ва Питкэрн,Pitcairn Adaları,Острови Піткерн,皮特凯恩群岛,핏케언 섬,皮特凯恩,Питкэрн,بيتكرن,Quần đảo Pitcairn
+PR,PR,Commonwealth of Puerto Rico,Estado Libre Asociado de Puerto Rico,بورتوريكو,Porto Rico,पोर्टो रिको,Portorico,プエルトリコ,Пуэрто-Рико,Porto Riko,Пуерто-Рико,波多黎各,푸에르토리코,Puerto Rico
+PS,PS,"Palestine, State of",State of Palestine,الأراضي الفلسطينية,Palästinensische Autonomiegebiete,Territorios Palestinos,Territoires palestiniens,फ़िलिस्तीनी क्षेत्र,Territori Palestinesi,パレスチナ自治区,Palestijnse gebieden,Палестинские территории,Filistin Bölgeleri,Палестинські території,巴勒斯坦领土,팔레스타인 지구,巴勒斯坦国,Государство Палестина,État de Palestine,Estado de Palestina,دولة فلسطين,Lãnh thổ Palestine
+PW,PW,Republic of Palau,Beluu er a Belau,بالاو,Palaos,पलाऊ,パラオ,Палау,帕劳,팔라우,Palau
+PY,PY,Republic of Paraguay,República del Paraguay,باراغواي,पराग्वे,パラグアイ,Paraguai,Парагвай,巴拉圭,파라과이,Paraguay
+QA,QA,State of Qatar,Dawlat Qaṭar,قطر,Katar,Catar,क़तर,カタール,Катар,卡塔尔,카타르,Qatar
+RE,RE,Reunion,لا ريونيون,روينيون,La Réunion,रियूनियन,Riunione,レユニオン,Reunião,Реюньон,Реюньйон,留尼汪,리유니온,ريونيون,Réunion
+RS,RS,Srbija,Republika Srbija,صربيا,Serbien,Serbie,सर्बिया,セルビア,Servië,Sérvia,Сербия,Sırbistan,Сербія,塞尔维亚,세르비아,Serbia
+RW,RW,Republic of Rwanda,Repubulika y'u Rwanda,رواندا,Ruanda,रवांडा,ルワンダ,Руанда,卢旺达,르완다,Rwanda
+SA,Saudi,SA,Kingdom of Saudi Arabia,المملكة العربية السعودية,Saudi-Arabien,Arabia Saudí,Arabie saoudite,सऊदी अरब,Arabia Saudita,サウジアラビア,Saoedi-Arabië,Саудовская Аравия,Suudi Arabistan,Саудівська Аравія,沙特阿拉伯,사우디아라비아,Ả Rập Xê-út
+SB,SB,جزر سليمان,Inizi Salomon,Salomonen,Islas Salomón,Îles Salomon,सोलोमन द्वीपसमूह,Isole Salomone,ソロモン諸島,Salomonseilanden,Ilhas Salomão,Соломоновы о-ва,Solomon Adaları,Соломонові Острови,所罗门群岛,솔로몬 제도,Соломоновы Острова,Quần đảo Solomon
+SC,SC,Republic of Seychelles,Repiblik Sesel,سيشل,Seychellen,सेशेल्स,セーシェル,Seicheles,Сейшельские о-ва,Seyşeller,Сейшельські Острови,塞舌尔,세이셸,Сейшельские Острова,سيشيل,Seychelles
+SD,SD,Republic of the Sudan,Jumhūrīyat as-Sūdān,السودان,Soudan,सूडान,スーダン,Soedan,Sudão,Судан,苏丹,수단,Sudan
+SG,SG,Singapura,Republik Singapura,سنغافورة,Singapur,Singapour,सिंगापुर,シンガポール,Сингапур,Сінгапур,新加坡,싱가포르,Singapore
 SH,Saint Helena,"St. Helena, Ascension and Tristan da Cunha",سانت هيلينا وأسينشين وتريستان دا كونا,سانت هيلينا,St. Helena,Santa Elena,Sainte-Hélène,सेंट हेलेना,Sant’Elena,セントヘレナ,Sint-Helena,Santa Helena,о-в Св. Елены,Острів Святої Єлени,圣赫勒拿,세인트헬레나,Остров Святой Елены,سانت هيلانة
-SJ,SJ,Svalbard and Jan Mayen Islands,سفالبارد ويان ماين,سفالبارد وجان ماين,Spitzbergen und Jan Mayen,Svalbard y Jan Mayen,Svalbard et Jan Mayen,स्वालबार्ड और जान मायेन,Svalbard e Jan Mayen,スバールバル諸島・ヤンマイエン島,Spitsbergen en Jan Mayen,Шпицберген и Ян-Майен,Svalbard ve Jan Mayen,Шпіцберген та Ян-Маєн,斯瓦尔巴和扬马延,스발바르제도-얀마웬섬,斯瓦尔巴群岛和扬马延岛,Острова Свальбард и Ян-Майен,Îles Svalbard-et-Jan Mayen,Islas Svalbard y Jan Mayen,جزيرتي سفالبارد وجان مايِن
-SL,SL,Republic of Sierra Leone,سيراليون,Sierra Leona,सिएरा लियोन,シエラレオネ,Serra Leoa,Сьерра-Леоне,Сьєрра-Леоне,塞拉利昂,시에라리온
-SM,SM,Republic of San Marino,Repubblica di San Marino,سان مارينو,Saint-Marin,सैन मेरीनो,サンマリノ,Сан-Марино,圣马力诺,산마리노
-SN,SN,Republic of Senegal,République du Sénégal,السنغال,सेनेगल,セネガル,Сенегал,塞内加尔,세네갈
-SO,SO,aṣ-Ṣūmāl,Federal Republic of Somalia,الصومال,Somalie,सोमालिया,ソマリア,Сомали,Somali,Сомалі,索马里,소말리아
-SR,SR,Sarnam,Sranangron,سورينام,Surinam,सूरीनाम,スリナム,Суринам,苏里南,수리남
-SS,SS,جنوب السودان,Soudan ar Su,Südsudan,Sudán del Sur,Soudan du Sud,दक्षिण सूडान,Sud Sudan,南スーダン,Zuid-Soedan,Sudão do Sul,Южный Судан,Güney Sudan,Південний Судан,南苏丹,남수단
-ST,ST,Democratic Republic of São Tomé and Príncipe,Sao Tome and Principe,ساو تومي وبرينسيبي,São Tomé und Príncipe,Santo Tomé y Príncipe,Sao Tomé-et-Principe,साओ टोम और प्रिंसिपे,São Tomé e Príncipe,サントメ・プリンシペ,Sao Tomé en Principe,Сан-Томе и Принсипи,Sao Tome ve Principe,Сан-Томе і Принсіпі,圣多美和普林西比,상투메 프린시페,سان تومي وبرينسيبي
-SV,SV,Republic of El Salvador,República de El Salvador,السلفادور,Salvador,अल सल्वाडोर,エルサルバドル,Сальвадор,萨尔瓦多,엘살바도르
+SJ,SJ,Svalbard and Jan Mayen Islands,سفالبارد ويان ماين,سفالبارد وجان ماين,Spitzbergen und Jan Mayen,Svalbard y Jan Mayen,Svalbard et Jan Mayen,स्वालबार्ड और जान मायेन,Svalbard e Jan Mayen,スバールバル諸島・ヤンマイエン島,Spitsbergen en Jan Mayen,Шпицберген и Ян-Майен,Svalbard ve Jan Mayen,Шпіцберген та Ян-Маєн,斯瓦尔巴和扬马延,스발바르제도-얀마웬섬,斯瓦尔巴群岛和扬马延岛,Острова Свальбард и Ян-Майен,Îles Svalbard-et-Jan Mayen,Islas Svalbard y Jan Mayen,جزيرتي سفالبارد وجان مايِن,Svalbard và Jan Mayen
+SL,SL,Republic of Sierra Leone,سيراليون,Sierra Leona,सिएरा लियोन,シエラレオネ,Serra Leoa,Сьерра-Леоне,Сьєрра-Леоне,塞拉利昂,시에라리온,Sierra Leone
+SM,SM,Republic of San Marino,Repubblica di San Marino,سان مارينو,Saint-Marin,सैन मेरीनो,サンマリノ,Сан-Марино,圣马力诺,산마리노,San Marino
+SN,SN,Republic of Senegal,République du Sénégal,السنغال,सेनेगल,セネガル,Сенегал,塞内加尔,세네갈,Senegal
+SO,SO,aṣ-Ṣūmāl,Federal Republic of Somalia,الصومال,Somalie,सोमालिया,ソマリア,Сомали,Somali,Сомалі,索马里,소말리아,Somalia
+SR,SR,Sarnam,Sranangron,سورينام,Surinam,सूरीनाम,スリナム,Суринам,苏里南,수리남,Suriname
+SS,SS,جنوب السودان,Soudan ar Su,Südsudan,Sudán del Sur,Soudan du Sud,दक्षिण सूडान,Sud Sudan,南スーダン,Zuid-Soedan,Sudão do Sul,Южный Судан,Güney Sudan,Південний Судан,南苏丹,남수단,Nam Sudan
+ST,ST,Democratic Republic of São Tomé and Príncipe,Sao Tome and Principe,ساو تومي وبرينسيبي,São Tomé und Príncipe,Santo Tomé y Príncipe,Sao Tomé-et-Principe,साओ टोम और प्रिंसिपे,São Tomé e Príncipe,サントメ・プリンシペ,Sao Tomé en Principe,Сан-Томе и Принсипи,Sao Tome ve Principe,Сан-Томе і Принсіпі,圣多美和普林西比,상투메 프린시페,سان تومي وبرينسيبي,São Tomé và Príncipe
+SV,SV,Republic of El Salvador,República de El Salvador,السلفادور,Salvador,अल सल्वाडोर,エルサルバドル,Сальвадор,萨尔瓦多,엘살바도르,El Salvador
 SX,SX,Sint Maarten (Dutch part),سينت مارتن,سانت مارتن,Sint Maarten,Saint-Martin (partie néerlandaise),सिंट मार्टिन,シント・マールテン,Sint-Maarten,Синт-Мартен,Сінт-Мартен,荷属圣马丁,신트마르턴,圣马丁（荷属）,Синт-Мартен (нидерландская часть),San Martín (parte Holandesa),سانت مارتن (الجزء الهولندي)
 SY,SY,Syria,Syrian Arab Republic,Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah,سوريا,Syrien,Siria,Syrie,सीरिया,シリア,Сирия,Suriye,Сирія,叙利亚,시리아,阿拉伯叙利亚共和国,Сирийская Арабская Республика,République arabe syrienne,República Árabe Siria,الجمهورية العربية السورية
-SZ,SZ,Swaziland,weSwatini,إسواتيني,Esuatini,एस्वाटिनी,エスワティニ,Essuatíni,Эсватини,Esvatini,Есватіні,斯威士兰,스와질란드
-TC,TC,جزر توركس وكايكوس,Inizi Turks ha Caicos,Turks- und Caicosinseln,Islas Turcas y Caicos,Îles Turques-et-Caïques,तुर्क और कैकोज़ द्वीपसमूह,Isole Turks e Caicos,タークス・カイコス諸島,Turks- en Caicoseilanden,Ilhas Turcas e Caicos,Тёркс и Кайкос,Turks ve Caicos Adaları,Острови Теркс і Кайкос,特克斯和凯科斯群岛,터크스 케이커스 제도,Острова Теркс и Кайкос,جزر تركس وكايكوس
-TD,TD,Tchad,Republic of Chad,تشاد,Tschad,चाड,Ciad,チャド,Tsjaad,Chade,Чад,Çad,乍得,차드
-TF,TF,French Southern Territories,أراض فرنسية جنوبية وأنتارتيكية,الأقاليم الجنوبية الفرنسية,Französische Süd- und Antarktisgebiete,Territorios Australes Franceses,Terres australes françaises,फ़्रांसीसी दक्षिणी क्षेत्र,Terre Australi Francesi,仏領極南諸島,Franse Gebieden in de zuidelijke Indische Oceaan,Territórios Franceses do Sul,Французские Южные территории,Fransız Güney Toprakları,Французькі Південні Території,法属南部领地,프랑스 남부 지방,法属南方领地,Южные земли (французская заморская территория),Territorio de las Tierras Australes Francesas
-TG,TG,Togolese,Togolese Republic,توغو,टोगो,トーゴ,Того,多哥,토고
-TJ,TJ,Toçikiston,Republic of Tajikistan,طاجيكستان,Tadschikistan,Tayikistán,Tadjikistan,ताजिकिस्तान,Tagikistan,タジキスタン,Tadzjikistan,Tadjiquistão,Таджикистан,Tacikistan,塔吉克斯坦,타지키스탄
-TK,TK,توكيلاو,Tokelau-szigetek,तोकेलाउ,トケラウ,Токелау,托克劳,토켈라우,Tokélaou
-TL,TL,East Timor,Timor,تيمور - ليشتي,Timor oriental,तिमोर-लेस्त,Timor Est,東ティモール,Oost-Timor,Восточный Тимор,Тимор-Лешті,东帝汶,동티모르,Тимор-Лешти
-TM,TM,تركمانستان,Turkmenistán,तुर्कमेनिस्तान,トルクメニスタン,Turcomenistão,Туркменистан,Туркменістан,土库曼斯坦,투르크메니스탄
-TN,TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah,تونس,Tunesien,Túnez,Tunisie,ट्यूनीशिया,チュニジア,Tunesië,Тунис,Tunus,Туніс,突尼斯,튀니지
-TO,TO,تونغا,トンガ,टोंगा,Тонга,汤加,통가
-TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو,Trinidad und Tobago,Trinidad y Tobago,Trinité-et-Tobago,त्रिनिदाद और टोबैगो,Trinidad e Tobago,トリニダード・トバゴ,Trinidad en Tobago,Тринидад и Тобаго,Trinidad ve Tobago,Тринідад і Тобаго,特立尼达和多巴哥,트리니다드 토바고,Trinidad y Tabago
-TV,TV,توفالو,ツバル,तुवालू,Тувалу,图瓦卢,투발루
-TW,TW,Táiwān,Republic of China,تايوان,ताइवान,台湾,Тайвань,Tayvan,대만
+SZ,SZ,Swaziland,weSwatini,إسواتيني,Esuatini,एस्वाटिनी,エスワティニ,Essuatíni,Эсватини,Esvatini,Есватіні,斯威士兰,스와질란드,Eswatini
+TC,TC,جزر توركس وكايكوس,Inizi Turks ha Caicos,Turks- und Caicosinseln,Islas Turcas y Caicos,Îles Turques-et-Caïques,तुर्क और कैकोज़ द्वीपसमूह,Isole Turks e Caicos,タークス・カイコス諸島,Turks- en Caicoseilanden,Ilhas Turcas e Caicos,Тёркс и Кайкос,Turks ve Caicos Adaları,Острови Теркс і Кайкос,特克斯和凯科斯群岛,터크스 케이커스 제도,Острова Теркс и Кайкос,جزر تركس وكايكوس,Quần đảo Turks và Caicos
+TD,TD,Tchad,Republic of Chad,تشاد,Tschad,चाड,Ciad,チャド,Tsjaad,Chade,Чад,Çad,乍得,차드,Chad
+TF,TF,French Southern Territories,أراض فرنسية جنوبية وأنتارتيكية,الأقاليم الجنوبية الفرنسية,Französische Süd- und Antarktisgebiete,Territorios Australes Franceses,Terres australes françaises,फ़्रांसीसी दक्षिणी क्षेत्र,Terre Australi Francesi,仏領極南諸島,Franse Gebieden in de zuidelijke Indische Oceaan,Territórios Franceses do Sul,Французские Южные территории,Fransız Güney Toprakları,Французькі Південні Території,法属南部领地,프랑스 남부 지방,法属南方领地,Южные земли (французская заморская территория),Territorio de las Tierras Australes Francesas,Lãnh thổ phía Nam Thuộc Pháp
+TG,TG,Togolese,Togolese Republic,توغو,टोगो,トーゴ,Того,多哥,토고,Togo
+TJ,TJ,Toçikiston,Republic of Tajikistan,طاجيكستان,Tadschikistan,Tayikistán,Tadjikistan,ताजिकिस्तान,Tagikistan,タジキスタン,Tadzjikistan,Tadjiquistão,Таджикистан,Tacikistan,塔吉克斯坦,타지키스탄,Tajikistan
+TK,TK,توكيلاو,Tokelau-szigetek,तोकेलाउ,トケラウ,Токелау,托克劳,토켈라우,Tokélaou,Tokelau
+TL,TL,East Timor,Timor,تيمور - ليشتي,Timor oriental,तिमोर-लेस्त,Timor Est,東ティモール,Oost-Timor,Восточный Тимор,Тимор-Лешті,东帝汶,동티모르,Тимор-Лешти,Timor-Leste
+TM,TM,تركمانستان,Turkmenistán,तुर्कमेनिस्तान,トルクメニスタン,Turcomenistão,Туркменистан,Туркменістан,土库曼斯坦,투르크메니스탄,Turkmenistan
+TN,TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah,تونس,Tunesien,Túnez,Tunisie,ट्यूनीशिया,チュニジア,Tunesië,Тунис,Tunus,Туніс,突尼斯,튀니지,Tunisia
+TO,TO,تونغا,トンガ,टोंगा,Тонга,汤加,통가,Tonga
+TT,TT,Republic of Trinidad and Tobago,ترينيداد وتوباغو,Trinidad und Tobago,Trinidad y Tobago,Trinité-et-Tobago,त्रिनिदाद और टोबैगो,Trinidad e Tobago,トリニダード・トバゴ,Trinidad en Tobago,Тринидад и Тобаго,Trinidad ve Tobago,Тринідад і Тобаго,特立尼达和多巴哥,트리니다드 토바고,Trinidad y Tabago,Trinidad và Tobago
+TV,TV,توفالو,ツバル,तुवालू,Тувалу,图瓦卢,투발루,Tuvalu
+TW,TW,Táiwān,Republic of China,تايوان,ताइवान,台湾,Тайвань,Tayvan,대만,Đài Loan
 TZ,TZ,"Tanzania, United Republic of",United Republic of Tanzania,تنزانيا,Tansania,Tanzania,Tanzanie,तंज़ानिया,タンザニア,Танзания,Tanzanya,Танзанія,坦桑尼亚,탄자니아,坦桑尼亚联合共和国,Объединенная Республика Танзания,République-Unie de Tanzanie,República Unida de Tanzanía,جمهورية تنزانيا المتحدة
-UA,UA,Ukrayina,أوكرانيا,Україна,Ucrania,यूक्रेन,Ucraina,ウクライナ,Oekraïne,Украина,Ukrayna,乌克兰,우크라이나
-UG,UG,Republic of Uganda,Jamhuri ya Uganda,أوغندا,Ouganda,युगांडा,ウガンダ,Oeganda,Уганда,乌干达,우간다
-UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet,جزر الولايات المتحدة النائية,Amerikanische Überseeinseln,Islas menores alejadas de EE. UU.,Îles mineures éloignées des États-Unis,यू॰एस॰ आउटलाइंग द्वीपसमूह,Isole Minori Esterne degli Stati Uniti,合衆国領有小離島,Kleine afgelegen eilanden van de Verenigde Staten,Ilhas Menores Distantes dos EUA,Внешние малые о-ва (США),ABD Küçük Harici Adaları,Віддалені острови США,美国本土外小岛屿,미국령 해외 제도,Внешние малые острова Соединенных Штатов,Islas menores alejadas de Estados Unidos
-UY,UY,Oriental Republic of Uruguay,República Oriental del Uruguay,أورغواي,उरूग्वे,ウルグアイ,Uruguai,Уругвай,乌拉圭,우루과이,أوروغواي
-UZ,UZ,Republic of Uzbekistan,O‘zbekiston Respublikasi,أوزبكستان,Usbekistan,Ouzbékistan,उज़्बेकिस्तान,ウズベキスタン,Oezbekistan,Uzbequistão,Узбекистан,Özbekistan,乌兹别克斯坦,우즈베키스탄
-VA,VA,Holy See (Vatican City State),Vatican City State,الفاتيكان,Vatikanstadt,Ciudad del Vaticano,État de la Cité du Vatican,वेटिकन सिटी,Città del Vaticano,バチカン市国,Vaticaanstad,Cidade do Vaticano,Ватикан,Vatikan,梵蒂冈,바티칸 시국,教廷,Святой Престол,Saint-Siège,Santa Sede,الكرسي الرسولي
-VC,VC,سانت فينسنت والغرينادين,Sant-Visant hag ar Grenadinez,سانت فنسنت وجزر غرينادين,St. Vincent und die Grenadinen,San Vicente y las Granadinas,Saint-Vincent-et-les Grenadines,सेंट विंसेंट और ग्रेनाडाइंस,Saint Vincent e Grenadine,セントビンセント及びグレナディーン諸島,Saint Vincent en de Grenadines,São Vicente e Granadinas,Сент-Винсент и Гренадины,Saint Vincent ve Grenadinler,Сент-Вінсент і Гренадіни,圣文森特和格林纳丁斯,세인트빈센트그레나딘
+UA,UA,Ukrayina,أوكرانيا,Україна,Ucrania,यूक्रेन,Ucraina,ウクライナ,Oekraïne,Украина,Ukrayna,乌克兰,우크라이나,Ukraina
+UG,UG,Republic of Uganda,Jamhuri ya Uganda,أوغندا,Ouganda,युगांडा,ウガンダ,Oeganda,Уганда,乌干达,우간다,Uganda
+UM,UM,جزر الولايات المتحدة الصغيرة النائية,Inizi Minor A-bell Stadoù-Unanet,جزر الولايات المتحدة النائية,Amerikanische Überseeinseln,Islas menores alejadas de EE. UU.,Îles mineures éloignées des États-Unis,यू॰एस॰ आउटलाइंग द्वीपसमूह,Isole Minori Esterne degli Stati Uniti,合衆国領有小離島,Kleine afgelegen eilanden van de Verenigde Staten,Ilhas Menores Distantes dos EUA,Внешние малые о-ва (США),ABD Küçük Harici Adaları,Віддалені острови США,美国本土外小岛屿,미국령 해외 제도,Внешние малые острова Соединенных Штатов,Islas menores alejadas de Estados Unidos,Các tiểu đảo xa của Hoa Kỳ
+UY,UY,Oriental Republic of Uruguay,República Oriental del Uruguay,أورغواي,उरूग्वे,ウルグアイ,Uruguai,Уругвай,乌拉圭,우루과이,أوروغواي,Uruguay
+UZ,UZ,Republic of Uzbekistan,O‘zbekiston Respublikasi,أوزبكستان,Usbekistan,Ouzbékistan,उज़्बेकिस्तान,ウズベキスタン,Oezbekistan,Uzbequistão,Узбекистан,Özbekistan,乌兹别克斯坦,우즈베키스탄,Uzbekistan
+VA,VA,Holy See (Vatican City State),Vatican City State,الفاتيكان,Vatikanstadt,Ciudad del Vaticano,État de la Cité du Vatican,वेटिकन सिटी,Città del Vaticano,バチカン市国,Vaticaanstad,Cidade do Vaticano,Ватикан,Vatikan,梵蒂冈,바티칸 시국,教廷,Святой Престол,Saint-Siège,Santa Sede,الكرسي الرسولي,Thành Vatican
+VC,VC,سانت فينسنت والغرينادين,Sant-Visant hag ar Grenadinez,سانت فنسنت وجزر غرينادين,St. Vincent und die Grenadinen,San Vicente y las Granadinas,Saint-Vincent-et-les Grenadines,सेंट विंसेंट और ग्रेनाडाइंस,Saint Vincent e Grenadine,セントビンセント及びグレナディーン諸島,Saint Vincent en de Grenadines,São Vicente e Granadinas,Сент-Винсент и Гренадины,Saint Vincent ve Grenadinler,Сент-Вінсент і Гренадіни,圣文森特和格林纳丁斯,세인트빈센트그레나딘,St. Vincent và Grenadines
 VE,VE,Venezuela,Bolivarian Republic of Venezuela,"Venezuela, Bolivarian Republic of",فنزويلا,वेनेज़ुएला,ベネズエラ,Венесуэла,Венесуела,委内瑞拉,베네수엘라,委内瑞拉玻利瓦尔共和国,Венесуэла (Боливарианская Республика),Venezuela (République bolivarienne du),Venezuela (República Bolivariana de),فنزويلا (جمهورية - البوليفارية)
-VG,VG,"Virgin Islands, British",جزر العذراء,جزر فيرجن البريطانية,Britische Jungferninseln,Islas Vírgenes Británicas,Îles Vierges britanniques,ब्रिटिश वर्जिन द्वीपसमूह,Isole Vergini Britanniche,英領ヴァージン諸島,Britse Maagdeneilanden,Ilhas Virgens Britânicas,Виргинские о-ва (Великобритания),Britanya Virjin Adaları,Британські Віргінські острови,英属维尔京群岛,영국령 버진아일랜드,Британские Виргинские острова,جزر فرجن البريطانية
-VI,VI,"Virgin Islands, U.S.",جزر العذراء الامريكية,جزر فيرجن الأمريكية,Amerikanische Jungferninseln,Islas Vírgenes de EE. UU.,Îles Vierges des États-Unis,यू॰एस॰ वर्जिन द्वीपसमूह,Isole Vergini Americane,米領ヴァージン諸島,Amerikaanse Maagdeneilanden,Ilhas Virgens Americanas,Виргинские о-ва (США),ABD Virjin Adaları,Віргінські Острови (США),美属维尔京群岛,미국령 버진아일랜드,Виргинские острова Соединенных Штатов,Îles Vierges américaines,Islas Vírgenes de los Estados Unidos,جزر فرجن التابعة للولايات المتحدة
-VU,VU,Republic of Vanuatu,Ripablik blong Vanuatu,فانواتو,वनुआतू,バヌアツ,Вануату,瓦努阿图,바누아투
-WF,WF,Territory of the Wallis and Futuna Islands,Territoire des îles Wallis et Futuna,جزر والس وفوتونا,Wallis und Futuna,Wallis y Futuna,Wallis-et-Futuna,वालिस और फ़्यूचूना,Wallis e Futuna,ウォリス・フツナ,Wallis en Futuna,Уоллис и Футуна,Wallis ve Futuna,Уолліс і Футуна,瓦利斯和富图纳,왈리스-푸투나 제도,瓦利斯群岛和富图纳群岛,Острова Уоллис и Футуна,Îles Wallis-et-Futuna,Islas Wallis y Futuna,جزر واليس وفوتونا
-WS,WS,Independent State of Samoa,Malo Saʻoloto Tutoʻatasi o Sāmoa,ساموا,समोआ,サモア,Самоа,萨摩亚,사모아
-YE,YE,Yemeni Republic,al-Jumhūriyyah al-Yamaniyyah,اليمن,Jemen,यमन,イエメン,Iêmen,Йемен,Ємен,也门,예멘
-YT,YT,Department of Mayotte,Département de Mayotte,مايوت,मायोते,マヨット,Майотта,马约特,마요트,Остров Майотта
-ZM,ZM,Republic of Zambia,زامبيا,Sambia,Zambie,ज़ाम्बिया,ザンビア,Замбия,Zambiya,Замбія,赞比亚,잠비아
-ZW,ZW,Republic of Zimbabwe,زيمبابوي,Simbabwe,Zimbabue,ज़िम्बाब्वे,ジンバブエ,Зимбабве,Zimbabve,Зімбабве,津巴布韦,짐바브웨,زمبابوي
+VG,VG,"Virgin Islands, British",جزر العذراء,جزر فيرجن البريطانية,Britische Jungferninseln,Islas Vírgenes Británicas,Îles Vierges britanniques,ब्रिटिश वर्जिन द्वीपसमूह,Isole Vergini Britanniche,英領ヴァージン諸島,Britse Maagdeneilanden,Ilhas Virgens Britânicas,Виргинские о-ва (Великобритания),Britanya Virjin Adaları,Британські Віргінські острови,英属维尔京群岛,영국령 버진아일랜드,Британские Виргинские острова,جزر فرجن البريطانية,Quần đảo Virgin thuộc Anh
+VI,VI,"Virgin Islands, U.S.",جزر العذراء الامريكية,جزر فيرجن الأمريكية,Amerikanische Jungferninseln,Islas Vírgenes de EE. UU.,Îles Vierges des États-Unis,यू॰एस॰ वर्जिन द्वीपसमूह,Isole Vergini Americane,米領ヴァージン諸島,Amerikaanse Maagdeneilanden,Ilhas Virgens Americanas,Виргинские о-ва (США),ABD Virjin Adaları,Віргінські Острови (США),美属维尔京群岛,미국령 버진아일랜드,Виргинские острова Соединенных Штатов,Îles Vierges américaines,Islas Vírgenes de los Estados Unidos,جزر فرجن التابعة للولايات المتحدة,Quần đảo Virgin thuộc Hoa Kỳ
+VU,VU,Republic of Vanuatu,Ripablik blong Vanuatu,فانواتو,वनुआतू,バヌアツ,Вануату,瓦努阿图,바누아투,Vanuatu
+WF,WF,Territory of the Wallis and Futuna Islands,Territoire des îles Wallis et Futuna,جزر والس وفوتونا,Wallis und Futuna,Wallis y Futuna,Wallis-et-Futuna,वालिस और फ़्यूचूना,Wallis e Futuna,ウォリス・フツナ,Wallis en Futuna,Уоллис и Футуна,Wallis ve Futuna,Уолліс і Футуна,瓦利斯和富图纳,왈리스-푸투나 제도,瓦利斯群岛和富图纳群岛,Острова Уоллис и Футуна,Îles Wallis-et-Futuna,Islas Wallis y Futuna,جزر واليس وفوتونا,Wallis và Futuna
+WS,WS,Independent State of Samoa,Malo Saʻoloto Tutoʻatasi o Sāmoa,ساموا,समोआ,サモア,Самоа,萨摩亚,사모아,Samoa
+YE,YE,Yemeni Republic,al-Jumhūriyyah al-Yamaniyyah,اليمن,Jemen,यमन,イエメン,Iêmen,Йемен,Ємен,也门,예멘,Yemen
+YT,YT,Department of Mayotte,Département de Mayotte,مايوت,मायोते,マヨット,Майотта,马约特,마요트,Остров Майотта,Mayotte
+ZM,ZM,Republic of Zambia,زامبيا,Sambia,Zambie,ज़ाम्बिया,ザンビア,Замбия,Zambiya,Замбія,赞比亚,잠비아,Zambia
+ZW,ZW,Republic of Zimbabwe,زيمبابوي,Simbabwe,Zimbabue,ज़िम्बाब्वे,ジンバブエ,Зимбабве,Zimbabve,Зімбабве,津巴布韦,짐바브웨,زمبابوي,Zimbabwe
