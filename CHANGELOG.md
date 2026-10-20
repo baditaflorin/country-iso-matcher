@@ -1,3 +1,8 @@
+## 0.1.24 — 2026-10-20
+
+### Changed
+- fix: report current matcher version
+
 ## 0.1.23 — 2026-10-20
 
 ### Changed
