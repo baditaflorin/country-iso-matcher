@@ -2,6 +2,7 @@ package normalizer
 
 import (
 	"strings"
+	"sync"
 	"unicode"
 
 	"golang.org/x/text/runes"
@@ -15,16 +16,22 @@ type TextNormalizer interface {
 }
 
 type textNormalizer struct {
-	transformer transform.Transformer
+	transformers sync.Pool
 }
 
 func NewTextNormalizer() TextNormalizer {
 	return &textNormalizer{
-		transformer: transform.Chain(width.Fold, norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC),
+		transformers: sync.Pool{New: func() any {
+			return transform.Chain(width.Fold, norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
+		}},
 	}
 }
 
 func (n *textNormalizer) Normalize(text string) string {
-	normalized, _, _ := transform.String(n.transformer, text)
+	// Transformers have mutable internal buffers and are not safe to share
+	// between concurrent HTTP requests. Each call owns a chain until it returns.
+	transformer := n.transformers.Get().(transform.Transformer)
+	defer n.transformers.Put(transformer)
+	normalized, _, _ := transform.String(transformer, text)
 	return strings.ToLower(strings.TrimSpace(normalized))
 }

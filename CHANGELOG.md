@@ -1,3 +1,9 @@
+## 0.1.27 — 2026-10-28
+
+### Fixed
+
+- Isolate Unicode normalization transformers between concurrent country lookups to prevent data races.
+
 ## 0.1.26 — 2026-10-20
 
 ### Fixed
