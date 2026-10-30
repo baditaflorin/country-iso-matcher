@@ -92,7 +92,7 @@ func DefaultConfig() *Config {
 			},
 		},
 		Data: DataConfig{
-			Source:        "json",
+			Source:        "csv",
 			CountriesDir:  "data/countries",
 			CountriesFile: "data/countries.csv",
 			AliasesFile:   "data/aliases.csv",

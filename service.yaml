@@ -7,7 +7,7 @@ extra_env:
   GRAPH_SERVICE_ID: "country-iso-matcher"
   GRAPH_COLLECTOR_URL: "https://fleet-graph.0exec.com"
 category: geo
-version: "0.1.28"
+version: "0.1.29"
 port: 18315
 description: >-
   Resolves a country name, native name, or common alias to its ISO 3166-1
