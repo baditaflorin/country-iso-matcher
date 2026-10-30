@@ -14,6 +14,7 @@ type CountryResponse struct {
 	OfficialName string `json:"officialName"`
 	ISO2Code     string `json:"iso2Code"`
 	ISO3Code     string `json:"iso3Code"`
+	UserAssigned bool   `json:"userAssigned,omitempty"`
 }
 
 // Legacy support for backward compatibility

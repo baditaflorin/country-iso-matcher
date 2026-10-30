@@ -27,7 +27,11 @@ func NewCountryHandler(service service.CountryService, logger *slog.Logger) Coun
 func (h *countryHandler) ConvertCountry(w http.ResponseWriter, r *http.Request) {
 	countryName := r.URL.Query().Get("country")
 
-	result, err := h.service.LookupCountry(countryName)
+	lookup := h.service.LookupCountry
+	if r.URL.Query().Get("includeUserAssigned") == "true" {
+		lookup = h.service.LookupCountryWithUserAssigned
+	}
+	result, err := lookup(countryName)
 	if err != nil {
 		h.handleError(w, err, countryName)
 		return
