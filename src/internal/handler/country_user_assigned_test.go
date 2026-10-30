@@ -50,6 +50,14 @@ func TestUserAssignedKosovoCodesRequireExplicitOptIn(t *testing.T) {
 			if tc.status != 200 {
 				return
 			}
+			var payload map[string]json.RawMessage
+			if err := json.Unmarshal(w.Body.Bytes(), &payload); err != nil {
+				t.Fatal(err)
+			}
+			_, markerPresent := payload["userAssigned"]
+			if markerPresent != tc.assigned {
+				t.Errorf("userAssigned marker present = %v, want %v", markerPresent, tc.assigned)
+			}
 			var response struct {
 				ISO2     string `json:"iso2Code"`
 				ISO3     string `json:"iso3Code"`
