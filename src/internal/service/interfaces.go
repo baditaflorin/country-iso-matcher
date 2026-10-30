@@ -4,4 +4,5 @@ import "country-iso-matcher/src/internal/domain"
 
 type CountryService interface {
 	LookupCountry(query string) (*domain.CountryResponse, error)
+	LookupCountryWithUserAssigned(query string) (*domain.CountryResponse, error)
 }

@@ -2,6 +2,12 @@
 
 A high-performance, highly configurable Go web service that converts country names (including common aliases and variations) into their official name and **ISO 3166-1 alpha-2** code. Now with a modern web GUI for runtime configuration management and support for multiple data sources.
 
+By default, responses contain only officially assigned ISO codes. Callers that
+need the DomainScope Kosovo convention can request
+`/api/convert?country=Kosovo&includeUserAssigned=true`; this opt-in response
+uses XK/XKX and sets `userAssigned: true`. These are user-assigned codes, not
+official ISO 3166-1 codes. See the [EU reference data explanation](https://op.europa.eu/cs/web/eu-vocabularies/countries-and-territories).
+
 ## ✨ Features
 
 - **🚀 High Performance**: In-memory caching for sub-millisecond lookups

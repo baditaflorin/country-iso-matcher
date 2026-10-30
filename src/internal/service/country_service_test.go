@@ -100,3 +100,16 @@ func TestCountryService_LookupCountry(t *testing.T) {
 		})
 	}
 }
+
+func TestUserAssignedFallbackDoesNotOverrideConfiguredCountry(t *testing.T) {
+	repo := &mockRepository{countries: map[string]*domain.Country{
+		"Kosovo": {ISO2: "ZZ", ISO3: "ZZZ", Names: map[string]string{"en": "Configured name"}},
+	}}
+	got, err := service.NewCountryService(repo).LookupCountryWithUserAssigned("Kosovo")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.ISO2Code != "ZZ" || got.UserAssigned {
+		t.Fatalf("configured country was overridden: %+v", got)
+	}
+}
